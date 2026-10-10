@@ -7,7 +7,7 @@
 - 已读取并逐篇整理 **8 篇真实公开投稿**，覆盖 7 个作者填写的官方方向。
 - 每篇包括完整原摘要、中文标题、50–100 字导读、二级分类、交叉标签和分类依据。
 - OpenReview 浏览器验证页显示已通过，但命令行 API 仍返回 `403 ChallengeRequiredError`，浏览器直接访问 API 也被客户端阻止。**有效投稿总数未核验，约 200 篇分层校准尚未完成，全量分类尚未完成。**
-- GitHub 已登录，已创建公共仓库 https://github.com/lish529/iclr2027-guide-cn 。代码上传与 Pages 发布状态见后续更新。
+- GitHub 已登录，已创建公共仓库 https://github.com/lish529/iclr2027-guide-cn 。代码已上传，GitHub Pages 样本预览已上线：https://lish529.github.io/iclr2027-guide-cn/ 。
 - `public/data/manifest.json` 始终明确标记 `snapshotKind: sample`，全量发布检查会主动拒绝这个样本快照；工作流允许先发布带明显样本标识的预览，不能将其标为全量完成。
 - 没有下载 PDF，没有调用额外付费模型 API，没有设置定时任务。
 
@@ -118,7 +118,7 @@ npm run build
 
 检查要求完整快照、官方总数一致、无未处理论文、词表已校准和每个方向抽查覆盖。待复核论文可以存在，但必须明确标记并已在复核记录中说明。
 
-登录你的 GitHub 账号后，新建公共仓库 `iclr2027-guide-cn`，上传此项目（排除 `.gitignore` 中的内容），设置默认分支 `main`。在 Settings → Pages 选择 **GitHub Actions**。工作流 `.github/workflows/pages.yml` 会安装依赖、执行检查、构建并发布；样本只以明确标注的预览发布，正式快照必须通过完整验收。最终地址形如 `https://<你的用户名>.github.io/iclr2027-guide-cn/`。这是地址格式说明，**当前没有可用的线上发布地址**。
+登录你的 GitHub 账号后，新建公共仓库 `iclr2027-guide-cn`，上传此项目（排除 `.gitignore` 中的内容），设置默认分支 `main`。在 Settings → Pages 选择 **GitHub Actions**。工作流 `.github/workflows/pages.yml` 会安装依赖、执行检查、构建并发布；样本只以明确标注的预览发布，正式快照必须通过完整验收。最终地址形如 `https://<你的用户名>.github.io/iclr2027-guide-cn/`。本项目已发布的样本预览地址为 **https://lish529.github.io/iclr2027-guide-cn/**；页面明确注明不是全量结果。
 
 数据按需手动刷新后提交更新；工作流不定时抓取，也不持有 OpenReview 或模型凭据。
 
@@ -128,4 +128,5 @@ npm run build
 - 7 项 Python 测试：断点恢复、重复 ID、修改指纹、部分采集防误撤稿、过时分类拒收、缺摘要/ID 校验、样本发布阻断。
 - TypeScript 类型检查、Vite 生产构建、发布数据数量与索引一致性检查通过。
 - 浏览器验证：英文摘要独有词检索、摘要展开、LLM + Agent 交集、JSON/CSV 导出、空结果、单篇深链接、390px 手机分类筛选；未发现横向溢出或控制台错误。
-- **尚未验证**：全量 API 采集、整届分类质量、大规模真实数据性能、GitHub 在线部署。这些不能用样本验证替代。
+- GitHub Actions 第 2 次运行成功完成构建和部署；已在线核验子路径资源加载与英文摘要独有词检索，控制台无错误。
+- **尚未验证**：全量 API 采集、整届分类质量、大规模真实数据性能。这些不能用样本验证替代。
