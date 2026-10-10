@@ -35,6 +35,10 @@ jobs:
               assert manifest['officialCount'] is None
               assert manifest['note'] and not manifest['verifiedAt']
               print('Publishing an explicitly labelled sample preview, not a complete collection.')
+          elif manifest.get('publicationMode') == 'metadata-preview':
+              assert manifest['snapshotKind'] == 'complete' and manifest['verifiedAt']
+              assert manifest['officialCount'] == manifest['total']
+              print('Publishing verified metadata with explicitly incomplete Chinese classification.')
           else:
               subprocess.run(['python3', 'scripts/pipeline.py', 'check', '--release'], check=True)
           PY

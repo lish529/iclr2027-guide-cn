@@ -2,16 +2,13 @@
 
 一个使用 TypeScript + Vite 的静态论文导航站。支持官方研究方向 → 细分主题、交叉标签、中英文及英文摘要搜索、单篇/筛选结果分享、JSON/CSV 导出、手机布局与手动增量更新。
 
-## 当前状态：可用样本预览，尚非全量交付
+## 当前状态：全量元数据已核验，中文分类进行中
 
-- 已读取并逐篇整理 **8 篇真实公开投稿**，覆盖 7 个作者填写的官方方向。
-- 每篇包括完整原摘要、中文标题、50–100 字导读、二级分类、交叉标签和分类依据。
-- OpenReview 浏览器验证页显示已通过，但命令行 API 仍返回 `403 ChallengeRequiredError`，浏览器直接访问 API 也被客户端阻止。**有效投稿总数未核验，约 200 篇分层校准尚未完成，全量分类尚未完成。**
-- GitHub 已登录，已创建公共仓库 https://github.com/lish529/iclr2027-guide-cn 。代码已上传，GitHub Pages 样本预览已上线：https://lish529.github.io/iclr2027-guide-cn/ 。
-- `public/data/manifest.json` 始终明确标记 `snapshotKind: sample`，全量发布检查会主动拒绝这个样本快照；工作流允许先发布带明显样本标识的预览，不能将其标为全量完成。
-- 没有下载 PDF，没有调用额外付费模型 API，没有设置定时任务。
-
-OpenReview 命令行登录采集入口：`python3 scripts/login_fetch.py`。账号、密码和双重验证码只在本地交互终端输入，不回显；登录后自动采集，token 仅留在当前进程。
+- 已核验 **42,358 篇有效投稿、21 个官方方向**，全部具有英文摘要；采集完成于 2026-10-10 17:02（北京时间）。
+- **29 篇**已有中文标题、导读与语义分类，**42,329 篇**待处理；200 篇分层校准中已处理 21 篇，覆盖全部官方方向。词表仍是草案。
+- 网站：https://lish529.github.io/iclr2027-guide-cn/ 。源码：https://github.com/lish529/iclr2027-guide-cn 。
+- `snapshotKind: complete` 仅表示元数据集合已核验；`publicationMode: metadata-preview` 表示中文内容尚未完成。主题标签统计仅反映已处理论文。
+- 无 PDF 下载、额外付费模型调用或定时任务。全量语义分类尚需继续处理，不把关键词匹配视为分类。
 
 ## 本地运行
 
@@ -87,10 +84,10 @@ npm run data:check
 | `data/taxonomy.json` | 分类词表、中文方向映射和版本 |
 | `data/annotations/records.json` | 可追溯的中文内容、标签、来源指纹、判断依据 |
 | `public/data/manifest.json` | 覆盖状态、时间、官方数量、分类进度、目录与搜索分片 |
-| `public/data/index.json` | 不含英文摘要的卡片索引 |
-| `public/data/papers/<id>.json` | 用户展开时加载的原摘要和分类依据 |
-| `public/data/search-*.json` | 首次搜索时由 Worker 加载的全文索引 |
-| `public/data/all-papers.json` | 完整导出数据，含 inactive 历史记录 |
+| `public/data/index.json.gz` | 不含英文摘要的卡片索引 |
+| `public/data/details-*.json.gz` | 每片最多 500 篇，展开时加载原摘要和分类依据 |
+| `public/data/search-*.json.gz` | 首次搜索时由 Worker 以 3 路并发加载，显示进度 |
+| `manifest.detailShards` | 全部详情分片地址，可用于批量获取 JSON |
 
 页面默认只展示 active 投稿；单篇链接可以查阅已保留的 inactive 记录并看到状态提示。多标签采用交集。默认按投稿编号倒序，不表示质量。评分值保留为 `null`。
 
@@ -108,7 +105,7 @@ npm run data:check
 }
 ```
 
-全量发布前：
+全部中文分类交付前（元数据预览不代表通过此验收）：
 
 ```sh
 python3 scripts/pipeline.py check --release
@@ -118,15 +115,14 @@ npm run build
 
 检查要求完整快照、官方总数一致、无未处理论文、词表已校准和每个方向抽查覆盖。待复核论文可以存在，但必须明确标记并已在复核记录中说明。
 
-登录你的 GitHub 账号后，新建公共仓库 `iclr2027-guide-cn`，上传此项目（排除 `.gitignore` 中的内容），设置默认分支 `main`。在 Settings → Pages 选择 **GitHub Actions**。工作流 `.github/workflows/pages.yml` 会安装依赖、执行检查、构建并发布；样本只以明确标注的预览发布，正式快照必须通过完整验收。最终地址形如 `https://<你的用户名>.github.io/iclr2027-guide-cn/`。本项目已发布的样本预览地址为 **https://lish529.github.io/iclr2027-guide-cn/**；页面明确注明不是全量结果。
+GitHub Pages 已设置为 GitHub Actions 发布。工作流支持明确标注的样本预览、已核验元数据预览和通过 `check --release` 的分类交付三个阶段；不会把分类未完成的快照当成全量分类成果。
 
 数据按需手动刷新后提交更新；工作流不定时抓取，也不持有 OpenReview 或模型凭据。
 
-## 已执行验证
+## 数据规模与验证
 
-- 6 项 TypeScript 测试：中英文检索、联合筛选、摘要检索 ID、分享链接、CSV 转义、待处理记录检索。
-- 7 项 Python 测试：断点恢复、重复 ID、修改指纹、部分采集防误撤稿、过时分类拒收、缺摘要/ID 校验、样本发布阻断。
-- TypeScript 类型检查、Vite 生产构建、发布数据数量与索引一致性检查通过。
-- 浏览器验证：英文摘要独有词检索、摘要展开、LLM + Agent 交集、JSON/CSV 导出、空结果、单篇深链接、390px 手机分类筛选；未发现横向溢出或控制台错误。
-- GitHub Actions 第 2 次运行成功完成构建和部署；已在线核验子路径资源加载与英文摘要独有词检索，控制台无错误。
-- **尚未验证**：全量 API 采集、整届分类质量、大规模真实数据性能。这些不能用样本验证替代。
+压缩索引约 5.8 MiB；详情和搜索独立分片，浏览器用原生 Gzip 解压。无需把 42,358 个摘要同时渲染到页面。详情缓存最多 8 片；导出按当前筛选顺序分批装载相关详情，不另存超过 GitHub 单文件限制的大 JSON。完整导出仍需要浏览器在内存中组装文件，低内存设备建议先筛选。
+
+`npm test` 验证搜索、筛选、URL、CSV、压缩数据读取以及断点恢复、增量变化与分类指纹。`data:check` 核对所有发布 ID、摘要详情、搜索索引、一级/二级数量和分类进度。`data:check -- --release` 额外要求完整分类与质量复核，目前会拒绝尚未完成的分类快照。
+
+分类校准进度在 `data/calibration-progress.json`。此记录不等于最终分类质量验收。

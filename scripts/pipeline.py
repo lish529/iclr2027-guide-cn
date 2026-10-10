@@ -5,6 +5,8 @@ No PDF downloads, keyword classifier, credentials on disk, or paid model calls.
 import argparse
 import csv
 import hashlib
+import gzip
+import shutil
 import json
 import os
 from pathlib import Path
@@ -27,13 +29,20 @@ def now():
     return datetime.now(timezone.utc).isoformat()
 
 def load(path, default=None):
-    return json.loads(path.read_text()) if path.exists() else default
+    if not path.exists():
+        return default
+    return json.loads(gzip.decompress(path.read_bytes())) if path.suffix == '.gz' else json.loads(path.read_text())
 
 def save(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     temp = path.with_suffix(path.suffix + '.tmp')
     temp.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
     temp.replace(path)
+
+def save_compressed(path, value):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    payload = json.dumps(value, ensure_ascii=False, separators=(',', ':')).encode()
+    path.write_bytes(gzip.compress(payload, compresslevel=9, mtime=0))
 
 def value(content, name, default=''):
     v = content.get(name, default)
@@ -263,9 +272,9 @@ def build(args):
         item = {k: v for k, v in p.items() if k not in ['abstract', 'venueId']}
         item.update({'areaZh': taxonomy['areaLabels'].get(p['primaryArea'], p['primaryArea']),
             'titleZh': a['titleZh'] if a else '', 'summaryZh': a.get('summaryZh', '') if a else '',
-            'subcategory': a['subcategory'] if a else '待复核', 'tags': a['tags'] if a else [],
+            'subcategory': a['subcategory'] if a else '待分类', 'tags': a['tags'] if a else [],
             'classification': a['classification'] if a else 'pending',
-            'rating': None, 'detail': f"data/papers/{p['id']}.json"})
+            'rating': None, 'detail': f"data/details-{len(index) // 500:04}.json.gz"})
         index.append(item)
         details[p['id']] = {**item, 'abstract': p['abstract'], 'classificationReason': a['reason'] if a else ''}
         search.append({'id': p['id'], 'text': ' '.join([p['title'], item['titleZh'], item['summaryZh'],
@@ -284,14 +293,23 @@ def build(args):
         area['subcategories'] = [{'name': k, 'count': v} for k, v in sorted(area.pop('subs').items(), key=lambda i: (-i[1], i[0]))]
         areas.append(area)
     folder = ROOT / 'public/data'
-    for ident, detail in details.items():
-        save(folder / 'papers' / f'{ident}.json', detail)
+    # Rebuild generated assets in a staging directory; old shards cannot leak into a release.
+    staging = ROOT / 'public/data-next'
+    if staging.exists():
+        shutil.rmtree(staging)
+    staging.mkdir(parents=True)
+    detail_rows = list(details.values())
+    detail_shards = []
+    for i in range(0, len(detail_rows), 500):
+        name = f'details-{i // 500:04}.json.gz'
+        save_compressed(staging / name, detail_rows[i:i+500])
+        detail_shards.append('data/' + name)
     shards = []
     for i in range(0, len(search), 1500):
-        name = f'search-{i // 1500:04}.json'
-        save(folder / name, search[i:i+1500])
+        name = f'search-{i // 1500:04}.json.gz'
+        save_compressed(staging / name, search[i:i+1500])
         shards.append('data/' + name)
-    manifest = {'schemaVersion': 1, 'sourceUrl': SOURCE, 'snapshotKind': snapshot['kind'],
+    manifest = {'schemaVersion': 2, 'publicationMode': 'metadata-preview', 'indexUrl': 'data/index.json.gz', 'detailShards': detail_shards, 'sourceUrl': SOURCE, 'snapshotKind': snapshot['kind'],
         'startedAt': snapshot['startedAt'], 'finishedAt': snapshot['finishedAt'],
         'verifiedAt': snapshot.get('verifiedAt'), 'officialCount': snapshot.get('officialCount'),
         'total': len(active), 'inactive': len(index) - len(active),
@@ -302,25 +320,45 @@ def build(args):
         'failures': snapshot.get('failures', 0), 'note': snapshot.get('note', ''),
         'taxonomyVersion': taxonomy['version'], 'taxonomyStage': taxonomy['stage'],
         'areas': areas, 'tags': [{'name': k, 'count': v} for k, v in sorted(tags.items(), key=lambda i: (-i[1], i[0]))],
-        'searchShards': shards}
-    save(folder / 'index.json', index)
-    save(folder / 'all-papers.json', list(details.values()))
-    save(folder / 'manifest.json', manifest)
-    save(folder / 'taxonomy.json', taxonomy)
-    print(json.dumps({k: v for k, v in manifest.items() if k not in ['areas', 'tags', 'searchShards']}, ensure_ascii=False, indent=2))
+        'searchShards': shards, 'activeIdSetSha256': hashlib.sha256('\n'.join(sorted(p['id'] for p in active)).encode()).hexdigest()}
+    save_compressed(staging / 'index.json.gz', index)
+    save(staging / 'manifest.json', manifest)
+    save(staging / 'taxonomy.json', taxonomy)
+    if folder.exists():
+        shutil.rmtree(folder)
+    staging.replace(folder)
+    print(json.dumps({k: v for k, v in manifest.items() if k not in ['areas', 'tags', 'searchShards', 'detailShards']}, ensure_ascii=False, indent=2))
 
 def check(args):
     folder = ROOT / 'public/data'
     m = load(folder / 'manifest.json')
-    rows = load(folder / 'index.json')
+    rows = load(ROOT / 'public' / m['indexUrl']) if m and m.get('indexUrl') else load(folder / 'index.json')
     assert m and rows is not None, '缺少发布数据'
     assert len({p['id'] for p in rows}) == len(rows), '重复投稿 ID'
     active = [p for p in rows if p['status'] == 'active']
     assert len(active) == m['total'] == sum(a['count'] for a in m['areas']), '数量不一致'
     assert m['classified'] + m['pending'] + m['review'] == m['total'], '分类进度不一致'
+    for state, key in [('complete','classified'), ('pending','pending'), ('review','review')]:
+        assert sum(p['classification'] == state for p in active) == m[key], '分类实际状态不一致'
+    for area in m['areas']:
+        group = [p for p in active if p['primaryArea'] == area['name']]
+        assert len(group) == area['count'], '官方方向数量不一致'
+        assert sum(s['count'] for s in area['subcategories']) == len(group), '细类合计不一致'
+        for sub in area['subcategories']:
+            assert sum(p['subcategory'] == sub['name'] for p in group) == sub['count'], '细类数量不一致'
+    if m.get('activeIdSetSha256'):
+        assert hashlib.sha256('\n'.join(sorted(p['id'] for p in active)).encode()).hexdigest() == m['activeIdSetSha256'], 'ID 集合指纹不一致'
+    detail_map = {}
+    for path in dict.fromkeys(p['detail'] for p in rows):
+        data = load(ROOT / 'public' / path)
+        for d in data if isinstance(data, list) else [data]:
+            assert d['id'] not in detail_map, '重复摘要详情'
+            detail_map[d['id']] = d
+    assert set(detail_map) == {p['id'] for p in rows}, '详情集合不一致'
     for p in rows:
-        detail = load(ROOT / 'public' / p['detail'])
-        assert detail and detail['id'] == p['id'], '缺少摘要详情'
+        detail = detail_map[p['id']]
+        assert detail['fingerprint'] == p['fingerprint'], '详情指纹不一致'
+    assert sum(not detail_map[p['id']]['abstract'] for p in active) == m['missingAbstract']
     search_ids = [p['id'] for shard in m['searchShards'] for p in load(ROOT / 'public' / shard)]
     assert set(search_ids) == {p['id'] for p in rows} and len(search_ids) == len(rows), '搜索索引不一致'
     if m['snapshotKind'] == 'complete':
