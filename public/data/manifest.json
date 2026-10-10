@@ -97,14 +97,14 @@
   "officialCount": 42358,
   "total": 42358,
   "inactive": 0,
-  "classified": 29,
+  "classified": 548,
   "review": 0,
-  "pending": 42329,
+  "pending": 41810,
   "missingAbstract": 0,
   "failures": 0,
   "note": "",
   "taxonomyVersion": "2027.0-draft",
-  "taxonomyStage": "awaiting-200-paper-calibration",
+  "taxonomyStage": "calibrated",
   "areas": [
     {
       "name": "foundation or frontier models, including LLMs",
@@ -113,14 +113,54 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 6675
+          "count": 6651
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 7
+        },
+        {
+          "name": "推理系统",
+          "count": 4
+        },
+        {
+          "name": "Agent 安全",
+          "count": 2
         },
         {
           "name": "代码智能",
-          "count": 1
+          "count": 2
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 2
+        },
+        {
+          "name": "推理与思维链",
+          "count": 2
         },
         {
           "name": "评估方法",
+          "count": 2
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 1
+        },
+        {
+          "name": "应用型强化学习",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
+        },
+        {
+          "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "测试时适应",
           "count": 1
         }
       ]
@@ -132,14 +172,82 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 5456
+          "count": 5431
+        },
+        {
+          "name": "3D 视觉",
+          "count": 3
         },
         {
           "name": "Agent 与工具使用",
-          "count": 1
+          "count": 3
+        },
+        {
+          "name": "世界模型",
+          "count": 2
+        },
+        {
+          "name": "视觉理解",
+          "count": 2
+        },
+        {
+          "name": "评估方法",
+          "count": 2
         },
         {
           "name": "语音与音频",
+          "count": 2
+        },
+        {
+          "name": "医学与健康",
+          "count": 1
+        },
+        {
+          "name": "幻觉与事实性",
+          "count": 1
+        },
+        {
+          "name": "异常检测",
+          "count": 1
+        },
+        {
+          "name": "持续学习",
+          "count": 1
+        },
+        {
+          "name": "推理与思维链",
+          "count": 1
+        },
+        {
+          "name": "推理系统",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
+        },
+        {
+          "name": "数据集与基准",
+          "count": 1
+        },
+        {
+          "name": "知识图谱与推理",
+          "count": 1
+        },
+        {
+          "name": "自然语言处理",
+          "count": 1
+        },
+        {
+          "name": "视频理解",
+          "count": 1
+        },
+        {
+          "name": "视频生成",
+          "count": 1
+        },
+        {
+          "name": "长上下文与记忆",
           "count": 1
         }
       ]
@@ -151,10 +259,34 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 3228
+          "count": 3202
         },
         {
           "name": "Agent 安全",
+          "count": 11
+        },
+        {
+          "name": "安全与越狱",
+          "count": 6
+        },
+        {
+          "name": "隐私与版权",
+          "count": 5
+        },
+        {
+          "name": "鲁棒性与对抗",
+          "count": 2
+        },
+        {
+          "name": "公平性与偏见",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
           "count": 1
         }
       ]
@@ -166,10 +298,22 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 3131
+          "count": 3106
         },
         {
           "name": "数据集与基准",
+          "count": 19
+        },
+        {
+          "name": "评估方法",
+          "count": 5
+        },
+        {
+          "name": "Agent 安全",
+          "count": 1
+        },
+        {
+          "name": "医学与健康",
           "count": 1
         }
       ]
@@ -181,10 +325,74 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2875
+          "count": 2849
+        },
+        {
+          "name": "图像生成与编辑",
+          "count": 5
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 3
+        },
+        {
+          "name": "扩散与流匹配",
+          "count": 3
         },
         {
           "name": "世界模型",
+          "count": 2
+        },
+        {
+          "name": "视频生成",
+          "count": 2
+        },
+        {
+          "name": "3D / 4D 生成",
+          "count": 1
+        },
+        {
+          "name": "可控生成",
+          "count": 1
+        },
+        {
+          "name": "持续学习",
+          "count": 1
+        },
+        {
+          "name": "推理与思维链",
+          "count": 1
+        },
+        {
+          "name": "推理系统",
+          "count": 1
+        },
+        {
+          "name": "数据集与基准",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
+          "count": 1
+        },
+        {
+          "name": "模型合并",
+          "count": 1
+        },
+        {
+          "name": "训练动态",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
+          "count": 1
+        },
+        {
+          "name": "语音与音频",
+          "count": 1
+        },
+        {
+          "name": "迁移与元学习",
           "count": 1
         }
       ]
@@ -196,10 +404,50 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2366
+          "count": 2340
+        },
+        {
+          "name": "强化学习理论",
+          "count": 7
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 4
+        },
+        {
+          "name": "多智能体学习",
+          "count": 4
+        },
+        {
+          "name": "应用型强化学习",
+          "count": 3
+        },
+        {
+          "name": "世界模型",
+          "count": 2
         },
         {
           "name": "离线强化学习",
+          "count": 2
+        },
+        {
+          "name": "代码智能",
+          "count": 1
+        },
+        {
+          "name": "优化器与收敛",
+          "count": 1
+        },
+        {
+          "name": "导航与规划",
+          "count": 1
+        },
+        {
+          "name": "推理与思维链",
+          "count": 1
+        },
+        {
+          "name": "测试时适应",
           "count": 1
         }
       ]
@@ -211,14 +459,54 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2234
-        },
-        {
-          "name": "机器人操作",
-          "count": 1
+          "count": 2209
         },
         {
           "name": "视觉语言动作（VLA）",
+          "count": 8
+        },
+        {
+          "name": "机器人操作",
+          "count": 5
+        },
+        {
+          "name": "导航与规划",
+          "count": 3
+        },
+        {
+          "name": "世界模型",
+          "count": 2
+        },
+        {
+          "name": "长上下文与记忆",
+          "count": 2
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 1
+        },
+        {
+          "name": "多智能体学习",
+          "count": 1
+        },
+        {
+          "name": "推理系统",
+          "count": 1
+        },
+        {
+          "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "数据集与基准",
+          "count": 1
+        },
+        {
+          "name": "模仿学习",
+          "count": 1
+        },
+        {
+          "name": "视觉理解",
           "count": 1
         }
       ]
@@ -230,10 +518,70 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2130
+          "count": 2105
+        },
+        {
+          "name": "自监督与对比学习",
+          "count": 4
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 3
+        },
+        {
+          "name": "世界模型",
+          "count": 2
+        },
+        {
+          "name": "医学与健康",
+          "count": 2
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 2
+        },
+        {
+          "name": "表征分析",
+          "count": 2
+        },
+        {
+          "name": "评估方法",
+          "count": 2
+        },
+        {
+          "name": "3D 视觉",
+          "count": 1
+        },
+        {
+          "name": "图学习",
+          "count": 1
+        },
+        {
+          "name": "持续学习",
+          "count": 1
         },
         {
           "name": "时间序列",
+          "count": 1
+        },
+        {
+          "name": "物理与科学计算",
+          "count": 1
+        },
+        {
+          "name": "生物与药物",
+          "count": 1
+        },
+        {
+          "name": "神经与认知科学",
+          "count": 1
+        },
+        {
+          "name": "自然语言处理",
+          "count": 1
+        },
+        {
+          "name": "视觉理解",
           "count": 1
         }
       ]
@@ -245,10 +593,30 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1957
+          "count": 1932
+        },
+        {
+          "name": "生物与药物",
+          "count": 9
         },
         {
           "name": "物理与科学计算",
+          "count": 7
+        },
+        {
+          "name": "医学与健康",
+          "count": 4
+        },
+        {
+          "name": "气候与地球科学",
+          "count": 4
+        },
+        {
+          "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "数据集与基准",
           "count": 1
         }
       ]
@@ -260,14 +628,42 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1773
+          "count": 1749
+        },
+        {
+          "name": "机制可解释性",
+          "count": 9
+        },
+        {
+          "name": "归因与探针",
+          "count": 7
+        },
+        {
+          "name": "评估方法",
+          "count": 3
+        },
+        {
+          "name": "表征分析",
+          "count": 2
+        },
+        {
+          "name": "反事实分析",
+          "count": 1
         },
         {
           "name": "知识编辑",
           "count": 1
         },
         {
+          "name": "神经与认知科学",
+          "count": 1
+        },
+        {
           "name": "神经符号与形式化验证",
+          "count": 1
+        },
+        {
+          "name": "鲁棒性与对抗",
           "count": 1
         }
       ]
@@ -279,14 +675,50 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1589
+          "count": 1563
         },
         {
           "name": "优化器与收敛",
+          "count": 14
+        },
+        {
+          "name": "训练动态",
+          "count": 3
+        },
+        {
+          "name": "效率与压缩",
           "count": 2
         },
         {
+          "name": "最优传输",
+          "count": 2
+        },
+        {
+          "name": "泛化理论",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
+          "name": "代码智能",
+          "count": 1
+        },
+        {
+          "name": "图学习",
+          "count": 1
+        },
+        {
+          "name": "持续学习",
+          "count": 1
+        },
+        {
           "name": "联邦与分布式学习",
+          "count": 1
+        },
+        {
+          "name": "表征分析",
           "count": 1
         }
       ]
@@ -298,10 +730,42 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1368
+          "count": 1343
+        },
+        {
+          "name": "泛化理论",
+          "count": 13
         },
         {
           "name": "表达能力",
+          "count": 5
+        },
+        {
+          "name": "优化器与收敛",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
+          "name": "不确定性量化",
+          "count": 1
+        },
+        {
+          "name": "探索与奖励设计",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
+          "count": 1
+        },
+        {
+          "name": "模型合并",
+          "count": 1
+        },
+        {
+          "name": "训练动态",
           "count": 1
         }
       ]
@@ -313,10 +777,50 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1164
+          "count": 1140
+        },
+        {
+          "name": "持续学习",
+          "count": 7
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 6
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 2
         },
         {
           "name": "模型合并",
+          "count": 2
+        },
+        {
+          "name": "长上下文与记忆",
+          "count": 2
+        },
+        {
+          "name": "世界模型",
+          "count": 1
+        },
+        {
+          "name": "异常检测",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
+          "count": 1
+        },
+        {
+          "name": "测试时适应",
+          "count": 1
+        },
+        {
+          "name": "视觉理解",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
           "count": 1
         }
       ]
@@ -328,10 +832,66 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1138
+          "count": 1113
+        },
+        {
+          "name": "模型架构",
+          "count": 4
         },
         {
           "name": "长上下文与记忆",
+          "count": 4
+        },
+        {
+          "name": "代码智能",
+          "count": 2
+        },
+        {
+          "name": "效率与压缩",
+          "count": 2
+        },
+        {
+          "name": "模型合并",
+          "count": 2
+        },
+        {
+          "name": "训练动态",
+          "count": 2
+        },
+        {
+          "name": "评估方法",
+          "count": 2
+        },
+        {
+          "name": "不确定性量化",
+          "count": 1
+        },
+        {
+          "name": "优化器与收敛",
+          "count": 1
+        },
+        {
+          "name": "其他",
+          "count": 1
+        },
+        {
+          "name": "多智能体学习",
+          "count": 1
+        },
+        {
+          "name": "推理系统",
+          "count": 1
+        },
+        {
+          "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "表征分析",
+          "count": 1
+        },
+        {
+          "name": "隐私与版权",
           "count": 1
         }
       ]
@@ -343,10 +903,54 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1136
+          "count": 1112
+        },
+        {
+          "name": "时间序列",
+          "count": 11
+        },
+        {
+          "name": "动力系统",
+          "count": 2
         },
         {
           "name": "域适应与泛化",
+          "count": 2
+        },
+        {
+          "name": "机制可解释性",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
+          "name": "世界模型",
+          "count": 1
+        },
+        {
+          "name": "异常检测",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
+        },
+        {
+          "name": "物理与科学计算",
+          "count": 1
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 1
+        },
+        {
+          "name": "表征分析",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
           "count": 1
         }
       ]
@@ -358,14 +962,54 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 943
+          "count": 919
+        },
+        {
+          "name": "几何与拓扑学习",
+          "count": 7
+        },
+        {
+          "name": "图学习",
+          "count": 6
+        },
+        {
+          "name": "知识图谱与推理",
+          "count": 4
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 1
+        },
+        {
+          "name": "异常检测",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
         },
         {
           "name": "最优传输",
           "count": 1
         },
         {
-          "name": "知识图谱与推理",
+          "name": "神经与认知科学",
+          "count": 1
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 1
+        },
+        {
+          "name": "表征分析",
+          "count": 1
+        },
+        {
+          "name": "语音与音频",
           "count": 1
         }
       ]
@@ -377,10 +1021,34 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 871
+          "count": 847
+        },
+        {
+          "name": "不确定性量化",
+          "count": 11
+        },
+        {
+          "name": "贝叶斯推断",
+          "count": 9
         },
         {
           "name": "可控生成",
+          "count": 1
+        },
+        {
+          "name": "扩散与流匹配",
+          "count": 1
+        },
+        {
+          "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
+          "count": 1
+        },
+        {
+          "name": "采样与变分推断",
           "count": 1
         }
       ]
@@ -392,10 +1060,18 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 707
+          "count": 683
         },
         {
           "name": "神经与认知科学",
+          "count": 23
+        },
+        {
+          "name": "视觉理解",
+          "count": 1
+        },
+        {
+          "name": "长上下文与记忆",
           "count": 1
         }
       ]
@@ -407,10 +1083,26 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 689
+          "count": 665
+        },
+        {
+          "name": "推理系统",
+          "count": 10
         },
         {
           "name": "硬件与数值计算",
+          "count": 7
+        },
+        {
+          "name": "效率与压缩",
+          "count": 5
+        },
+        {
+          "name": "其他",
+          "count": 2
+        },
+        {
+          "name": "代码智能",
           "count": 1
         }
       ]
@@ -422,7 +1114,31 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 556
+          "count": 532
+        },
+        {
+          "name": "神经符号与形式化验证",
+          "count": 13
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 5
+        },
+        {
+          "name": "世界模型",
+          "count": 2
+        },
+        {
+          "name": "物理与科学计算",
+          "count": 2
+        },
+        {
+          "name": "数据集与基准",
+          "count": 1
+        },
+        {
+          "name": "硬件与数值计算",
+          "count": 1
         },
         {
           "name": "评估方法",
@@ -437,14 +1153,46 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 343
+          "count": 319
+        },
+        {
+          "name": "因果推断",
+          "count": 12
+        },
+        {
+          "name": "因果发现",
+          "count": 5
+        },
+        {
+          "name": "反事实分析",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
         },
         {
           "name": "世界模型",
           "count": 1
         },
         {
-          "name": "因果发现",
+          "name": "医学与健康",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
+          "count": 1
+        },
+        {
+          "name": "视觉理解",
+          "count": 1
+        },
+        {
+          "name": "训练动态",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
           "count": 1
         }
       ]
@@ -453,134 +1201,162 @@
   "tags": [
     {
       "name": "LLM",
-      "count": 10
-    },
-    {
-      "name": "评估",
-      "count": 8
-    },
-    {
-      "name": "Agent",
-      "count": 6
+      "count": 181
     },
     {
       "name": "效率",
-      "count": 6
+      "count": 143
     },
     {
-      "name": "多模态",
-      "count": 4
-    },
-    {
-      "name": "优化",
-      "count": 3
-    },
-    {
-      "name": "可解释性",
-      "count": 3
-    },
-    {
-      "name": "图学习",
-      "count": 3
-    },
-    {
-      "name": "强化学习",
-      "count": 3
-    },
-    {
-      "name": "扩散",
-      "count": 3
-    },
-    {
-      "name": "机器人",
-      "count": 3
-    },
-    {
-      "name": "记忆",
-      "count": 3
-    },
-    {
-      "name": "VLA",
-      "count": 2
-    },
-    {
-      "name": "世界模型",
-      "count": 2
-    },
-    {
-      "name": "代码",
-      "count": 2
-    },
-    {
-      "name": "分布式训练",
-      "count": 2
-    },
-    {
-      "name": "因果",
-      "count": 2
-    },
-    {
-      "name": "基准",
-      "count": 2
-    },
-    {
-      "name": "安全",
-      "count": 2
-    },
-    {
-      "name": "推理",
-      "count": 2
-    },
-    {
-      "name": "时间序列",
-      "count": 2
+      "name": "评估",
+      "count": 134
     },
     {
       "name": "泛化",
-      "count": 2
+      "count": 123
     },
     {
-      "name": "自监督",
-      "count": 2
+      "name": "优化",
+      "count": 99
     },
     {
-      "name": "蒸馏",
-      "count": 2
+      "name": "Agent",
+      "count": 95
     },
     {
-      "name": "通信压缩",
-      "count": 2
+      "name": "多模态",
+      "count": 71
     },
     {
-      "name": "3D",
-      "count": 1
+      "name": "可解释性",
+      "count": 70
+    },
+    {
+      "name": "推理",
+      "count": 62
+    },
+    {
+      "name": "安全",
+      "count": 59
+    },
+    {
+      "name": "强化学习",
+      "count": 58
+    },
+    {
+      "name": "时间序列",
+      "count": 57
+    },
+    {
+      "name": "图学习",
+      "count": 50
     },
     {
       "name": "医学",
-      "count": 1
+      "count": 47
     },
     {
-      "name": "最优传输",
-      "count": 1
+      "name": "基准",
+      "count": 39
+    },
+    {
+      "name": "扩散",
+      "count": 39
+    },
+    {
+      "name": "机器人",
+      "count": 39
+    },
+    {
+      "name": "自监督",
+      "count": 38
+    },
+    {
+      "name": "记忆",
+      "count": 38
+    },
+    {
+      "name": "因果",
+      "count": 36
+    },
+    {
+      "name": "世界模型",
+      "count": 29
+    },
+    {
+      "name": "长上下文",
+      "count": 27
+    },
+    {
+      "name": "代码",
+      "count": 26
+    },
+    {
+      "name": "3D",
+      "count": 23
+    },
+    {
+      "name": "数据集",
+      "count": 21
     },
     {
       "name": "流匹配",
-      "count": 1
-    },
-    {
-      "name": "知识编辑",
-      "count": 1
+      "count": 18
     },
     {
       "name": "视频",
-      "count": 1
+      "count": 18
+    },
+    {
+      "name": "VLA",
+      "count": 17
+    },
+    {
+      "name": "生物",
+      "count": 16
+    },
+    {
+      "name": "隐私",
+      "count": 15
+    },
+    {
+      "name": "蒸馏",
+      "count": 14
     },
     {
       "name": "量化",
-      "count": 1
+      "count": 14
+    },
+    {
+      "name": "最优传输",
+      "count": 12
+    },
+    {
+      "name": "异常检测",
+      "count": 11
+    },
+    {
+      "name": "分布式训练",
+      "count": 8
+    },
+    {
+      "name": "对齐",
+      "count": 7
     },
     {
       "name": "音频",
+      "count": 7
+    },
+    {
+      "name": "联邦学习",
+      "count": 4
+    },
+    {
+      "name": "通信压缩",
+      "count": 3
+    },
+    {
+      "name": "知识编辑",
       "count": 1
     }
   ],

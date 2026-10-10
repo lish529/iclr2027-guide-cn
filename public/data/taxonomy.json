@@ -1,6 +1,8 @@
 {
   "version": "2027.0-draft",
-  "stage": "awaiting-200-paper-calibration",
+  "stage": "calibrated",
+  "calibratedAt": "2026-10-10T23:20:00+08:00",
+  "calibrationSampleSize": 200,
   "reference": "https://jenniferzhao0531.github.io/ICLR2026-Guide-CN/",
   "areaLabels": {
     "foundation or frontier models, including LLMs": "基础与前沿模型（含 LLM）",
@@ -94,6 +96,7 @@
     "隐私与版权",
     "公平性与偏见",
     "幻觉与事实性",
+    "异常检测",
     "数据集与基准",
     "评估方法",
     "数据质量与合成",
