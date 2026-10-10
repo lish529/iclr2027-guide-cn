@@ -39,3 +39,9 @@ test('CSV preserves quotes/newlines and protects spreadsheet formula interpretat
 test('unclassified papers remain searchable by title and keyword',()=>{
   assert.ok(matchesQuery(searchText(make('x',{titleZh:'',summaryZh:'',classification:'pending'})),'world model'));
 });
+
+test('short bilingual acronyms cannot match inside unrelated words', () => {
+  assert.equal(matchesQuery('world models for distribution learning', '强化学习'), false);
+  assert.equal(matchesQuery('rlhf improves policy learning', '强化学习'), true);
+  assert.equal(matchesQuery('gnns and graph neural networks', '图神经网络'), true);
+});

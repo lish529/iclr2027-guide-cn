@@ -16,12 +16,17 @@ export function searchText(p: Paper): string {
 export function matchesQuery(text: string, query: string): boolean {
   const q = normalize(query);
   if (!q) return true;
-  if (text.includes(q)) return true;
+  const contains = (term: string) => {
+    if (term === 'rl') return /\brl(?:hf|vr)?\b/.test(text);
+    if (/^(llm|gnn|vla)$/.test(term)) return new RegExp(`\\b${term}s?\\b`).test(text);
+    return text.includes(term);
+  };
   const exact = pairs.find(p => p.includes(q));
-  if (exact) return exact.some(t => text.includes(t));
+  if (exact) return exact.some(contains);
+  if (text.includes(q)) return true;
   return q.split(' ').every(word => {
     const aliases = pairs.find(p => p.includes(word));
-    return (aliases ?? [word]).some(t => text.includes(t));
+    return (aliases ?? [word]).some(contains);
   });
 }
 export function filterPapers(papers: Paper[], f: Filters, matchingIds?: Set<string>): Paper[] {
