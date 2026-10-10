@@ -1,4 +1,5 @@
 import './style.css';
+import { fetchJson } from './data';
 import type { Filters, Manifest, Paper, PaperDetail } from './types';
 import { csv, filterPapers, readFilters, writeFilters } from './search';
 
@@ -16,18 +17,22 @@ let matchingIds: Set<string> | undefined;
 let searchRequest = 0;
 let searchBusy = false;
 let searchError = '';
+let exportBusy = false;
 let worker: Worker | null = null;
 let pageSize = 20;
-const detailCache = new Map<string, Promise<PaperDetail>>();
-
-async function json<T>(path: string): Promise<T> {
-  const r = await fetch(new URL(path,base));
-  if(!r.ok) throw new Error(`无法载入数据（${r.status}）`);
-  return r.json();
+const detailCache = new Map<string, Promise<PaperDetail[]>>();
+const json = <T>(path: string) => fetchJson<T>(path, base);
+function detailShard(path: string): Promise<PaperDetail[]> {
+  if (!detailCache.has(path)) {
+    if (detailCache.size >= 8) detailCache.delete(detailCache.keys().next().value!);
+    detailCache.set(path,json<PaperDetail[]>(path).catch(e=>{detailCache.delete(path);throw e}));
+  }
+  return detailCache.get(path)!;
 }
-function detail(p: Paper): Promise<PaperDetail> {
-  if(!detailCache.has(p.id)) detailCache.set(p.id,json<PaperDetail>(p.detail).catch(e=>{detailCache.delete(p.id);throw e}));
-  return detailCache.get(p.id)!;
+async function detail(p: Paper): Promise<PaperDetail> {
+  const row = (await detailShard(p.detail)).find(d=>d.id===p.id);
+  if(!row) throw new Error('未找到摘要');
+  return row;
 }
 function syncUrl(replace = false) {
   const url = location.pathname + writeFilters(filters);
@@ -51,8 +56,9 @@ function runSearch() {
     worker=new Worker(new URL('./search.worker.ts',import.meta.url),{type:'module'});
     worker.onmessage=event=>{
       if(event.data.request!==searchRequest) return;
+      if(event.data.progress) {$('#result-count').textContent=`正在载入摘要搜索 ${event.data.progress}/${event.data.total}…`;return}
       searchBusy=false;
-      if(event.data.error) searchError=event.data.error;
+      if(event.data.error) {searchError=event.data.error+'；当前仅匹配标题、导读和标签。';worker?.terminate();worker=null;}
       else matchingIds=new Set(event.data.ids);
       renderResults();
     };
@@ -71,7 +77,7 @@ function card(p: Paper): string {
     ${p.titleZh ? `<p class="english-title" lang="en">${escape(p.title)}</p>` : ''}
     <p class="summary">${escape(p.summaryZh || '这篇论文尚未生成中文导读，可展开英文摘要查看。')}</p>
     <div class="tags">${p.tags.map(t=>`<button class="tag ${filters.tags.includes(t)?'selected':''}" data-tag="${escape(t)}">${escape(t)}</button>`).join('')}${state}</div>
-    <div class="paper-bottom"><span class="source-note">基于摘要生成 · 暂无公开评分${p.status==='inactive'?' · 已不在有效投稿列表':''}</span><div><button class="text-button" data-share="${escape(p.id)}">分享</button><button class="text-button abstract-toggle" data-abstract="${escape(p.id)}" aria-expanded="false">英文摘要 <span>⌄</span></button></div></div>
+    <div class="paper-bottom"><span class="source-note">${p.classification==='pending'?'中文内容待生成':'基于摘要生成'} · 暂无公开评分${p.status==='inactive'?' · 已不在有效投稿列表':''}</span><div><button class="text-button" data-share="${escape(p.id)}">分享</button><button class="text-button abstract-toggle" data-abstract="${escape(p.id)}" aria-expanded="false">英文摘要 <span>⌄</span></button></div></div>
     <div class="abstract" hidden></div>
   </article>`;
 }
@@ -85,6 +91,15 @@ function renderNavigation() {
   $('#filter-chips').innerHTML=chips.map(c=>`<button class="filter-chip" data-remove="${c.type}" data-value="${escape(c.label)}">${escape(c.label)} <span>×</span></button>`).join('');
 }
 function renderResults() {
+  $('#results-label').textContent=filters.q?`“${filters.q}” 的搜索结果`:filters.sub||'探索论文';
+  if(searchBusy) {
+    $('#result-count').textContent='正在搜索英文摘要…';
+    $('#search-status').textContent='首次全文搜索需加载压缩索引，完成后显示全部匹配结果。';
+    $('#results').innerHTML='<div class="empty" role="status"><p>正在检索全部论文的标题、摘要与关键词…</p></div>';
+    $('#pagination').innerHTML='';
+    for(const id of ['export-json','export-csv']) $<HTMLButtonElement>('#'+id).disabled=true;
+    return;
+  }
   let result=filterPapers(papers,filters,matchingIds);
   const pageCount=Math.max(1,Math.ceil(result.length/pageSize));
   filters.page=Math.min(pageCount,filters.page);
@@ -93,7 +108,7 @@ function renderResults() {
   $('#result-count').textContent=searchBusy?'正在搜索英文摘要…':`找到 ${fmt(result.length)} 篇论文`;
   $('#results-label').textContent=filters.q?`“${filters.q}” 的搜索结果`:filters.sub||'探索论文';
   $('#search-status').textContent=searchError;
-  for(const id of ['export-json','export-csv']) $<HTMLButtonElement>('#'+id).disabled=searchBusy || !!searchError;
+  for(const id of ['export-json','export-csv']) $<HTMLButtonElement>('#'+id).disabled=exportBusy || searchBusy || !!searchError;
   $('#results').innerHTML=result.length?result.slice(start,start+pageSize).map(card).join(''):
     `<div class="empty"><div>⌕</div><h3>没有找到匹配的论文</h3><p>试试更宽泛的关键词，或移除部分筛选条件。</p><button class="primary" data-reset>清除筛选</button></div>`;
   $('#pagination').innerHTML=result.length?`<span>第 ${start+1}–${Math.min(start+pageSize,result.length)} 篇，共 ${fmt(result.length)} 篇</span><div><button class="page-button" data-page="${filters.page-1}" ${filters.page<=1?'disabled':''} aria-label="上一页">←</button><span>${filters.page} / ${pageCount}</span><button class="page-button" data-page="${filters.page+1}" ${filters.page>=pageCount?'disabled':''} aria-label="下一页">→</button></div>`:'';
@@ -123,23 +138,36 @@ async function toggleAbstract(button: HTMLElement) {
   } catch {panel.textContent='摘要载入失败。请收起后重试，或点击标题查看 OpenReview 原文。'}
 }
 async function exportData(format: 'json'|'csv') {
+  if(exportBusy) return;
   if(searchBusy || searchError) {toast('请等待完整摘要搜索完成后再导出');return}
   const btn=$<HTMLButtonElement>(`#export-${format}`);
-  btn.disabled=true;
+  exportBusy=true;
+  for(const id of ['export-json','export-csv']) $<HTMLButtonElement>('#'+id).disabled=true;
   try {
-    const data=await json<PaperDetail[]>('data/all-papers.json');
-    const ids=new Set(filterPapers(papers,filters,matchingIds).map(p=>p.id));
-    const selected=data.filter(p=>ids.has(p.id));
-    const rows=selected.map(p=>({id:p.id,number:p.number,title:p.title,title_zh:p.titleZh,summary_zh:p.summaryZh,
-      primary_area:p.primaryArea,subcategory:p.subcategory,tags:p.tags,keywords:p.keywords,
-      abstract:p.abstract,classification:p.classification,status:p.status,rating:p.rating,
-      openreview:`https://openreview.net/forum?id=${p.id}`,snapshot_kind:manifest.snapshotKind,snapshot_at:manifest.finishedAt}));
-    const text=format==='json'?JSON.stringify({manifest,papers:rows},null,2):csv(rows);
-    const blob=new Blob([text],{type:format==='json'?'application/json;charset=utf-8':'text/csv;charset=utf-8'});
+    const selected=filterPapers(papers,filters,matchingIds);
+    const ids=new Set(selected.map(p=>p.id));
+    const paths=[...new Set(selected.map(p=>p.detail))];
+    const chunks: string[] = format==='json' ? ['{"manifest":'+JSON.stringify(manifest)+',"papers":['] : ['\ufeff'];
+    let count=0;
+    for(const path of paths) {
+      const rows=(await detailShard(path)).filter(p=>ids.has(p.id)).map(p=>({id:p.id,number:p.number,title:p.title,title_zh:p.titleZh,summary_zh:p.summaryZh,
+        primary_area:p.primaryArea,subcategory:p.subcategory,tags:p.tags,keywords:p.keywords,
+        abstract:p.abstract,classification:p.classification,status:p.status,rating:p.rating,
+        openreview:`https://openreview.net/forum?id=${p.id}`,snapshot_kind:manifest.snapshotKind,snapshot_at:manifest.finishedAt}));
+      if(format==='json') chunks.push((count?',':'')+rows.map(r=>JSON.stringify(r)).join(','));
+      else {
+        const encoded=csv(rows).replace(/^\ufeff/,'');
+        chunks.push((count?'\r\n'+encoded.slice(encoded.indexOf('\r\n')+2):encoded));
+      }
+      count+=rows.length;
+      btn.textContent=`${count}/${selected.length}`;
+    }
+    if(format==='json') chunks.push(']}');
+    const blob=new Blob(chunks,{type:format==='json'?'application/json;charset=utf-8':'text/csv;charset=utf-8'});
     const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;
-    a.download=`iclr2027-${manifest.snapshotKind}-${rows.length}.${format}`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
-    toast(`已导出当前筛选的 ${rows.length} 篇论文`);
-  } catch {toast('导出失败，请检查网络后重试')} finally {btn.disabled=searchBusy || !!searchError}
+    a.download=`iclr2027-${manifest.snapshotKind}-${count}.${format}`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    toast(`已导出当前筛选的 ${count} 篇论文`);
+  } catch {toast('导出失败，请检查网络后重试')} finally {exportBusy=false;btn.textContent=format.toUpperCase()+' ↓';for(const id of ['export-json','export-csv']) $<HTMLButtonElement>('#'+id).disabled=searchBusy || !!searchError;}
 }
 function initEvents() {
   let timer: ReturnType<typeof setTimeout>;
@@ -175,17 +203,17 @@ function initEvents() {
 }
 function shell() {
   const complete=manifest.snapshotKind==='complete';
-  const progress=manifest.total?Math.round(100*manifest.classified/manifest.total):0;
+  const progress=manifest.total?(100*manifest.classified/manifest.total).toFixed(2):0;
   $('#app').innerHTML=`
     <header class="topbar"><a class="brand" href="${escape(import.meta.env.BASE_URL)}"><span class="brand-icon">▥</span><b>Paper Atlas</b><span class="brand-divider"></span><span>ICLR 2027</span></a><div class="toplinks"><a href="${manifest.sourceUrl}" target="_blank" rel="noopener">OpenReview ↗</a><button class="text-button" data-action="share">分享导航 ↗</button><span class="edition">中文导读</span></div></header>
     <div class="layout"><aside id="sidebar" class="sidebar"><div class="sidebar-title">研究方向 <span>${manifest.areas.length}</span></div><nav id="category-tree" aria-label="论文分类"></nav><div class="sidebar-foot"><div class="mini-mark">◉</div><p>从一个问题出发，<br>找到值得阅读的论文。</p><small>分类依据：官方方向 + 英文摘要<br>AI 生成导读，请结合原文阅读。</small></div></aside>
     <main><section class="hero"><div class="hero-copy"><div class="hero-kicker"><span class="live-dot"></span> THE FIFTEENTH ICLR <span>/</span> 2027</div><h1>让研究，更容易被发现<span>。</span></h1><p>探索 ICLR 2027 投稿，用中文快速理解每一篇论文。<br>从研究方向到交叉主题，找到你的下一条研究线索。</p><div class="hero-meta">有效投稿 · 基于摘要分类 · ${complete?'已核验快照':'样本预览'}</div></div><div class="hero-graphic" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="graphic-center">ICLR<span>2027</span></div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><span class="graphic-label l1">REASONING</span><span class="graphic-label l2">REPRESENTATION</span><span class="graphic-label l3">DISCOVERY</span></div></section>
-    <section class="notice ${complete?'verified':''}" aria-label="数据覆盖说明"><span class="notice-symbol">${complete?'✓':'i'}</span><div><strong>${complete?'元数据全量核验通过':'这是可用的样本预览，尚未完成全量采集'}</strong><p>${escape(manifest.note || (complete?'分类进度单独统计；暂无公开评分，不进行质量排名。':'批量接口需要 OpenReview 验证；以下数量仅对应已读取样本，不代表整届投稿。'))}</p></div></section>
-    <section class="stats" aria-label="数据统计"><div class="stat"><span>当前有效投稿总数</span><strong>${fmt(manifest.officialCount)}</strong><small>${complete?'OpenReview 核验结果':'接口恢复后核验'}</small></div><div class="stat"><span>${complete?'已收录论文':'已读取样本'}</span><strong>${fmt(manifest.total)}<em>篇</em></strong><small>缺摘要 ${manifest.missingAbstract} · 抓取失败 ${manifest.failures}</small></div><div class="stat"><span>中文分类已完成</span><strong>${fmt(manifest.classified)}<em>篇</em></strong><small>待处理 ${manifest.pending} · 待复核 ${manifest.review}</small></div><div class="stat"><span>已覆盖研究方向</span><strong>${manifest.areas.length}<em>类</em></strong><small>${complete?'收录论文':'样本内'}完成度 ${progress}%</small></div></section>
-    <section class="explore"><div class="section-heading"><span class="section-number">01 /</span><h2>按主题探索</h2><span class="hint">可多选，显示同时匹配的论文</span></div><div id="topic-tags" class="topics"></div></section>
+    <section class="notice ${complete?'verified':''}" aria-label="数据覆盖说明"><span class="notice-symbol">${complete?'✓':'i'}</span><div><strong>${complete?'元数据全量核验通过':'这是可用的样本预览，尚未完成全量采集'}</strong><p>${escape(manifest.note || (complete?'已收录全部有效投稿的英文元数据；中文标题、导读与细分类别仍在处理中。主题标签只覆盖已处理论文，不能代表全量分布。':'批量接口需要 OpenReview 验证；以下数量仅对应已读取样本，不代表整届投稿。'))}</p></div></section>
+    <section class="stats" aria-label="数据统计"><div class="stat"><span>当前有效投稿总数</span><strong>${fmt(manifest.officialCount)}</strong><small>${complete?'OpenReview 核验结果':'接口恢复后核验'}</small></div><div class="stat"><span>${complete?'已收录论文':'已读取样本'}</span><strong>${fmt(manifest.total)}<em>篇</em></strong><small>缺摘要 ${manifest.missingAbstract} · 抓取失败 ${manifest.failures}</small></div><div class="stat"><span>中文分类已完成</span><strong>${fmt(manifest.classified)}<em>篇</em></strong><small>待处理 ${manifest.pending} · 待复核 ${manifest.review}</small></div><div class="stat"><span>已覆盖研究方向</span><strong>${manifest.areas.length}<em>类</em></strong><small>中文分类完成度 ${progress}%</small></div></section>
+    <section class="explore"><div class="section-heading"><span class="section-number">01 /</span><h2>按主题探索</h2><span class="hint">仅覆盖已分类 ${fmt(manifest.classified+manifest.review)} 篇 · 多选取交集</span></div><div id="topic-tags" class="topics"></div></section>
     <section class="library"><div class="section-heading library-heading"><span class="section-number">02 /</span><h2>论文库</h2><span class="snapshot-time">采集于 ${date(manifest.finishedAt)}（北京时间）</span></div>
     <div class="search-bar"><span class="search-icon">⌕</span><input id="query" type="search" placeholder="搜索中文 / 英文标题、摘要、关键词…" aria-label="搜索论文" value="${escape(filters.q)}" autocomplete="off"/><kbd>/</kbd></div>
-    <div class="toolbar"><div><button class="mobile-menu secondary" data-action="menu">研究方向 ☰</button><label class="sr-only" for="classification">分类状态</label><select id="classification"><option value="">全部分类状态</option value="complete">已完成</option><option value="review">待复核</option><option value="pending">待处理</option></select><button class="text-button clear" data-reset>清除筛选</button></div><div class="export"><span>导出当前结果</span><button id="export-json" class="secondary">JSON ↓</button><button id="export-csv" class="secondary">CSV ↓</button></div></div>
+    <div class="toolbar"><div><button class="mobile-menu secondary" data-action="menu">研究方向 ☰</button><label class="sr-only" for="classification">分类状态</label><select id="classification"><option value="">全部分类状态</option><option value="complete">已完成</option><option value="review">待复核</option><option value="pending">待处理</option></select><button class="text-button clear" data-reset>清除筛选</button></div><div class="export"><span>导出当前结果</span><button id="export-json" class="secondary">JSON ↓</button><button id="export-csv" class="secondary">CSV ↓</button></div></div>
     <div id="filter-chips" class="filter-chips"></div><p id="search-status" class="search-error" role="status"></p>
     <div id="results-heading" class="results-heading"><h2 id="results-label">探索论文</h2><span id="result-count" aria-live="polite"></span><label class="page-size"><select id="page-size" aria-label="每页论文数"><option value="20">20 篇 / 页</option><option value="50">50 篇 / 页</option><option value="100">100 篇 / 页</option></select></label></div><div id="results"></div><div id="pagination" class="pagination"></div></section>
     <footer><span>ICLR 2027 · 中文论文导航</span><p>元数据来自 OpenReview。中文内容基于摘要生成；投稿状态不代表录用结果。</p><a href="./data/manifest.json" target="_blank">查看数据快照 ↗</a></footer></main></div>
@@ -194,7 +222,8 @@ function shell() {
 }
 async function init() {
   try {
-    [manifest,papers]=await Promise.all([json<Manifest>('data/manifest.json'),json<Paper[]>('data/index.json')]);
+    manifest=await json<Manifest>('data/manifest.json');
+    papers=await json<Paper[]>(manifest.indexUrl);
     shell();initEvents();runSearch();renderNavigation();renderResults();
     $<HTMLSelectElement>('#classification').value=filters.state;
     if(filters.paper) void showPaper(filters.paper);

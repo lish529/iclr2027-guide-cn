@@ -1,30 +1,289 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
+  "publicationMode": "metadata-preview",
+  "indexUrl": "data/index.json.gz",
+  "detailShards": [
+    "data/details-0000.json.gz",
+    "data/details-0001.json.gz",
+    "data/details-0002.json.gz",
+    "data/details-0003.json.gz",
+    "data/details-0004.json.gz",
+    "data/details-0005.json.gz",
+    "data/details-0006.json.gz",
+    "data/details-0007.json.gz",
+    "data/details-0008.json.gz",
+    "data/details-0009.json.gz",
+    "data/details-0010.json.gz",
+    "data/details-0011.json.gz",
+    "data/details-0012.json.gz",
+    "data/details-0013.json.gz",
+    "data/details-0014.json.gz",
+    "data/details-0015.json.gz",
+    "data/details-0016.json.gz",
+    "data/details-0017.json.gz",
+    "data/details-0018.json.gz",
+    "data/details-0019.json.gz",
+    "data/details-0020.json.gz",
+    "data/details-0021.json.gz",
+    "data/details-0022.json.gz",
+    "data/details-0023.json.gz",
+    "data/details-0024.json.gz",
+    "data/details-0025.json.gz",
+    "data/details-0026.json.gz",
+    "data/details-0027.json.gz",
+    "data/details-0028.json.gz",
+    "data/details-0029.json.gz",
+    "data/details-0030.json.gz",
+    "data/details-0031.json.gz",
+    "data/details-0032.json.gz",
+    "data/details-0033.json.gz",
+    "data/details-0034.json.gz",
+    "data/details-0035.json.gz",
+    "data/details-0036.json.gz",
+    "data/details-0037.json.gz",
+    "data/details-0038.json.gz",
+    "data/details-0039.json.gz",
+    "data/details-0040.json.gz",
+    "data/details-0041.json.gz",
+    "data/details-0042.json.gz",
+    "data/details-0043.json.gz",
+    "data/details-0044.json.gz",
+    "data/details-0045.json.gz",
+    "data/details-0046.json.gz",
+    "data/details-0047.json.gz",
+    "data/details-0048.json.gz",
+    "data/details-0049.json.gz",
+    "data/details-0050.json.gz",
+    "data/details-0051.json.gz",
+    "data/details-0052.json.gz",
+    "data/details-0053.json.gz",
+    "data/details-0054.json.gz",
+    "data/details-0055.json.gz",
+    "data/details-0056.json.gz",
+    "data/details-0057.json.gz",
+    "data/details-0058.json.gz",
+    "data/details-0059.json.gz",
+    "data/details-0060.json.gz",
+    "data/details-0061.json.gz",
+    "data/details-0062.json.gz",
+    "data/details-0063.json.gz",
+    "data/details-0064.json.gz",
+    "data/details-0065.json.gz",
+    "data/details-0066.json.gz",
+    "data/details-0067.json.gz",
+    "data/details-0068.json.gz",
+    "data/details-0069.json.gz",
+    "data/details-0070.json.gz",
+    "data/details-0071.json.gz",
+    "data/details-0072.json.gz",
+    "data/details-0073.json.gz",
+    "data/details-0074.json.gz",
+    "data/details-0075.json.gz",
+    "data/details-0076.json.gz",
+    "data/details-0077.json.gz",
+    "data/details-0078.json.gz",
+    "data/details-0079.json.gz",
+    "data/details-0080.json.gz",
+    "data/details-0081.json.gz",
+    "data/details-0082.json.gz",
+    "data/details-0083.json.gz",
+    "data/details-0084.json.gz"
+  ],
   "sourceUrl": "https://openreview.net/group?id=ICLR.cc/2027/Conference#tab-active-submissions",
-  "snapshotKind": "sample",
-  "startedAt": "2026-10-10T07:57:42.113642+00:00",
-  "finishedAt": "2026-10-10T07:57:42.113644+00:00",
-  "verifiedAt": null,
-  "officialCount": null,
-  "total": 8,
+  "snapshotKind": "complete",
+  "startedAt": "2026-10-10T08:33:12.013692+00:00",
+  "finishedAt": "2026-10-10T09:02:36.760369+00:00",
+  "verifiedAt": "2026-10-10T09:02:36.760387+00:00",
+  "officialCount": 42358,
+  "total": 42358,
   "inactive": 0,
-  "classified": 8,
+  "classified": 29,
   "review": 0,
-  "pending": 0,
+  "pending": 42329,
   "missingAbstract": 0,
-  "failures": 1,
-  "note": "仅收录从公开网页读取并逐篇整理的 8 篇真实样本；API 要求验证，全量投稿数量尚未核验，分类词表尚待约 200 篇分层样本校准。",
+  "failures": 0,
+  "note": "",
   "taxonomyVersion": "2027.0-draft",
   "taxonomyStage": "awaiting-200-paper-calibration",
   "areas": [
     {
-      "name": "optimization",
-      "label": "优化",
-      "count": 2,
+      "name": "foundation or frontier models, including LLMs",
+      "label": "基础与前沿模型（含 LLM）",
+      "count": 6677,
       "subcategories": [
         {
-          "name": "优化器与收敛",
+          "name": "待分类",
+          "count": 6675
+        },
+        {
+          "name": "代码智能",
           "count": 1
+        },
+        {
+          "name": "评估方法",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to computer vision, audio, language, and other modalities",
+      "label": "视觉、音频与语言应用",
+      "count": 5458,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 5456
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
+          "name": "语音与音频",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "alignment, fairness, safety, privacy, and societal considerations",
+      "label": "对齐、公平、安全、隐私与社会影响",
+      "count": 3229,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 3228
+        },
+        {
+          "name": "Agent 安全",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "datasets and benchmarks",
+      "label": "数据集与基准",
+      "count": 3132,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 3131
+        },
+        {
+          "name": "数据集与基准",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "generative models",
+      "label": "生成模型",
+      "count": 2876,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 2875
+        },
+        {
+          "name": "世界模型",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "reinforcement learning",
+      "label": "强化学习",
+      "count": 2367,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 2366
+        },
+        {
+          "name": "离线强化学习",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to robotics, autonomy, planning",
+      "label": "机器人、自主系统与规划",
+      "count": 2236,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 2234
+        },
+        {
+          "name": "机器人操作",
+          "count": 1
+        },
+        {
+          "name": "视觉语言动作（VLA）",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "unsupervised, self-supervised, semi-supervised, and supervised representation learning",
+      "label": "无监督、自监督、半监督与监督表征学习",
+      "count": 2131,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 2130
+        },
+        {
+          "name": "时间序列",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to physical sciences (physics, chemistry, biology, etc.)",
+      "label": "物理、化学与生物等科学应用",
+      "count": 1958,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 1957
+        },
+        {
+          "name": "物理与科学计算",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "interpretability and explainable AI",
+      "label": "可解释人工智能",
+      "count": 1775,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 1773
+        },
+        {
+          "name": "知识编辑",
+          "count": 1
+        },
+        {
+          "name": "神经符号与形式化验证",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "optimization",
+      "label": "优化",
+      "count": 1592,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 1589
+        },
+        {
+          "name": "优化器与收敛",
+          "count": 2
         },
         {
           "name": "联邦与分布式学习",
@@ -33,56 +292,61 @@
       ]
     },
     {
-      "name": "applications to computer vision, audio, language, and other modalities",
-      "label": "视觉、音频与语言应用",
-      "count": 1,
+      "name": "learning theory",
+      "label": "学习理论",
+      "count": 1369,
       "subcategories": [
         {
-          "name": "语音与音频",
+          "name": "待分类",
+          "count": 1368
+        },
+        {
+          "name": "表达能力",
           "count": 1
         }
       ]
     },
     {
-      "name": "applications to robotics, autonomy, planning",
-      "label": "机器人、自主系统与规划",
-      "count": 1,
+      "name": "transfer learning, meta learning, and lifelong learning",
+      "label": "迁移学习、元学习与终身学习",
+      "count": 1165,
       "subcategories": [
         {
-          "name": "视觉语言动作（VLA）",
+          "name": "待分类",
+          "count": 1164
+        },
+        {
+          "name": "模型合并",
           "count": 1
         }
       ]
     },
     {
-      "name": "causal reasoning",
-      "label": "因果推理",
-      "count": 1,
+      "name": "other topics in machine learning (i.e., none of the above)",
+      "label": "其他机器学习主题",
+      "count": 1139,
       "subcategories": [
         {
-          "name": "世界模型",
+          "name": "待分类",
+          "count": 1138
+        },
+        {
+          "name": "长上下文与记忆",
           "count": 1
         }
       ]
     },
     {
-      "name": "foundation or frontier models, including LLMs",
-      "label": "基础与前沿模型（含 LLM）",
-      "count": 1,
+      "name": "learning on time series and dynamical systems",
+      "label": "时间序列与动力系统学习",
+      "count": 1137,
       "subcategories": [
         {
-          "name": "代码智能",
-          "count": 1
-        }
-      ]
-    },
-    {
-      "name": "interpretability and explainable AI",
-      "label": "可解释人工智能",
-      "count": 1,
-      "subcategories": [
+          "name": "待分类",
+          "count": 1136
+        },
         {
-          "name": "知识编辑",
+          "name": "域适应与泛化",
           "count": 1
         }
       ]
@@ -90,10 +354,97 @@
     {
       "name": "learning on graphs and other geometries & topologies",
       "label": "图、几何与拓扑学习",
-      "count": 1,
+      "count": 945,
       "subcategories": [
         {
+          "name": "待分类",
+          "count": 943
+        },
+        {
           "name": "最优传输",
+          "count": 1
+        },
+        {
+          "name": "知识图谱与推理",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "probabilistic methods (Bayesian methods, variational inference, sampling, UQ, etc.)",
+      "label": "概率方法、贝叶斯推断与不确定性",
+      "count": 872,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 871
+        },
+        {
+          "name": "可控生成",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to neuroscience & cognitive science",
+      "label": "神经科学与认知科学应用",
+      "count": 708,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 707
+        },
+        {
+          "name": "神经与认知科学",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "infrastructure, software libraries, hardware, systems, etc.",
+      "label": "基础设施、软件、硬件与系统",
+      "count": 690,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 689
+        },
+        {
+          "name": "硬件与数值计算",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "neurosymbolic & hybrid AI systems (physics-informed, logic & formal reasoning, etc.)",
+      "label": "神经符号与混合人工智能",
+      "count": 557,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 556
+        },
+        {
+          "name": "评估方法",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "causal reasoning",
+      "label": "因果推理",
+      "count": 345,
+      "subcategories": [
+        {
+          "name": "待分类",
+          "count": 343
+        },
+        {
+          "name": "世界模型",
+          "count": 1
+        },
+        {
+          "name": "因果发现",
           "count": 1
         }
       ]
@@ -102,10 +453,62 @@
   "tags": [
     {
       "name": "LLM",
-      "count": 2
+      "count": 10
+    },
+    {
+      "name": "评估",
+      "count": 8
+    },
+    {
+      "name": "Agent",
+      "count": 6
+    },
+    {
+      "name": "效率",
+      "count": 6
+    },
+    {
+      "name": "多模态",
+      "count": 4
     },
     {
       "name": "优化",
+      "count": 3
+    },
+    {
+      "name": "可解释性",
+      "count": 3
+    },
+    {
+      "name": "图学习",
+      "count": 3
+    },
+    {
+      "name": "强化学习",
+      "count": 3
+    },
+    {
+      "name": "扩散",
+      "count": 3
+    },
+    {
+      "name": "机器人",
+      "count": 3
+    },
+    {
+      "name": "记忆",
+      "count": 3
+    },
+    {
+      "name": "VLA",
+      "count": 2
+    },
+    {
+      "name": "世界模型",
+      "count": 2
+    },
+    {
+      "name": "代码",
       "count": 2
     },
     {
@@ -113,15 +516,35 @@
       "count": 2
     },
     {
-      "name": "可解释性",
+      "name": "因果",
       "count": 2
     },
     {
-      "name": "效率",
+      "name": "基准",
       "count": 2
     },
     {
-      "name": "评估",
+      "name": "安全",
+      "count": 2
+    },
+    {
+      "name": "推理",
+      "count": 2
+    },
+    {
+      "name": "时间序列",
+      "count": 2
+    },
+    {
+      "name": "泛化",
+      "count": 2
+    },
+    {
+      "name": "自监督",
+      "count": 2
+    },
+    {
+      "name": "蒸馏",
       "count": 2
     },
     {
@@ -129,39 +552,11 @@
       "count": 2
     },
     {
-      "name": "Agent",
+      "name": "3D",
       "count": 1
     },
     {
-      "name": "VLA",
-      "count": 1
-    },
-    {
-      "name": "世界模型",
-      "count": 1
-    },
-    {
-      "name": "代码",
-      "count": 1
-    },
-    {
-      "name": "因果",
-      "count": 1
-    },
-    {
-      "name": "图学习",
-      "count": 1
-    },
-    {
-      "name": "多模态",
-      "count": 1
-    },
-    {
-      "name": "安全",
-      "count": 1
-    },
-    {
-      "name": "强化学习",
+      "name": "医学",
       "count": 1
     },
     {
@@ -169,11 +564,7 @@
       "count": 1
     },
     {
-      "name": "机器人",
-      "count": 1
-    },
-    {
-      "name": "泛化",
+      "name": "流匹配",
       "count": 1
     },
     {
@@ -181,7 +572,11 @@
       "count": 1
     },
     {
-      "name": "自监督",
+      "name": "视频",
+      "count": 1
+    },
+    {
+      "name": "量化",
       "count": 1
     },
     {
@@ -190,6 +585,35 @@
     }
   ],
   "searchShards": [
-    "data/search-0000.json"
-  ]
+    "data/search-0000.json.gz",
+    "data/search-0001.json.gz",
+    "data/search-0002.json.gz",
+    "data/search-0003.json.gz",
+    "data/search-0004.json.gz",
+    "data/search-0005.json.gz",
+    "data/search-0006.json.gz",
+    "data/search-0007.json.gz",
+    "data/search-0008.json.gz",
+    "data/search-0009.json.gz",
+    "data/search-0010.json.gz",
+    "data/search-0011.json.gz",
+    "data/search-0012.json.gz",
+    "data/search-0013.json.gz",
+    "data/search-0014.json.gz",
+    "data/search-0015.json.gz",
+    "data/search-0016.json.gz",
+    "data/search-0017.json.gz",
+    "data/search-0018.json.gz",
+    "data/search-0019.json.gz",
+    "data/search-0020.json.gz",
+    "data/search-0021.json.gz",
+    "data/search-0022.json.gz",
+    "data/search-0023.json.gz",
+    "data/search-0024.json.gz",
+    "data/search-0025.json.gz",
+    "data/search-0026.json.gz",
+    "data/search-0027.json.gz",
+    "data/search-0028.json.gz"
+  ],
+  "activeIdSetSha256": "fa50a3feb0ec22f3c4a7d6f20ca3626e17720f9c4d0565f1a8f769661a8e1f19"
 }

@@ -15,7 +15,18 @@
     "learning on graphs and other geometries & topologies": "图、几何与拓扑学习",
     "interpretability and explainable AI": "可解释人工智能",
     "causal reasoning": "因果推理",
-    "applications to robotics, autonomy, planning": "机器人、自主系统与规划"
+    "applications to robotics, autonomy, planning": "机器人、自主系统与规划",
+    "alignment, fairness, safety, privacy, and societal considerations": "对齐、公平、安全、隐私与社会影响",
+    "datasets and benchmarks": "数据集与基准",
+    "unsupervised, self-supervised, semi-supervised, and supervised representation learning": "无监督、自监督、半监督与监督表征学习",
+    "applications to physical sciences (physics, chemistry, biology, etc.)": "物理、化学与生物等科学应用",
+    "transfer learning, meta learning, and lifelong learning": "迁移学习、元学习与终身学习",
+    "other topics in machine learning (i.e., none of the above)": "其他机器学习主题",
+    "learning on time series and dynamical systems": "时间序列与动力系统学习",
+    "probabilistic methods (Bayesian methods, variational inference, sampling, UQ, etc.)": "概率方法、贝叶斯推断与不确定性",
+    "applications to neuroscience & cognitive science": "神经科学与认知科学应用",
+    "infrastructure, software libraries, hardware, systems, etc.": "基础设施、软件、硬件与系统",
+    "neurosymbolic & hybrid AI systems (physics-informed, logic & formal reasoning, etc.)": "神经符号与混合人工智能"
   },
   "subcategories": [
     "预训练",
@@ -92,6 +103,10 @@
     "气候与地球科学",
     "神经与认知科学",
     "神经符号与形式化验证",
+    "模型合并",
+    "硬件与数值计算",
+    "知识图谱与推理",
+    "Agent 安全",
     "其他",
     "待复核"
   ],

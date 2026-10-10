@@ -7,6 +7,7 @@ export interface Paper {
 }
 export interface PaperDetail extends Paper { abstract: string; classificationReason?: string }
 export interface Manifest {
+  indexUrl: string; detailShards: string[]; publicationMode: 'metadata-preview' | 'classified';
   schemaVersion: number; sourceUrl: string; snapshotKind: 'sample' | 'complete' | 'incomplete';
   startedAt: string; finishedAt: string; verifiedAt: string | null;
   officialCount: number | null; total: number; classified: number; pending: number;

@@ -12,10 +12,12 @@
     ],
     "reason": "主要任务是仓库级代码定位，核心贡献为对候选排除操作进行逐轮信用分配；强化学习是训练手段。",
     "classification": "complete",
-    "sourceFingerprint": "50e217e6b8b6fe0e92a7f439117f6bfbfb6e4f0fd26edcb60d102e769251b351",
+    "sourceFingerprint": "8fad4c0109defd228dafebe07609c421baba55c1f5494a842f88c22bb7229026",
     "taxonomyVersion": "2027.0-draft",
     "annotatedAt": "2026-10-10T07:57:42.113109+00:00",
-    "method": "assistant-read-full-abstract"
+    "method": "assistant-read-full-abstract",
+    "reviewedAt": "2026-10-10T09:12:16.048000+00:00",
+    "reviewNote": "重新对照完整 API 摘要，现有中文标题、导读与归类仍受摘要支持。"
   },
   {
     "id": "rO2KyNmztq",
@@ -117,10 +119,12 @@
     ],
     "reason": "通过成对物理干预学习动作因果效应，官方因果方向下细分为世界模型。",
     "classification": "complete",
-    "sourceFingerprint": "fff7ef8e3f9ad79daacbd948ba3d1d4c55d36d8c3ba2ac6738a72220e381723b",
+    "sourceFingerprint": "70370755ed77ee3d36fada04cca2f4b6e4aebb38f9ebc6b30c45408abbed06b5",
     "taxonomyVersion": "2027.0-draft",
     "annotatedAt": "2026-10-10T07:57:42.113615+00:00",
-    "method": "assistant-read-full-abstract"
+    "method": "assistant-read-full-abstract",
+    "reviewedAt": "2026-10-10T09:12:16.048009+00:00",
+    "reviewNote": "重新对照完整 API 摘要，现有中文标题、导读与归类仍受摘要支持。"
   },
   {
     "id": "hNjWyxRDIa",
@@ -139,5 +143,359 @@
     "taxonomyVersion": "2027.0-draft",
     "annotatedAt": "2026-10-10T07:57:42.113637+00:00",
     "method": "assistant-read-full-abstract"
+  },
+  {
+    "id": "MLE0ZSHwTs",
+    "titleZh": "噪声条件化 Q 伴随锚定",
+    "summaryZh": "针对离线策略转向在线强化学习时的高效优化问题，将直线流策略与伴随匹配结合，用噪声条件化分布价值估计引导分块动作更新，并在机器人任务中检验方法。",
+    "subcategory": "离线强化学习",
+    "tags": [
+      "强化学习",
+      "流匹配",
+      "机器人",
+      "效率"
+    ],
+    "reason": "主线是离线到在线强化学习中的策略改进；流匹配是策略表示与优化手段。",
+    "classification": "complete",
+    "sourceFingerprint": "cb7c03072a64f035755b00191ea6c6f0f5d47c7bac36f5623689adcc8532312c",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.046650+00:00"
+  },
+  {
+    "id": "708MZ9pBGw",
+    "titleZh": "Muon 并没有那么特殊：随机或反转奇异值谱也同样有效",
+    "summaryZh": "研究 Muon 优化效果是否依赖特定奇异值谱，通过 Schatten 拟范数优化器及随机谱变体比较更新方向，分析对齐程度、下降潜力与步长选择之间的关系。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化"
+    ],
+    "reason": "核心贡献是优化器更新几何与下降行为分析，而非训练系统实现。",
+    "classification": "complete",
+    "sourceFingerprint": "7d3ac11fa45ef30c16e757d934872ce88d44bc0e4420960a594b82b90c39970f",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047236+00:00"
+  },
+  {
+    "id": "JTjP6QFRUd",
+    "titleZh": "StateCraft：用抽象状态推理增强视频世界模型",
+    "summaryZh": "针对视频世界模型难以维持长期一致性的问题，以语言模型持续更新显式抽象状态，并将其作为视频扩散模型的条件，在生成式界面及三维概念验证场景中检验状态推理。",
+    "subcategory": "世界模型",
+    "tags": [
+      "世界模型",
+      "视频",
+      "记忆",
+      "扩散",
+      "LLM"
+    ],
+    "reason": "显式持久状态为视频模拟提供条件，重点是世界模型的长期状态一致性。",
+    "classification": "complete",
+    "sourceFingerprint": "fe08329d3d73f62c97abb0e3b1bd25b4c09d6a42d36f026e506083c40a09a8a7",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047249+00:00"
+  },
+  {
+    "id": "BVvcVDd5nS",
+    "titleZh": "只做被要求的事：克服有状态环境中 LLM 智能体的效应盲区",
+    "summaryZh": "针对智能体完成任务却破坏其他环境状态的问题，以任务成功、状态保留和禁止效应共同评价行为，并通过独立效应契约、行动预测与直接记录读取约束执行过程。",
+    "subcategory": "Agent 安全",
+    "tags": [
+      "Agent",
+      "安全",
+      "评估",
+      "LLM"
+    ],
+    "reason": "关注有状态环境中工具行动的非预期副作用，区别于一般越狱或任务成功率优化。",
+    "classification": "complete",
+    "sourceFingerprint": "a7d706023a9410cab3e0e7df53a04019810be7c264ea02f8cc35ec3922313107",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047259+00:00"
+  },
+  {
+    "id": "KSAdorvVOs",
+    "titleZh": "PhysDFTBench：哪些精确条件能从架构保留到已发布的神经交换关联泛函？",
+    "summaryZh": "针对神经密度泛函的架构保证与实际权重行为可能脱节的问题，审计已发布交换关联泛函的七类精确条件，比较结构性保证与损失约束，并检查自洽场响应处理的遗漏。",
+    "subcategory": "物理与科学计算",
+    "tags": [
+      "评估",
+      "基准"
+    ],
+    "reason": "审计对象是密度泛函理论中的神经交换关联泛函，物理精确条件是主要问题。",
+    "classification": "complete",
+    "sourceFingerprint": "aa82eaeff55c539feab4c9f43886910fc9cbf77df426ee9676fd8a0fbca6cbf0",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047267+00:00"
+  },
+  {
+    "id": "qbVaigPfEP",
+    "titleZh": "多吸引子 GNN：超越唯一平衡点的集合值表达能力",
+    "summaryZh": "突破以唯一平衡点分析循环图神经网络的限制，研究多个吸引子形成的集合值输出，给出存在性与实现结果，并以随机初始化打破对称性来表达多种可行解。",
+    "subcategory": "表达能力",
+    "tags": [
+      "图学习"
+    ],
+    "reason": "理论贡献是多平衡点图神经网络的集合值表达能力，科学任务为验证场景。",
+    "classification": "complete",
+    "sourceFingerprint": "044cf7cb552a69b6fe0b83adc706d771c3e2b4ed19fe87de135d7cbb1eaddf2b",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047274+00:00"
+  },
+  {
+    "id": "S3RcOBC5qR",
+    "titleZh": "AQUI：面向隐式推理感知记忆检索的非对称查询嵌入",
+    "summaryZh": "针对用户问题与隐式相关记忆之间的检索错位，固定事实表示并训练查询嵌入指向相关事实，以合成样本学习非对称检索，避免为每位用户构建额外知识图谱。",
+    "subcategory": "长上下文与记忆",
+    "tags": [
+      "Agent",
+      "记忆",
+      "推理",
+      "LLM"
+    ],
+    "reason": "主要问题是智能体记忆中的隐式关系检索；推理能力通过查询表示学习服务于检索。",
+    "classification": "complete",
+    "sourceFingerprint": "90b9492f057816a26bc8b3d4f5b46af1e1a5de2a35e21b7a708de9fbaf6c7bbe",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047280+00:00"
+  },
+  {
+    "id": "DjKdO0glqv",
+    "titleZh": "TacForcing：利用执行时触觉反馈进行流式动作生成",
+    "summaryZh": "针对动作生成难以及时利用执行过程触觉的问题，在流式分块生成中保留中间状态并注入触觉反馈，同时限制更新只作用于下一动作块，以支持执行中的局部调整。",
+    "subcategory": "机器人操作",
+    "tags": [
+      "VLA",
+      "机器人",
+      "多模态"
+    ],
+    "reason": "执行时触觉反馈直接改进机器人动作生成，主要任务为闭环操作。",
+    "classification": "complete",
+    "sourceFingerprint": "22a560a16b7e33d8b29dea53c7188bf477981694bb0d1a2c28ca1bf445fc76c1",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047286+00:00"
+  },
+  {
+    "id": "UUQrc0vAsZ",
+    "titleZh": "跨异构动作与反馈通道的上下文经验学习基准",
+    "summaryZh": "通过结合自然语言反馈和浏览日志的分回合推荐任务，评估智能体能否从交互经验中更新偏好并迁移到后续任务，分析经验综合、信念维护与探索环节的障碍。",
+    "subcategory": "数据集与基准",
+    "tags": [
+      "Agent",
+      "评估",
+      "记忆",
+      "基准"
+    ],
+    "reason": "贡献是评估上下文经验学习的任务与通道设计，推荐是测试载体。",
+    "classification": "complete",
+    "sourceFingerprint": "579b0bd1ae2f239df4a1b72a31b7d3bc2d029c6440f3874d8e4080273693cc3e",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047297+00:00"
+  },
+  {
+    "id": "IEgjN0TU1q",
+    "titleZh": "CAVRA：通过因果自适应验证式重掩码实现自演化智能体",
+    "summaryZh": "针对智能体在环境交互中停滞与技能复用的问题，让冻结模型同时承担教师和学生角色，依据进展信号执行有界重掩码及局部恢复，并抽取去除实例信息的通用技能。",
+    "subcategory": "Agent 与工具使用",
+    "tags": [
+      "Agent",
+      "LLM"
+    ],
+    "reason": "围绕环境反馈驱动的智能体自我改进与技能复用，不能仅凭名称中的因果归为因果推断。",
+    "classification": "complete",
+    "sourceFingerprint": "62a070b35251117e8c48c13d3d14d770508e2c87d15dc43cb674744698ea8fc3",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047304+00:00"
+  },
+  {
+    "id": "IIeFblS1gb",
+    "titleZh": "SPLICE：在 JEPA 嵌入上进行潜在扩散的保形时间序列修补",
+    "summaryZh": "针对时间序列长缺口补全，结合 JEPA 表征、潜空间条件桥与逐小时解码，并以自适应保形推断控制覆盖率，在负荷与水文序列中分析表征和桥模型复杂度的作用。",
+    "subcategory": "时间序列",
+    "tags": [
+      "时间序列",
+      "自监督",
+      "扩散"
+    ],
+    "reason": "核心任务是有覆盖率控制的时间序列缺失值补全；JEPA 与潜在生成是实现手段。",
+    "classification": "complete",
+    "sourceFingerprint": "802577286a83564a74d02372c3548fa25d07ed6a66ef88ace289e0568827a39e",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047310+00:00"
+  },
+  {
+    "id": "U4lymJX7wg",
+    "titleZh": "AnyPoint：点云多模态大语言模型的动态评估",
+    "summaryZh": "针对点云多模态模型的动态评估需求，以语言模型生成布局、确定性空间求解器构造场景图，并由几何程序提供答案，再在预算约束下自适应探测模型的失败情形。",
+    "subcategory": "评估方法",
+    "tags": [
+      "多模态",
+      "3D",
+      "评估",
+      "LLM"
+    ],
+    "reason": "主要贡献是可动态生成几何真值并自适应探测失败的评估方法，而非点云模型架构。",
+    "classification": "complete",
+    "sourceFingerprint": "f9d321c5b29d053abbd7f71a1ae56f9a4bb3adb62e78ffd1caa6b4bf0ad9a410",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047317+00:00"
+  },
+  {
+    "id": "DP2OQ5uGGq",
+    "titleZh": "通过任务干扰建模实现灵活且可演进的模型合并",
+    "summaryZh": "针对多任务模型合并中的相互干扰，将成对和三任务干扰建模为图并进行谱聚类，把任务分配给有限专家，再通过试验挖掘修正分组，以平衡准确率与存储需求。",
+    "subcategory": "模型合并",
+    "tags": [
+      "效率"
+    ],
+    "reason": "核心是根据任务干扰组织模型合并与专家分组，区别于一般多任务训练。",
+    "classification": "complete",
+    "sourceFingerprint": "162b9a9ec286120ee40529fe6d70fd359e4cce343715a79d111dd4cb7ab3be61",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047323+00:00"
+  },
+  {
+    "id": "N3WWNTcVLT",
+    "titleZh": "面向带缩放 FP8 数据通路的可认证非线性计算",
+    "summaryZh": "针对低精度硬件中的非线性计算开销，以最终 FP8 编码和缩放所需的充分状态为依据，分别为 SwiGLU、RMSNorm 和 softmax 设计可认证的查表、边界判断及区间细化。",
+    "subcategory": "硬件与数值计算",
+    "tags": [
+      "量化",
+      "效率",
+      "LLM"
+    ],
+    "reason": "研究低精度数据通路中的数值计算与认证，主类为硬件计算而非一般模型压缩。",
+    "classification": "complete",
+    "sourceFingerprint": "3870efe56e6e592c4ce40ec66c338c9dc97db5f31c379d21ba048c5affcf0438",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047329+00:00"
+  },
+  {
+    "id": "r9wVbCY0Z0",
+    "titleZh": "用于忠实知识图谱推理的结构内化规则语言模型",
+    "summaryZh": "针对知识图谱推理中语言规则与图结构脱节的问题，将关系结构记忆和不变分词器引入规则生成，再结合神经符号规则传播以及监督和强化训练，使规则服务于图谱推理。",
+    "subcategory": "知识图谱与推理",
+    "tags": [
+      "图学习",
+      "推理",
+      "LLM",
+      "强化学习"
+    ],
+    "reason": "重点是知识图谱结构约束的规则生成和传播，强化学习是训练方式。",
+    "classification": "complete",
+    "sourceFingerprint": "d16defb42830e294f503ee21327cf7e5ae8b8396c114bbd7d7291635efdcd141",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047335+00:00"
+  },
+  {
+    "id": "eKKO4iT5iL",
+    "titleZh": "MoRSE：将 EEG 基础模型蒸馏为兼容多种电极配置的多任务编码器",
+    "summaryZh": "针对脑电模型难以适应不同电极配置的问题，以完整电极教师监督随机通道子集学生，并对齐未经微调的基础模型表示，将多任务知识蒸馏到单个具备配置鲁棒性的编码器。",
+    "subcategory": "神经与认知科学",
+    "tags": [
+      "蒸馏",
+      "效率"
+    ],
+    "reason": "研究对象为不同电极布局下的脑电表征与多任务蒸馏，保留神经科学应用主线。",
+    "classification": "complete",
+    "sourceFingerprint": "9faa52e3d934422d5fb54b4acd9f0ae9950163f3f7a63d764f853b4dd5f2d92d",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047345+00:00"
+  },
+  {
+    "id": "foulTd1ZUb",
+    "titleZh": "通过学习 Doob h 函数从二元评价中实现约束扩散",
+    "summaryZh": "在冻结基础扩散模型的条件下，仅用最终样本是否满足约束的二元标签，学习带噪状态的约束满足概率，并将其转化为 Doob h 引导，以生成符合目标约束的样本。",
+    "subcategory": "可控生成",
+    "tags": [
+      "扩散"
+    ],
+    "reason": "主要目标是用二元约束评价控制扩散采样，Doob h 函数提供概率引导机制。",
+    "classification": "complete",
+    "sourceFingerprint": "f2af4ad4d96261e51819248785fda8f00899f1277ee015e32874958146475abd",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047352+00:00"
+  },
+  {
+    "id": "BD6Ba3FgW7",
+    "titleZh": "CLAIR-Med：利用弱监督概念进行医学图像分类的选择性神经符号推理",
+    "summaryZh": "针对医学图像分类的概念解释问题，用视觉语言模型产生弱概念监督，建立预测与模糊规则分支并蒸馏知识，再按熵选择推理路径，使部分决策能够通过显式规则表达。",
+    "subcategory": "神经符号与形式化验证",
+    "tags": [
+      "可解释性",
+      "医学",
+      "蒸馏",
+      "多模态"
+    ],
+    "reason": "核心是概念与规则分支的选择性神经符号推理；医学图像为应用场景。",
+    "classification": "complete",
+    "sourceFingerprint": "8202ddb11850df78f79989d5714aba484de40c9dbaece50273c24796028f40df",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047358+00:00"
+  },
+  {
+    "id": "e6Vu6BBhmX",
+    "titleZh": "连接多种分辨率以学习时间序列的域不变表征",
+    "summaryZh": "针对时间序列跨域表示差异，利用平稳小波构造中间分辨率，在多个分辨率之间渐进传递知识并进行共识训练，借助分辨率衔接学习更适用于域适应的表示。",
+    "subcategory": "域适应与泛化",
+    "tags": [
+      "时间序列",
+      "泛化"
+    ],
+    "reason": "主要问题是时间序列域适应；多分辨率表征与知识传递是实现域不变性的手段。",
+    "classification": "complete",
+    "sourceFingerprint": "a2b7a08a432d92527ec771965bf093df9cffa62a9431935dc196fadd0ed59b9c",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047364+00:00"
+  },
+  {
+    "id": "S9bOsGKCkd",
+    "titleZh": "单编辑因果搜索的准确率损失发生在哪里",
+    "summaryZh": "通过回放基于评分的因果图单步编辑，将 BIC 排序与真实结构对照，分析候选排名差距和马尔可夫等价导致的平局，并检验语言模型重排对变量名称的依赖。",
+    "subcategory": "因果发现",
+    "tags": [
+      "因果",
+      "评估",
+      "LLM"
+    ],
+    "reason": "研究因果图结构搜索中的评分和选择瓶颈，而非给定因果图上的效应估计。",
+    "classification": "complete",
+    "sourceFingerprint": "a60ca0c0fcd4135f5a8ce5170801bcf8a76e6b9bc4b5f72d9b208443049dc728",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047370+00:00"
+  },
+  {
+    "id": "TQGEq8EgWI",
+    "titleZh": "证据小引擎：将任务专用自然语言评分细则编译为程序",
+    "summaryZh": "针对自然语言评分细则依赖昂贵评判的问题，让编程智能体结合训练工作簿与评判标签，将电子表格任务的评分标准转换成 Python 程序，以程序化证据执行具体评价。",
+    "subcategory": "评估方法",
+    "tags": [
+      "评估",
+      "代码",
+      "Agent"
+    ],
+    "reason": "将自然语言评价标准转成可执行程序以降低评判依赖，核心任务是自动评估。",
+    "classification": "complete",
+    "sourceFingerprint": "1baa500d1bbeb4ac74ad8e424db4dab7bebcfa9c9b5357a2b423b13a19df3940",
+    "taxonomyVersion": "2027.0-draft",
+    "method": "assistant-read-full-abstract",
+    "annotatedAt": "2026-10-10T09:12:16.047379+00:00"
   }
 ]

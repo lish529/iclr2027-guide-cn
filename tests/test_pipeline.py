@@ -72,11 +72,36 @@ class PipelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             p.normalize(note('../escape'))
 
-    def test_checked_in_sample_cannot_pass_full_release_gate(self):
-        m = p.load(p.ROOT / 'public/data/manifest.json')
-        if m['snapshotKind'] != 'complete':
-            with self.assertRaisesRegex(AssertionError, '尚非完整快照'):
-                p.check(type('Args', (), {'release': True})())
+    def test_sharded_build_is_complete_deterministic_and_not_classified_release(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            snapshot = root / 'data/raw/snapshot.json'
+            p.save(snapshot, {'kind':'complete', 'notes':[note(str(i)) for i in range(501)],
+                'startedAt':'2026-10-10', 'finishedAt':'2026-10-10', 'verifiedAt':'2026-10-10',
+                'officialCount':501})
+            p.save(root / 'data/taxonomy.json', {'version':'draft','stage':'draft',
+                'areaLabels':{'optimization':'优化'},'tags':[],'subcategories':['待复核']})
+            args = type('Args', (), {'release':False})()
+            with patch.object(p, 'ROOT', root), patch.object(p, 'SNAPSHOT', snapshot), patch('builtins.print'):
+                p.build(args)
+                p.check(args)
+                m = p.load(root / 'public/data/manifest.json')
+                self.assertEqual(m['pending'],501)
+                self.assertEqual(len(m['detailShards']),2)
+                self.assertEqual(len(p.load(root / 'public' / m['detailShards'][1])),1)
+                with self.assertRaisesRegex(AssertionError, '仍有未处理投稿'):
+                    p.check(type('Args', (), {'release':True})())
+                before = {f.name:f.read_bytes() for f in (root / 'public/data').glob('*.gz')}
+                (root / 'public/data/obsolete.json').write_text('{}')
+                p.build(args)
+                after = {f.name:f.read_bytes() for f in (root / 'public/data').glob('*.gz')}
+                self.assertEqual(before,after)
+                self.assertFalse((root / 'public/data/obsolete.json').exists())
+                m['classified'] = 1
+                m['pending'] -= 1
+                p.save(root / 'public/data/manifest.json',m)
+                with self.assertRaisesRegex(AssertionError,'分类实际状态不一致'):
+                    p.check(args)
 
 if __name__ == '__main__':
     unittest.main()
