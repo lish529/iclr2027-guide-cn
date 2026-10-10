@@ -1,0 +1,33 @@
+{
+  "id": "rO2KyNmztq",
+  "number": 62284,
+  "title": "Sum-Rate Constraint induces Partial Participation and Bidirectional Compression",
+  "keywords": [
+    "distributed optimization",
+    "sum-rate constraint",
+    "partial participation",
+    "bidirectional compression",
+    "gradient compression",
+    "error feedback",
+    "rate allocation"
+  ],
+  "primaryArea": "optimization",
+  "modified": null,
+  "status": "active",
+  "fingerprint": "db51cffbae9f026a7867b6ed24e2c8899f79833217fb625369be06f7ce65d50f",
+  "areaZh": "优化",
+  "titleZh": "总通信速率约束如何诱导部分参与和双向压缩",
+  "summaryZh": "将节点参与、梯度压缩和下行通信统一为每轮总通信速率约束，提出 EF21-SR，通过参与数量与压缩精度的权衡及码字重广播，减少分布式优化的通信开销。",
+  "subcategory": "联邦与分布式学习",
+  "tags": [
+    "优化",
+    "分布式训练",
+    "通信压缩",
+    "效率"
+  ],
+  "classification": "complete",
+  "rating": null,
+  "detail": "data/papers/rO2KyNmztq.json",
+  "abstract": "Communication-efficient distributed optimization typically treats compression, partial worker participation, and downlink communication as separate design choices. We show that they can instead arise from a single resource constraint: a hard per-round sum-rate ($\\textbf{SR}$) constraint on the aggregate communication rate of the workers, $\\sum_{i=1}^n R_t^i \\leq R$. The budget $R$ creates a direct tradeoff between participation and compression fidelity: involving more workers leaves fewer bits available for each update. Under a common-broadcast downlink of rate $R$, the server can then rebroadcast the received worker codewords so that all workers reconstruct the global state without an additional lossy server-side compressor. We instantiate this principle in $\\textbf{EF21-SR}$, a resource-constrained variant of the popular EF21 error-feedback method. We establish $\\mathcal{O}(1/T)$ convergence to stationarity under heterogeneous compression. Experiments show that EF21-SR requires the least cumulative communication to approach the target among the compared methods with tuned stepsizes on both classification and least-squares problems.",
+  "classificationReason": "研究对象是受通信资源约束的分布式优化，主线是统一节点参与与压缩配置，而非一般模型量化。"
+}

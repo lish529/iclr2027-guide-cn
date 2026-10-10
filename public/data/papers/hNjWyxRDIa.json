@@ -1,0 +1,30 @@
+{
+  "id": "hNjWyxRDIa",
+  "number": 62238,
+  "title": "When Images Read the Instruction: Bidirectional Attention in Vision-Language-Action Models",
+  "keywords": [
+    "vlm",
+    "vla",
+    "robot learning",
+    "embodied reasoning"
+  ],
+  "primaryArea": "applications to robotics, autonomy, planning",
+  "modified": null,
+  "status": "active",
+  "fingerprint": "f18ef4b63d183e30bee9862604bdf57c40724e19c2e73641b14df9e7dc8d43c6",
+  "areaZh": "机器人、自主系统与规划",
+  "titleZh": "当图像读懂指令：视觉语言动作模型中的双向注意力",
+  "summaryZh": "在同一 VLA 基础模型上对照因果、策略阶段切换及预训练学习的双向注意力，通过表征干预分析指令如何进入图像 token，指出预训练对齐有助于保留任务对象选择性。",
+  "subcategory": "视觉语言动作（VLA）",
+  "tags": [
+    "VLA",
+    "机器人",
+    "多模态",
+    "可解释性"
+  ],
+  "classification": "complete",
+  "rating": null,
+  "detail": "data/papers/hNjWyxRDIa.json",
+  "abstract": "Embodied reasoning and manipulation require rich interaction between visual, linguistic, and proprioceptive modalities, yet the dominant VLA backbone is a causal decoder that encodes the image before the instruction or robot state enters the context. Bidirectional attention is a natural remedy, as all tokens can freely attend to each other. Popular VLAs already adopt bidirectional observation encoding, but its effect has not been tested in a controlled comparison. In this work, we systematically study how bidirectional attention shapes representations for embodied tasks. We build matched paradigms from one causal Qwen3-VL-2B that vary in their embodied pretraining and attention mask: causal, flipped to bidirectional at policy time, or bidirectional and learned during pretraining. We show that only a learned attention mask improves manipulation over causal pretraining on the same data when using a final layer acton head. Activation patching, closed-loop instruction transplants, attention-path knockouts, and object-level attention measurements trace this difference. The attention mask decides where the instruction is represented: every bidirectional mask moves the instruction into the image tokens, and the policy reads its task from there. At what stage the mask is learned decides whether the instruction's attention stays on the task objects. A learned mask preserves the object selectivity that embodied pretraining creates, while a flipped mask does not. Our results suggest that bidirectional attention in VLA backbones should be aligned during pretraining rather than added at policy time.",
+  "classificationReason": "研究 VLA 骨干中的注意力掩码及具身预训练对机器人操作的影响，可解释性分析是研究手段。"
+}

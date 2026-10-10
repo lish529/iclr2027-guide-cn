@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env*
+!.env.example
+.DS_Store
+__pycache__/
+work/
+data/raw/
+data/batches/
+data/checkpoints/

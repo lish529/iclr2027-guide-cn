@@ -1,0 +1,31 @@
+{
+  "id": "jA6DsjW60P",
+  "number": 62250,
+  "title": "Do-JEPA: From Masking to Intervention in Latent World Models",
+  "keywords": [
+    "world models",
+    "JEPA",
+    "paired interventions",
+    "action-effect learning",
+    "causal propagation",
+    "context invariance"
+  ],
+  "primaryArea": "causal reasoning",
+  "modified": null,
+  "status": "active",
+  "fingerprint": "fff7ef8e3f9ad79daacbd948ba3d1d4c55d36d8c3ba2ac6738a72220e381723b",
+  "areaZh": "因果推理",
+  "titleZh": "Do-JEPA：从遮蔽观测到干预潜在世界模型",
+  "summaryZh": "从同一模拟器状态执行实际动作与参考动作，训练世界模型预测两种潜在未来的差异，并结合效应、作用位置、传播和不变性损失，学习动作导致的变化而非共现关系。",
+  "subcategory": "世界模型",
+  "tags": [
+    "世界模型",
+    "因果",
+    "自监督"
+  ],
+  "classification": "complete",
+  "rating": null,
+  "detail": "data/papers/jA6DsjW60P.json",
+  "abstract": "Latent world models are trained to predict what happens next, so nothing in their\nobjective separates what an action caused from what merely co-occurred with it.\nObject-masking models such as C-JEPA intervene on what the predictor can see; we\nintervene on what physically happens. From one saved simulator state we run the\ndynamics under an action $a$ and under a reference action $\\anull$, and train the\nmodel to predict the difference $\\Delta z=z^{a}-z^{\\anull}$ between the two latent\nfutures. The resulting objective, Do-JEPA, has an effect loss, a support loss\n(where the action enters), a propagation loss (where its effect travels) and\ninvariance losses (what must not change). In a synthetic system with\nobject-aligned variables, support supervision finds the directly intervened object\nin $99.95%$ of test cases, where a sparse action mask sends the action to a\nnuisance slot in every case, and response-onset supervision recovers the\nring-shaped propagation graph (edge AUROC $0.975$ vs.\\ $0.624$). From pixels, the\neffect loss beats a control trained on exactly the same data: it lowers latent\neffect error by $28.4%$ on an end-to-end LeWM model ($3/3$ seeds) and physical\neffect error by $13.5%$ when trained and tested on natural action sequences, and on three\nindependently generated CausalWorld benchmarks it lowers responsive effect error\nby about $20%$ under physics shifts and the latent context sensitivity of\npredicted effects by $66%$. Trained from scratch it costs factual accuracy;\nfine-tuning an existing model with it removes this cost. Together, these results show \nthat intervening on the world, rather than on what the model sees, helps latent world models\npredict what their actions cause.",
+  "classificationReason": "通过成对物理干预学习动作因果效应，官方因果方向下细分为世界模型。"
+}

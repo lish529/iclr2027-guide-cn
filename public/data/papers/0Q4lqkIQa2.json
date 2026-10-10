@@ -1,0 +1,38 @@
+{
+  "id": "0Q4lqkIQa2",
+  "number": 62280,
+  "title": "Mind Your Marginals: What Governs Fidelity in Linearized Hierarchical Optimal Transport?",
+  "keywords": [
+    "Optimal Transport",
+    "Hierarchical Optimal Transport",
+    "Linear Optimal Transport",
+    "Wasserstein Distance",
+    "Barycentric Projection",
+    "Entropic Regularization",
+    "Sinkhorn Algorithm",
+    "Topic Models",
+    "Graph Kernels",
+    "Weisfeiler-Leman",
+    "Document Retrieval",
+    "Nearest Neighbor Search",
+    "Efficient Similarity Search"
+  ],
+  "primaryArea": "learning on graphs and other geometries & topologies",
+  "modified": null,
+  "status": "active",
+  "fingerprint": "1c413b085c9ecb6a322b61e6d6bae3d9ac6fcfb5086937bee9f811ef9742f1c4",
+  "areaZh": "图、几何与拓扑学习",
+  "titleZh": "关注边缘分布：什么决定线性化层次最优传输的保真度？",
+  "summaryZh": "提出覆盖文本、图与图像的 HiLOT 实现，分析重心投影方向、传输计划密度、支撑粗化和组件模型如何影响线性化保真度，指出投影方向与熵正则化的重要作用。",
+  "subcategory": "最优传输",
+  "tags": [
+    "最优传输",
+    "图学习",
+    "效率"
+  ],
+  "classification": "complete",
+  "rating": null,
+  "detail": "data/papers/0Q4lqkIQa2.json",
+  "abstract": "Linearized optimal transport (LOT) replaces the n(n-1)/2 transport solves needed to compare n measures with n offline embeddings into a tangent space at a fixed reference. We study LOT for hierarchical transport, where the ground metric between support atoms is itself a Wasserstein distance over a learned, coarsened support, and instantiate this construction (HiLOT) in text, graphs and images from one shared implementation. Our central finding is that fidelity is governed less by modality than by four construction-level choices, the first of which has been overlooked. (i) Orientation: a transport plan between measures on a shared atom set admits two barycentric projections, indexed by the measure or by the reference, and only the latter lies in a tangent space shared across objects. Across 24 arms in two modalities the benefit of correcting the orientation is proportional to the linearization gap it repairs (Spearman ρ = -0.946, p = 3×10^-12; ρ = -0.947 and -0.806 within graphs and images), reducing test error by up to 0.235 on a single benchmark. (ii) Plan density: an exact plan is a polytope vertex with at most n+m-1 nonzeros, so the embedding degenerates into a quantizer; entropic regularization removes this with a provably interior optimum. Orientation and regularization together close the gap to exact hierarchical transport on curated retrieval (0.1123 against 0.1121 NDCG@10, t = -0.04) at ~100 queries/s against 1.5. (iii) Coarsening acts as capacity control, with a truncation sweep isolating coarsening rather than support truncation as the mechanism behind its one clear failure case. (iv) The component model is exchangeable and matters about as much as coarsening, an order of magnitude less than orientation. Across six text benchmarks the linearization preserves accuracy relative to exact hierarchical transport at 12 to 182 times its throughput.",
+  "classificationReason": "主要研究层次最优传输的线性化构造及精度与速度关系，图、文本和图像是验证对象。"
+}

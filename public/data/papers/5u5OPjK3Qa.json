@@ -1,0 +1,32 @@
+{
+  "id": "5u5OPjK3Qa",
+  "number": 62261,
+  "title": "A Window Is Not a Door: Mapping the Limits and Conditions of Knowledge Editing in Language Models",
+  "keywords": [
+    "knowledge editing",
+    "interpretability",
+    "language models",
+    "factual knowledge",
+    "generalization",
+    "representation interventions"
+  ],
+  "primaryArea": "interpretability and explainable AI",
+  "modified": null,
+  "status": "active",
+  "fingerprint": "f938ecefc288bba8e14a7eb2e4f83542e9e2e119916c42a6b7dddc9f873bdd76",
+  "areaZh": "可解释人工智能",
+  "titleZh": "窗口并非门：刻画语言模型知识编辑的边界与条件",
+  "summaryZh": "考察定位事实知识与可靠编辑知识之间的差距，以控制能力、迁移和附带损伤衡量干预效果，并发现编辑前目标答案的候选排名有助于预测哪些事实更容易被纠正。",
+  "subcategory": "知识编辑",
+  "tags": [
+    "LLM",
+    "知识编辑",
+    "可解释性",
+    "评估"
+  ],
+  "classification": "complete",
+  "rating": null,
+  "detail": "data/papers/5u5OPjK3Qa.json",
+  "abstract": "Interpretability makes factual knowledge in language models observable, but observability does not imply editability. We identify a gap between locating factual signals and reliably changing knowledge, defined by control, transfer, and collateral damage. In the tested settings, localization-derived interventions move target answers without achieving selective control within the specified collateral budgets. Post-edit target hits likewise conceal already-correct answers, limited transfer, and damage to other knowledge. Reading out information and eliciting a target answer are therefore insufficient evidence of reliable knowledge editing.\nThis gap is not uniform: the model’s pre-edit support for the target answer helps organize where correction succeeds. Targets near the front of the base distribution, but not initially generated correctly, form a region of correction opportunities. Candidate rank predicts correction yield in independent fixed-budget tests, while far-rank successes reveal a model-dependent boundary rather than a hard cutoff. Context and weight interventions further expose distinct routes to changing answers, with different benefits and costs. Together, these findings shift the central question of knowledge editing from where knowledge resides to which facts can be changed, through which intervention, and at what cost. Interpretability provides a window into knowledge; a door to reliable editing depends on existing candidate support and the conditions of intervention.",
+  "classificationReason": "主体是知识编辑的可靠性与干预边界；官方方向保留可解释性，细分类别反映具体研究问题。"
+}

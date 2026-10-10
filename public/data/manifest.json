@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "sourceUrl": "https://openreview.net/group?id=ICLR.cc/2027/Conference#tab-active-submissions",
+  "snapshotKind": "sample",
+  "startedAt": "2026-10-10T07:57:42.113642+00:00",
+  "finishedAt": "2026-10-10T07:57:42.113644+00:00",
+  "verifiedAt": null,
+  "officialCount": null,
+  "total": 8,
+  "inactive": 0,
+  "classified": 8,
+  "review": 0,
+  "pending": 0,
+  "missingAbstract": 0,
+  "failures": 1,
+  "note": "仅收录从公开网页读取并逐篇整理的 8 篇真实样本；API 要求验证，全量投稿数量尚未核验，分类词表尚待约 200 篇分层样本校准。",
+  "taxonomyVersion": "2027.0-draft",
+  "taxonomyStage": "awaiting-200-paper-calibration",
+  "areas": [
+    {
+      "name": "optimization",
+      "label": "优化",
+      "count": 2,
+      "subcategories": [
+        {
+          "name": "优化器与收敛",
+          "count": 1
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to computer vision, audio, language, and other modalities",
+      "label": "视觉、音频与语言应用",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "语音与音频",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "applications to robotics, autonomy, planning",
+      "label": "机器人、自主系统与规划",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "视觉语言动作（VLA）",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "causal reasoning",
+      "label": "因果推理",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "世界模型",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "foundation or frontier models, including LLMs",
+      "label": "基础与前沿模型（含 LLM）",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "代码智能",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "interpretability and explainable AI",
+      "label": "可解释人工智能",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "知识编辑",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "learning on graphs and other geometries & topologies",
+      "label": "图、几何与拓扑学习",
+      "count": 1,
+      "subcategories": [
+        {
+          "name": "最优传输",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "LLM",
+      "count": 2
+    },
+    {
+      "name": "优化",
+      "count": 2
+    },
+    {
+      "name": "分布式训练",
+      "count": 2
+    },
+    {
+      "name": "可解释性",
+      "count": 2
+    },
+    {
+      "name": "效率",
+      "count": 2
+    },
+    {
+      "name": "评估",
+      "count": 2
+    },
+    {
+      "name": "通信压缩",
+      "count": 2
+    },
+    {
+      "name": "Agent",
+      "count": 1
+    },
+    {
+      "name": "VLA",
+      "count": 1
+    },
+    {
+      "name": "世界模型",
+      "count": 1
+    },
+    {
+      "name": "代码",
+      "count": 1
+    },
+    {
+      "name": "因果",
+      "count": 1
+    },
+    {
+      "name": "图学习",
+      "count": 1
+    },
+    {
+      "name": "多模态",
+      "count": 1
+    },
+    {
+      "name": "安全",
+      "count": 1
+    },
+    {
+      "name": "强化学习",
+      "count": 1
+    },
+    {
+      "name": "最优传输",
+      "count": 1
+    },
+    {
+      "name": "机器人",
+      "count": 1
+    },
+    {
+      "name": "泛化",
+      "count": 1
+    },
+    {
+      "name": "知识编辑",
+      "count": 1
+    },
+    {
+      "name": "自监督",
+      "count": 1
+    },
+    {
+      "name": "音频",
+      "count": 1
+    }
+  ],
+  "searchShards": [
+    "data/search-0000.json"
+  ]
+}

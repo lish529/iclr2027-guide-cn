@@ -1,0 +1,17 @@
+{
+  "name": "iclr2027-guide-cn",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build --base=./",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --import tsx --test tests/*.test.ts && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "data:fetch": "python3 scripts/pipeline.py fetch",
+    "data:prepare": "python3 scripts/pipeline.py prepare",
+    "data:build": "python3 scripts/pipeline.py build",
+    "data:check": "python3 scripts/pipeline.py check"
+  },
+  "devDependencies": {"typescript": "~5.9.3", "vite": "^7.1.12", "tsx": "^4.20.6", "@types/node": "^22.18.0"}
+}
