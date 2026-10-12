@@ -5,10 +5,25 @@
 ## 当前状态：全量元数据已核验，中文分类进行中
 
 - 已核验 **42,358 篇有效投稿、21 个官方方向**，全部具有英文摘要；采集完成于 2026-10-10 17:02（北京时间）。
-- **29 篇**已有中文标题、导读与语义分类，**42,329 篇**待处理；200 篇分层校准中已处理 21 篇，覆盖全部官方方向。词表仍是草案。
+- **723 篇**已有中文标题、导读与语义分类，**41,635 篇**待处理；固定词表版本为 `2027.0-draft`，状态为 `calibrated`。
 - 网站：https://lish529.github.io/iclr2027-guide-cn/ 。源码：https://github.com/lish529/iclr2027-guide-cn 。
 - `snapshotKind: complete` 仅表示元数据集合已核验；`publicationMode: metadata-preview` 表示中文内容尚未完成。主题标签统计仅反映已处理论文。
-- 无 PDF 下载、额外付费模型调用或定时任务。全量语义分类尚需继续处理，不把关键词匹配视为分类。
+- 无 PDF 下载或定时任务。全量语义分类尚需继续处理，不把关键词匹配视为分类。
+- 已优先完成“后训练更新几何”研究兴趣筛选：1,091 篇候选中有 117 篇核心论文、60 篇数学方法参考、914 篇排除；另复核 200 篇近邻排除项。177 篇入选论文均已逐篇复核并进入总站现有分类体系，详见 `data/research-interest-report.json`。
+
+## 更换模型接续
+
+直接在本项目目录接续，详见 [HANDOFF.md](HANDOFF.md)；可复制指令见 [HANDOFF_PROMPTS.md](HANDOFF_PROMPTS.md)。固定 200 篇试跑校准已经完成；下一阶段可让当前或接续模型完成数据生成，最后由原助手独立复核和发布。工作量测量及假设价格计算见 [COST_ESTIMATE.md](COST_ESTIMATE.md)。
+
+源数据覆盖检查（无需构建或发布）：
+
+```sh
+python3 scripts/classification_status.py --write data/classification-status.json
+# 数据阶段完成时，额外要求所有有效 ID 都有结构上有效的处理记录：
+python3 scripts/classification_status.py --write data/classification-status.json --require-processed
+```
+
+覆盖检查不能替代语义准确性验收。`data/raw/`、`data/batches/` 和 `work/` 是本地材料，未上传 GitHub；仅克隆远端仓库不能获得完整的接续输入。
 
 ## 本地运行
 
@@ -62,7 +77,7 @@ npm run data:prepare
 
 1. 对新快照运行 `prepare`，先阅读 `data/batches/<run>/calibration.json` 中按官方方向轮转的约 200 篇样本。
 2. 以 `data/taxonomy.json` 为初始词表，校准细分类别的边界；补齐本届实际官方方向的中文名称，保留其英文原值。
-3. 固定词表版本，将 `stage` 改为 `calibrated`，记录抽样 ID 和校准结论后再进行全量分类。当前 `2027.0-draft` **未完成此步骤**。
+3. 固定词表版本，将 `stage` 改为 `calibrated`，记录抽样 ID 和校准结论后再进行全量分类。当前 `2027.0-draft` 已完成 200 篇校准并冻结。
 4. 当前助手逐批阅读完整摘要，按 `CLASSIFICATION.md` 输出结构化结果；**管道不会用关键词或空模板冒充语义分类**。
 5. 导入校验通过的分类结果；生成文件必须写在 `work/`，避免被原始分类扫描误读。
 
@@ -75,6 +90,19 @@ npm run data:check
 每篇通过 `sourceFingerprint` 绑定标题、摘要、关键词和官方方向；只有这些字段变化或词表版本变化才失效。评分、时间戳变化不触发重新分类。失效记录仍保存在分类源文件中，网页标为待处理，不能继续展示过时导读。
 
 所有已处理记录保存在 `data/annotations/records.json`，避免多批文件发生重复 ID。缺少摘要或不能确定分类的论文用 `review` 明确记录，不标为已完成。
+
+### 后台 Batch API 分类
+
+`scripts/api_classify.py` 只从进程环境读取 `OPENAI_API_KEY`，提供 `preflight`、`run`、`resume` 和 `status`。它先实时核验模型与 OpenAI 官方价格，再以固定 100 篇校准集检查结构合格率和细类一致率；无法确认价格、质量不足或费用可能超过 100 美元时不会提交全量任务。
+
+```sh
+python3 scripts/api_classify.py preflight
+nohup python3 scripts/api_classify.py run >> work/api-classification.log 2>&1 &
+python3 scripts/api_classify.py status
+python3 scripts/api_classify.py resume
+```
+
+Batch 返回先原样保存到 `work/api-batches/`，通过 ID、摘要指纹、词表、标签与导读长度检查后，才由单写者串行调用 `pipeline.py ingest`。检查点保存远端 Batch/File ID、用量、费用预留和局部失败；重复启动不会重复提交仍在进行的任务。API 或格式失败只重试对应投稿，不能改写成语义待复核。
 
 ## 数据接口
 

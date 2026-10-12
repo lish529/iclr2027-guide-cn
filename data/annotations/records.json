@@ -7592,21 +7592,22 @@
   },
   {
     "id": "HahRh1schx",
+    "titleZh": "超越适配器秩：LoRA 训练的共享子空间复杂度",
+    "summaryZh": "研究 LoRA 单步低秩更新能否由跨检查点的固定输入子空间刻画，通过线性回归理论、谱近似与联合投影，分析共享维度及其对语言模型预测保持的影响。",
+    "subcategory": "训练动态",
+    "tags": [
+      "LLM",
+      "优化"
+    ],
+    "reason": "主问题是 LoRA 训练轨迹中单步低秩与跨检查点共享输入子空间维度之间的差异；贡献包括线性回归下的路径维度与极小极大误差分析，以及对共享方向能量集中和投影后预测保持的实证检验，因此主要归入训练动态。",
     "sourceFingerprint": "bfedcafc49a0ab69244adcf0a0b5598900467622677fd3eadd0d72ffbd768e60",
     "taxonomyVersion": "2027.0-draft",
     "classification": "complete",
-    "titleZh": "超越适配器秩：LoRA 训练的共享子空间复杂度",
-    "summaryZh": "区分单个 LoRA 检查点的低秩与整段训练路径可由固定表示描述所需的最小共享输入维度，给出线性模型的极小极大误差和有限时域界，并在语言模型微调中检验共享方向对能量和预测保留的作用。",
-    "subcategory": "表征分析",
-    "tags": [
-      "LLM",
-      "优化",
-      "可解释性"
-    ],
-    "reason": "主要研究低秩训练路径的共享表征几何、近似维度及其预测忠实度。",
     "method": "assistant-read-full-abstract",
-    "model": "current-codex-model",
-    "annotatedAt": "2026-10-11T02:53:00+08:00"
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532555+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238232+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
   },
   {
     "id": "GM9LePOwrX",
@@ -8943,21 +8944,22 @@
   },
   {
     "id": "MYMzGlAMKB",
-    "sourceFingerprint": "1167ced9c69c3bdb78ae97288d5e77d9838bce00f82e8b903a1b3c69cfde607c",
-    "taxonomyVersion": "2027.0-draft",
-    "classification": "complete",
-    "titleZh": "从参数重盆化到异构 Transformer 间的功能迁移",
-    "summaryZh": "针对不同深度和宽度 Transformer 参数形状不兼容而难复用任务更新的问题，以匹配模块激活变化而非任务向量为迁移对象，先用 Procrustes 映射对齐功能效应，再闭式回归合成模型更新。",
+    "titleZh": "从参数重定基到异构 Transformer 间的功能迁移",
+    "summaryZh": "针对异构 Transformer 参数形状不兼容，Ariadne 将微调引起的模块激活变化经局部 Procrustes 对齐，并以闭式岭回归合成目标模型原生更新。",
     "subcategory": "迁移与元学习",
     "tags": [
       "LLM",
-      "泛化",
       "效率"
     ],
-    "reason": "主要贡献是跨异构预训练 Transformer 的无训练功能迁移方法。",
+    "reason": "主问题是不同深度和宽度的 Transformer 无法直接复用参数任务向量；Ariadne 转而对齐微调造成的局部激活变化，并在目标模型上合成原生更新，因此属于跨架构迁移。",
+    "sourceFingerprint": "1167ced9c69c3bdb78ae97288d5e77d9838bce00f82e8b903a1b3c69cfde607c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
     "method": "assistant-read-full-abstract",
-    "model": "current-codex-model",
-    "annotatedAt": "2026-10-11T04:15:00+08:00"
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532603+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238303+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
   },
   {
     "id": "8fwlTxDgf1",
@@ -9962,5 +9964,3440 @@
     "method": "assistant-read-full-abstract",
     "model": "current-codex-model",
     "annotatedAt": "2026-10-11T05:30:00+08:00"
+  },
+  {
+    "id": "0vAU1ZmGdI",
+    "titleZh": "学会不干扰：面向模型合并的专家适配",
+    "summaryZh": "研究共享初始化专家合并时的跨任务干扰，提出 RI 用无标签任务数据蒸馏本任务预测，并匹配基座模型在其他任务上的行为以约束 task vector。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "效率"
+    ],
+    "reason": "主问题是多个共享初始化专家的 task vector 合并后破坏彼此能力；RI 在合并前分别适配专家，通过保留本任务预测并限制其对其他任务分布的影响来减少干扰，因而主要归入模型合并。",
+    "sourceFingerprint": "3106fdb6f2f2032db0432610655a308cfde00ee60a4e300cfc9420247fa2c7ec",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.531640+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237572+00:00",
+    "reviewNote": "screening 与摘要一致：论文聚焦共享初始化专家的 task vector 合并干扰及其跨任务预测影响；导读准确区分了本任务蒸馏与其他任务上的基座行为匹配，未将参数更新相似性误作功能对齐，也未加入摘要外结论。"
+  },
+  {
+    "id": "1wicmAY2yv",
+    "titleZh": "预测与修复大语言模型的合并崩溃",
+    "summaryZh": "研究 task vector 平均为何导致模型合并崩溃，以跨专家方差度量干扰并预测风险，再提出按层干扰设定软阈值的 PRISM 修复合并结果。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "优化"
+    ],
+    "reason": "论文以合并前预测和修复破坏性合并为核心，将 task vector 的跨专家方差定义为干扰，并据此构造逐层软阈值算子 PRISM，直接属于模型合并方法与机制分析。",
+    "sourceFingerprint": "46c382132ad8fea674ca7f437a4f875a0ce451b2b6c58bb2fd1afd4d02c07690",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532335+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237942+00:00",
+    "reviewNote": "screening 和 annotation 忠实概括了 task vector 方差、干扰评分、预合并预测及 PRISM 逐层软阈值修复；摘要中的 working noise model、实验范围和方法作用未被错误扩展。"
+  },
+  {
+    "id": "2ExYT7uEiw",
+    "titleZh": "基于神经切线核的免训练数据混合优化",
+    "summaryZh": "研究无需训练目标 LLM 的数据混合选择；在 NTK 方向训练中近似稳定、可冻结时，将离散更新化为固定初始核的连续 logit 动力学，并用 ODE 预测轨迹排序候选混合。",
+    "subcategory": "训练动态",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文直接建模目标 LLM 在不同数据混合下的训练动力学，而非实证比较参数更新几何；在 NTK 方向近似稳定时以初始核冻结并求解固定核 ODE，用预测 logit 轨迹排序候选混合。",
+    "sourceFingerprint": "b081b62e6b8589addd5a14e0f68f6d13a5bd16f676296d6392bfe147f76061ce",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.237960+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237968+00:00",
+    "reviewNote": "原导读和依据省略了关键适用条件：固定核 ODE 仅在 NTK 方向训练中近似稳定、因而可以冻结时成立；screening 中“不同后训练条件”也应收窄为不同数据混合训练轨迹。"
+  },
+  {
+    "id": "2FwMbwx8XJ",
+    "titleZh": "LinMorph：学习变形 Softmax 权重以高效线性化视频 DiT",
+    "summaryZh": "研究视频 DiT 线性化的初始化瓶颈，提出 LinMorph 学习从 Softmax attention 参数到 GDN 参数的跨参数映射，再进行渐进蒸馏与联合恢复。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "视频",
+      "扩散",
+      "蒸馏",
+      "效率"
+    ],
+    "reason": "论文旨在通过把预训练 Video DiT 的 Softmax attention 转换为线性 GDN 来加速模型。LinMorph 学习共享的权重空间映射以改进转换初始化，并配合蒸馏恢复性能，核心目标是架构线性化与推理效率。",
+    "sourceFingerprint": "e104e0bba6629929e6dc4902b848ce30b32564829f77a97ed46b30fe489ead33",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532351+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237972+00:00",
+    "reviewNote": "screening 与 annotation 正确描述了 Softmax attention 到 GDN 的参数空间 morphism、初始化迁移、渐进蒸馏和恢复过程；明确是权重空间转换，没有混淆为功能空间对齐或跨模型功能等价。"
+  },
+  {
+    "id": "2T6AiGjLQ0",
+    "titleZh": "看见它、说出它、理清它：LLM 涌现失配的机制诊断与参数空间缓解",
+    "summaryZh": "研究窄域适配触发跨域安全失配的训练机制，以方向性 Hessian 曲率、safe/harmful 梯度重叠和 Grassmann 投影分析相关子空间，并干预参数更新。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性",
+      "优化"
+    ],
+    "reason": "摘要追踪 EM 训练轨迹中的二阶曲率和安全—有害梯度重叠，并将经验有害梯度子空间正交投影出参数更新；在 Qwen2.5-14B-IT 上报告自由生成 EM 抑制，其他三类模型则主要提供 teacher-forced 条件评估。",
+    "sourceFingerprint": "9a631d1d784b6096c858e8656f5acb61910fe1a682e6fca8b83a673ac288903e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.237980+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237985+00:00",
+    "reviewNote": "原 screening 将参数干预概括为验证普遍的“因果作用”略强；原导读也把 Grassmann 投影、梯度重叠和有害子空间定位混为单一证据。摘要支持的是训练轨迹诊断、经验有害梯度子空间干预，以及特定模型和 teacher-forced 条件下的抑制或控制。"
+  },
+  {
+    "id": "4C7KaZ5JSA",
+    "titleZh": "语言预训练塑造可泛化流形：跨模态迁移至时间序列的洞见",
+    "summaryZh": "研究语言预训练向时间序列的跨模态迁移：冻结状态的线性探针与检索显示已有时序结构，梯度和损失景观反映优化优势，低秩更新与子空间对齐显示微调复用既有方向。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "时间序列",
+      "泛化"
+    ],
+    "reason": "摘要将语言预训练形成可复用流形、微调进行低维对齐作为解释；线性探针和检索对应冻结表示中的既有时序结构，梯度与损失景观对应优化性质，低秩更新与子空间对齐对应微调复用方向。",
+    "sourceFingerprint": "4feb3b827690dedf4052327cbbf7370c464d72aac540dcb25871c4a9211465c3",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.237990+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237993+00:00",
+    "reviewNote": "原导读把线性探针、梯度和损失景观都直接表述为低秩对齐的证据，混合了冻结预训练表示的发现与微调几何；screening 中将 coherent gradients 直接归入复用方向也略宽。"
+  },
+  {
+    "id": "4Dg0z4hCoY",
+    "titleZh": "同族模型 On-Policy 蒸馏中能力迁移的缩放性质",
+    "summaryZh": "研究 RL 推理能力在同族 LLM 的 weak-to-strong、same-base 和 strong-to-weak OPD 中如何迁移，以学生相对初始化的 token-level 反向 KL ",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "强化学习",
+      "泛化"
+    ],
+    "reason": "论文比较同族模型的三类师生设置，发现早期 useful-transfer 区间中 gold score 与学生相对初始化的平方根反向 KL 近似线性，并用参数规模、教师分数等拟合峰值和斜率的幂律；结论不应扩展为跨架构迁移。",
+    "sourceFingerprint": "98461fa6d66c6c2e22dc1cdd1f8d5bd14a97c0485a012f76449b254ed90b2508",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.237996+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.237999+00:00",
+    "reviewNote": "annotation 基本准确，但遗漏了核心量是学生相对初始化的 token-level reverse KL 的平方根，并且 screening 的 cross-architecture-transfer 标签超出了摘要支持范围；摘要研究的是同族模型的 weak-to-strong、same-base 和 strong-to-weak OPD。"
+  },
+  {
+    "id": "4aRS4d3TRM",
+    "titleZh": "相似性并非功能对齐：时间序列—语言对齐必须确立什么",
+    "summaryZh": "研究时间序列—语言的表示相似是否足以证明功能对齐，提出 FA 区分对应、历史支持、预测创新与模型辅助，并揭示固定编码器度量的识别局限。",
+    "subcategory": "表征分析",
+    "tags": [
+      "时间序列",
+      "多模态",
+      "评估"
+    ],
+    "reason": "主问题是检索、CKA 等表示相似度能否支撑功能性对齐结论。论文形式化拆分四类对齐主张，证明固定编码器对应度量的识别限制，并用 ECA 和预测实验展示应按目标功能取证，因此主要属于表征分析。",
+    "sourceFingerprint": "1ed67b9de2254f553bb828f742ebb8fe50ca8b9541b3828d38ecd1a36aeb49e4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532367+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238001+00:00",
+    "reviewNote": "screening 和 annotation 准确区分了表示对应、历史支持、预测创新和拟合模型辅助，并保留了固定编码器相似度与功能对齐之间的识别限制；没有把 CKA 或检索相似误作功能空间等价。"
+  },
+  {
+    "id": "4ea7Fl9miO",
+    "titleZh": "Fireman 对阵 Jody：用于审计语言模型策略性欺骗的因果反事实镜像",
+    "summaryZh": "研究安全目标相反但数据匹配的 LoRA 兄弟模型之权重差，利用缩放、随机与打乱对照检验该方向编辑拒答并抵消共享微调损伤的机制。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性"
+    ],
+    "reason": "论文以数据匹配的兄弟模型构造权重差向量，并通过方向、幅度及对照实验分析其改变有害服从和抵消共享微调损伤的原因，重点是对安全行为的因果参数机制诊断。",
+    "sourceFingerprint": "5d53e0165b2101c58b43c2bb2e625ba0430d333011fffa79ecc26f374df11cfb",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532372+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238007+00:00",
+    "reviewNote": "screening 与摘要一致，准确限定为数据匹配的 LoRA 兄弟模型及同基座衍生模型；未把参数差向量误写成一般功能相似，也保留了方向、范数、共享损伤抵消及跨模型家族结果的条件。中文标题、导读、细类、标签和依据均无摘要外事实。"
+  },
+  {
+    "id": "4tYM5zUwfA",
+    "titleZh": "基于共激活几何的可认证跨字典特征匹配",
+    "summaryZh": "针对跨层、跨模型及微调前后的特征字典匹配，利用共享样本上的共激活关系与 Dowker 复形构造可认证的部分对应，并报告覆盖率和几何失真。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "可解释性",
+      "LLM"
+    ],
+    "reason": "主问题是如何为不同特征字典间的概念对应提供可审计证书；贡献以共激活关系、Dowker 复形、互相匹配及往返误差刻画对应关系，直接服务于模型内部特征解释与跨模型追踪，故归入机制可解释性。",
+    "sourceFingerprint": "50c8d1a077c828fd0000fb7f90e381d23c0b4ab1a83d5628e9e2720113027f7f",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532376+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238011+00:00",
+    "reviewNote": "screening 正确抓住跨层、跨模型及微调字典的功能特征匹配方法；annotation 准确描述共激活关系、Dowker 复形、部分对应、覆盖率和几何失真，未把方法验证范围夸大为全面微调实验。各字段忠实且无摘要外事实。"
+  },
+  {
+    "id": "58HFSAEi5m",
+    "titleZh": "超越参数空间冲突：物理约束流匹配的内在函数空间几何",
+    "summaryZh": "针对物理约束流匹配中分布保真与物理一致性的目标冲突，IGFM 在可实现的一阶函数变化上定义内在几何，并构造对局部可逆重参数化不变的共同下降方向。",
+    "subcategory": "物理与科学计算",
+    "tags": [
+      "流匹配",
+      "优化"
+    ],
+    "reason": "主问题是在物理约束生成建模中协调分布拟合与物理一致性；IGFM 以参数化不变的函数空间几何构造共同下降方向，并在多种物理与工程任务上验证，因此归入物理与科学计算。",
+    "sourceFingerprint": "8c3e874c38c113c6c8b1aa3489b58964739a0b9343dcb261e6976cf051afb9c4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532379+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238014+00:00",
+    "reviewNote": "screening 与摘要明确区分了参数化依赖的参数空间冲突和参数化不变的函数空间几何；annotation 准确保留了局部可逆重参数化不变、共同下降方向及物理任务背景，未泛化为通用模型结论。"
+  },
+  {
+    "id": "5KSCbMSCPq",
+    "titleZh": "重新审视 On-Policy 蒸馏中的相对策略差异迁移",
+    "summaryZh": "研究哪些相对策略差异能为 OPD 提供有效监督，将专家与参考策略的对数概率比解释为隐式奖励，并分析其向不同目标模型迁移的条件。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "强化学习",
+      "泛化"
+    ],
+    "reason": "主问题是 OPD 中由 RL、SFT 或模型规模形成的策略差异何时能够跨模型迁移；论文以对数概率比统一表述监督信号并刻画成功迁移条件，属于后训练与对齐。",
+    "sourceFingerprint": "51ae50f584fb19e0e0c4b2fddb660e79435133b30df4eca59ba97cbc638f8782",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532383+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238019+00:00",
+    "reviewNote": "screening 和 annotation 正确将对数概率比作为功能性监督信号，未混淆参数相似与策略差异；同时保留了 RL、SFT、模型规模及目标模型迁移的条件性，未声称所有差异都能迁移。"
+  },
+  {
+    "id": "5PAOoijzpq",
+    "titleZh": "大语言模型微调中的人工纠缠",
+    "summaryZh": "研究 LoRA 与全量微调的参数结构差异，引入人工纠缠熵刻画投影矩阵更新，并比较内部参数纠缠与注意力输出纠缠的规律。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "效率"
+    ],
+    "reason": "论文用量子信息启发的纠缠熵分析 LoRA、FFT 和 MPS Adaptation 的参数更新及注意力表示，重点比较内部参数结构与外部表示结构，因此主要归入表征分析。",
+    "sourceFingerprint": "f4fe09ba5404638d1fe83f10d094df0291c76e750490b769c831c9b4c94cd953",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532387+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238022+00:00",
+    "reviewNote": "annotation 清楚区分了 LoRA 与全量微调的内部参数纠缠，以及注意力矩阵中的外部表示纠缠；screening 未把参数空间差异误写成必然的输出或能力差异，且保留了 no-hair 结论的实验语境。"
+  },
+  {
+    "id": "5Pmp369KYw",
+    "titleZh": "新的 LoRA 技能应当只读而永不写入",
+    "summaryZh": "研究独立 LoRA 适配器组合时的技能干扰，提出 READ 将更新规范化为平衡形式，并让新技能只读取旧技能输入子空间而不写入其输出子空间。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "效率"
+    ],
+    "reason": "核心问题是如何把多个独立训练的 LoRA 更新组合成单一模型并保留旧技能；READ 通过规范化因子坐标和单向子空间耦合控制适配器交互，属于模型合并。",
+    "sourceFingerprint": "4b540d7ec4ab9d073f4f08cbf1f53f02d94481beb4a93e2789aa27791feb4e62",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532390+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238026+00:00",
+    "reviewNote": "screening 准确聚焦 LoRA 合并中的等价因子分解、耦合方向和输入/输出子空间约束；annotation 忠实描述 READ 的平衡规范化与只读耦合，没有加入摘要外的训练或架构结论。"
+  },
+  {
+    "id": "65zGyE9xMN",
+    "titleZh": "MapPerturb：紧凑 GNN 适应中的维数与方向",
+    "summaryZh": "针对低维权重映射的坐标数无法刻画可实现预测变化的问题，MapPerturb 以预训练锚点附近的固定仿射映射参数化更新，并分离可达响应空间维数与目标方向对齐。",
+    "subcategory": "图学习",
+    "tags": [
+      "图学习",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文研究 GNN 的低维参数高效适应，核心贡献是区分更新坐标数、可达中心化 logit 响应空间及其目标对齐，并在多个图任务上比较不同映射方向，故主要归入图学习。",
+    "sourceFingerprint": "e3321a8c3749912d4cf538a633c1471d12353adc8fc44ac7762ae399a2ef9687",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532395+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238029+00:00",
+    "reviewNote": "screening 与 annotation 正确区分更新坐标数、可达响应空间维数和目标响应方向对齐，未将参数子空间维度等同于功能变化；GNN 对象、图任务范围及方法定位均符合摘要。"
+  },
+  {
+    "id": "6DWjm5NlFl",
+    "titleZh": "用于扩散模型对齐的 Fisher 信息及其时间分解",
+    "summaryZh": "研究偏好答案如何改变扩散模型输出分布，构造终端势更新的方向性 Fisher 信息及时间分解，并据此选择查询和分析更新信息的生成时序。",
+    "subcategory": "偏好学习",
+    "tags": [
+      "扩散",
+      "对齐",
+      "优化"
+    ],
+    "reason": "论文围绕有限比较标签下的扩散模型偏好对齐，以方向性 Fisher 信息衡量候选查询引起的分布更新，并用于 DPO 查询选择；时间分解进一步解释该更新在生成过程中的显现，故归入偏好学习。",
+    "sourceFingerprint": "0fc6dcf341cfac920f9c2cdffd0f43fce4eec13a9c31e1ed820eeb3bba44c008",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532398+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238033+00:00",
+    "reviewNote": "screening 与 annotation 准确描述扩散模型偏好学习中的输出分布更新、方向性 Fisher 信息及时间分解，并保留查询选择和 DPO 的条件；未扩展为跨架构或普适后训练结论。"
+  },
+  {
+    "id": "6U0AAf5TOQ",
+    "titleZh": "超越困惑度：低秩预训练的几何与谱研究",
+    "summaryZh": "针对困惑度不足以比较低秩与全秩预训练解的问题，BASIN 联合分析损失景观、检查点插值、权重及更新谱和激活相似性，并考察后训练适应差异。",
+    "subcategory": "预训练",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "主问题是低秩预训练是否到达与全秩训练相似的解；BASIN 从损失景观、模式插值、谱结构和激活四方面系统比较多种低秩方法，研究主体仍是 LLM 预训练过程与所得模型。",
+    "sourceFingerprint": "e43264d772b4233dbf3f6cae110b8ed9e7f2f1e6e2866672cf873208bff5d4cb",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532402+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238036+00:00",
+    "reviewNote": "screening 与摘要一致：主体是低秩预训练，后训练仅作为适应性分析；annotation 准确区分损失景观、检查点插值、参数谱/更新谱与激活相似性，未混淆参数空间、对齐后相似性和功能空间相似性。标题、导读长度、预训练细类、LLM/优化/效率标签及依据均忠实，无摘要外事实。"
+  },
+  {
+    "id": "6XdN8dldnU",
+    "titleZh": "相同适配器函数，不同 GRPO 动力学：LoRA 优化中的因子尺度混淆",
+    "summaryZh": "研究函数等价的 LoRA 因子尺度为何改变优化轨迹，并用标量规范、冻结 rollout 对照及互易学习率比较 GRPO 与 SFT 的尺度敏感性。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化"
+    ],
+    "reason": "函数保持的 LoRA 重参数化仍会因优化器分别更新两个因子而产生不同轨迹；论文以对照实验和互易学习率定位并缓解这一优化器层面的尺度混淆，故归入优化器与收敛。",
+    "sourceFingerprint": "98e1739fc2d54a9363784019f3e32f55c32f1b6a5d4ccaf02c4357723c1efd61",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532407+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238040+00:00",
+    "reviewNote": "screening 准确抓住函数保持的 LoRA 因子重参数化、参数更新轨迹及 GRPO/SFT 对照。annotation 明确这是优化器层面的参数坐标混淆，而非功能不等价；冻结 rollout、互易学习率和尺度敏感性均有摘要依据。标题、导读、优化器与收敛细类、标签和依据均合适。"
+  },
+  {
+    "id": "6jlUDG5lH9",
+    "titleZh": "能投影到多低维？内在维度的神经切线核理论",
+    "summaryZh": "针对随机低维子空间训练何时保留宽网络功能的问题，论文结合 NTK 与 Johnson–Lindenstrauss 引理给出临界维数及匹配下界，并刻画低于样本数时的核秩亏。",
+    "subcategory": "表达能力",
+    "tags": [
+      "优化",
+      "效率"
+    ],
+    "reason": "主问题是受限参数子空间能够保留多少原网络的训练行为；论文证明保持 NTK 所需的临界投影维数，给出不可改进的下界，并说明维数不足时可实现误差下降受限，因此归入表达能力。",
+    "sourceFingerprint": "bdde7641df1dca6c049d4899fc41bf271314d48052ede61712a53fe6138763ba",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532411+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238044+00:00",
+    "reviewNote": "screening 忠实概括 NTK 在随机低维参数子空间中的保持条件及理论界。annotation 将参数子空间投影与训练核/功能行为区分开来，准确保留临界维数、匹配下界和 d=N 以下的核秩亏结论；标题、导读、表达能力细类、标签和依据均无摘要外扩展。"
+  },
+  {
+    "id": "6p7Bb6itb3",
+    "titleZh": "天气基础模型中的低损失时间连通性",
+    "summaryZh": "研究固定预测步长的天气模型如何生成中间时距预报，通过比较表示并线性插值 3 小时与 6 小时模型权重，刻画低损失连通性的适用边界。",
+    "subcategory": "气候与地球科学",
+    "tags": [
+      "时间序列",
+      "效率"
+    ],
+    "reason": "主问题是天气基础模型能否通过权重空间连通性生成未单独训练的中间预测时距，贡献是以 CKA 和线性权重插值验证效果及局部边界，故归入气候与地球科学。",
+    "sourceFingerprint": "ea3fc6847b244bd8e5e4324b36b1a3a7f9c5f1b5c823b8c453b31574312b26c6",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532414+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238048+00:00",
+    "reviewNote": "screening 正确聚焦 3–6 小时检查点的局部权重空间连通性、CKA 表示相似性和线性权重插值，并明确跨架构结果是复现而非更新迁移。annotation 未把参数空间插值误写成功能空间等价，且保留了适用边界；标题、导读、气候与地球科学细类、标签和依据均忠实。"
+  },
+  {
+    "id": "6usIPvzDy9",
+    "titleZh": "Transformer 在子空间而非单元上对齐：旋转感知的模型合并",
+    "summaryZh": "针对 Transformer 合并中仅按神经元置换对齐无法表达连续旋转的问题，RaOT 联合求解注意力头对应与头内旋转，并以保均值 Procrustes 映射对齐残差流。",
+    "subcategory": "模型合并",
+    "tags": [
+      "优化",
+      "最优传输"
+    ],
+    "reason": "主问题是模型合并前如何在 Transformer 的真实对称群下对齐权重；RaOT 将注意力子空间旋转、头匹配和残差流的保均值旋转纳入对齐，并用于分析合并障碍，故归入模型合并。",
+    "sourceFingerprint": "35cb938332821b212918dd7b1f57c24bdd7b0b2788c11a126d401b3b458e544d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532418+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238051+00:00",
+    "reviewNote": "screening 与摘要一致地强调 Transformer 的连续旋转对称、商空间及 Procrustes/RaOT 对齐局限。annotation 准确区分置换/传输对齐与子空间旋转对齐，未夸大为通用合并性能结论；标题、导读、模型合并细类、优化和最优传输标签及依据均有摘要支持。"
+  },
+  {
+    "id": "7TaBtjkOfN",
+    "titleZh": "面向 LLM 强化学习的路径增长与迁移",
+    "summaryZh": "研究如何跨模型复用 RL 获得的计算，通过冻结骨干并逐层新增独立注意力与前馈路径，使其可迁移到结构兼容模型后快速适配。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "推理",
+      "效率"
+    ],
+    "reason": "论文将 RL 学得的注意力与前馈计算显式封装为可迁移路径，并在兼容骨干间复用和快速适配，核心贡献是跨模型迁移后训练所得能力，故归入迁移与元学习。",
+    "sourceFingerprint": "9e0d2a090d51dd9267c74ff7d1dcd26d789a109e99752a72472e92a9fcab8ee9",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532421+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238054+00:00",
+    "reviewNote": "screening 正确识别 GrowRL 将 RL 更新隔离为逐层注意力和前馈路径，并在结构兼容骨干间迁移。annotation 保留了冻结预训练骨干、路径迁移和后续适配等条件，未将跨模型迁移泛化为任意架构迁移；标题、导读、迁移与元学习细类、标签和依据均忠实。"
+  },
+  {
+    "id": "7TlYUWak6o",
+    "titleZh": "ISO：原生面向 RLVR 的优化栈",
+    "summaryZh": "研究 RLVR 如何在继承基座权重谱时获得新行为，并提出 ISO：固定奇异值、优化输入输出奇异框架，用于在线训练与无数据专家合并。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化",
+      "效率"
+    ],
+    "reason": "主问题是奖励反馈如何转化为具有谱结构的权重更新；ISO 固定基座谱并直接优化奇异框架，同时给出在线优化器和离线合并实例，故归入优化器与收敛。",
+    "sourceFingerprint": "77e6c300608839d1076180a2334124d622436ecff82e66ad4af624876b50498d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532425+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238058+00:00",
+    "reviewNote": "screening 准确概括 RLVR 的谱继承与输入/输出奇异框架更新。annotation 明确固定基座谱、优化奇异框架，并区分在线 ISO-Optimizer 与无数据 ISO-Merger；未把谱相似误写成功能等价，也未遗漏无数据和共享基座条件。标题、导读、优化器与收敛细类、标签及依据均合适。"
+  },
+  {
+    "id": "7hs0vjh7L4",
+    "titleZh": "以小训大：高效 LLM 后训练的优化侦察",
+    "summaryZh": "研究小模型 RL 能否替代大模型完整训练，OptScout 以低秩梯度探测和跨划分一致性筛选迁移优化方向，再经前向奖励选择后一次更新目标模型。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "推理",
+      "效率",
+      "优化"
+    ],
+    "reason": "OptScout 从小模型 RL 中提取优化信号，将其转换为目标模型专属的低秩更新方向并跨规模迁移，核心是以源模型学习结果指导目标模型适配，故归入迁移与元学习。",
+    "sourceFingerprint": "bf959dd3056ea5b7f40bd981c7297f1fa0771f6c0e3c9b6e5cbb1116ada89de9",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532428+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238061+00:00",
+    "reviewNote": "screening 和 annotation 均准确描述从小模型 RL 提取优化信号、经低秩梯度探测和一致性筛选形成目标特定方向，再对大模型进行一次更新。保留了跨规模、前向奖励选择和一次应用等条件，未加入摘要外机制；标题、导读、迁移与元学习细类、标签和依据均忠实。"
+  },
+  {
+    "id": "8iTqrW1sxY",
+    "titleZh": "方向稳定，效果不同：跨精度的干预保真度",
+    "summaryZh": "针对量化后方向级表示相似却未必保持激活干预效果的问题，论文定义跨精度干预保真度及有符号差距，并发现一阶局部功能敏感性可较好追踪该差距。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文比较原生精度与量化精度间的激活 steering 转移，指出方向级表示相似并不保证干预效果一致；核心是定义有符号干预保真度差距，并用一阶局部功能敏感性及冻结校正改善效果重建，属于机制可解释性。",
+    "sourceFingerprint": "c3264ebbb633226b304975c5e9ac340031ecef01014723e88cfa17181b0150d4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238066+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238069+00:00",
+    "reviewNote": "screening 的方法相关性判断基本忠实，明确区分了方向对齐与功能敏感性；但中文标题将 model precision 误写为“跨模型精度”，导读也未充分强调是方向级表示相似而非参数空间相似，且标签“量化”不在给定标签枚举中。"
+  },
+  {
+    "id": "8khpAoXGXh",
+    "titleZh": "神经网络合并与剪枝的误差分解",
+    "summaryZh": "针对剪枝和模型合并等逐层线性压缩，论文将局部压缩误差精确分解为特征丢失造成的重构误差与压缩操作和非线性不对易造成的交换误差，并传播以估计输出偏差。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "效率"
+    ],
+    "reason": "主问题是解释并预测剪枝和模型合并等逐层线性压缩造成的输出偏差；重构误差与压缩操作和非线性不对易产生的误差分解，以及闭式解码器拟合，都围绕压缩机制展开，故归入效率与压缩。",
+    "sourceFingerprint": "05492a13aaa1f0b1ab26c3db11a6d18f9e1c9b0b06a47d20fcfffedba214df74",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238072+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238075+00:00",
+    "reviewNote": "screening 对其作为模型压缩与功能输出偏差分析工具的定位基本准确。中文导读将 commutation error 表述为“非线性换序误差”，容易误解为操作顺序交换；应明确其含义是压缩操作与网络非线性不对易造成的误差。"
+  },
+  {
+    "id": "9qQXoDdKLb",
+    "titleZh": "从模式连通性视角研究集成式价值强化学习",
+    "summaryZh": "针对价值强化学习的输出集成推理成本随成员数增长的问题，论文分析 Q 网络的模式连通性与失效条件，并用 Q-Soup 将多个网络权重平均为单一模型。",
+    "subcategory": "模型合并",
+    "tags": [
+      "强化学习",
+      "优化"
+    ],
+    "reason": "论文的核心贡献是阐明多个已训练 Q 网络何时可在线性参数路径上连接，并据此通过 Q-Soup 进行权重平均、将集成压缩为单一推理模型，因此主要归入模型合并。",
+    "sourceFingerprint": "f2bce15d66506683bf2ad229af6aa0acd5fac6beb413d860445659262cf0e841",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532438+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238077+00:00",
+    "reviewNote": "screening 准确定位为参数空间模式连通性与权重平均的方法参考，没有把它误写成功能空间等价结论；标题、导读、模型合并细类和强化学习/优化标签均忠实，保留了线性连接可能失效的条件。"
+  },
+  {
+    "id": "A04pxSDaxO",
+    "titleZh": "先重参数化，再提取：面向知识迁移的免训练谱预条件",
+    "summaryZh": "针对预训练权重难以跨模型尺寸直接复用的问题，SPA 在置换等价类内进行深度二分匹配与宽度锚定联合置换，以提高低频谱能量并支持可变尺寸初始化。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "优化",
+      "效率"
+    ],
+    "reason": "主问题是如何从预训练模型提取可跨尺寸迁移的任务无关知识；SPA 通过保持函数不变的置换重参数化改善频域提取，再用于可变尺寸模型初始化，故归入迁移与元学习。",
+    "sourceFingerprint": "66b033976087e5406c6b5bc504edf22583f2135eb0040cec775b506fbe747b19",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532442+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238085+00:00",
+    "reviewNote": "screening 正确描述了置换等价重参数化、深度匹配和宽度联合置换，未混淆参数重排与函数改变；标题、导读、迁移与元学习细类及标签均符合摘要，性能数字未被无依据扩展。"
+  },
+  {
+    "id": "A2ld1Uumeh",
+    "titleZh": "正交却耦合：解耦模型合并中的几何分量",
+    "summaryZh": "研究整体任务向量统计导致的跨分量耦合，DiGA 以预训练权重为参照正交分解几何分量，在各子空间独立合并后重组更新。",
+    "subcategory": "模型合并",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文直接处理任务向量合并中的异质几何与跨分量耦合，贡献是正交分解、分量独立聚合再重组的 DiGA 框架，故归入模型合并。",
+    "sourceFingerprint": "e69aa459cafc94a0e2e38d369a7448592f328670200fc61f806c2c6e9286f2d6",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532445+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238088+00:00",
+    "reviewNote": "screening 和 annotation 均准确围绕任务向量内部几何分量、正交分解、分量独立聚合及重组更新展开，未将参数更新几何误称为功能空间相似；模型合并细类和优化标签恰当。"
+  },
+  {
+    "id": "A5IiTiMwPj",
+    "titleZh": "预测模型合并何时优于回退至初始化",
+    "summaryZh": "研究模型合并何时优于等距离回退初始化，提出匹配的回归祖先对照，并在两个任务向量张成的平面内推导无拟合参数的预测判据。",
+    "subcategory": "模型合并",
+    "tags": [
+      "评估",
+      "优化"
+    ],
+    "reason": "主问题是合并相较回退共同初始化是否真正有益，贡献是匹配回归祖先基线及基于任务向量平面的预测不等式，直接服务于合并方法的判断与评估，故归入模型合并。",
+    "sourceFingerprint": "ad8c50e611f9e5d225cdbb9deb94d163d86a04394fb4571c9be7000c09e4b97a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532450+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238091+00:00",
+    "reviewNote": "screening 准确保留了合并与回退共同初始化的比较条件及任务向量平面判据；标题、导读、模型合并细类和评估/优化标签均忠实，没有把结论泛化为合并总是优于回退。"
+  },
+  {
+    "id": "AB6PmbIwRD",
+    "titleZh": "RoKA：用于跨宽度隐藏状态蒸馏的鲁棒知识对齐",
+    "summaryZh": "研究宽教师与窄学生的隐藏维度不匹配问题，RoKA结合固定、学习式和谱对齐算子与 Student-t 式径向惩罚，降低算子诱发的大残差对优化梯度的影响。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "对齐",
+      "优化"
+    ],
+    "reason": "论文核心是跨宽度隐藏状态蒸馏中的表示对齐几何与残差优化，比较固定、学习式和谱对齐算子，并用鲁棒径向惩罚调节大残差的梯度影响；其主要主题是知识迁移与表示对齐，而非压缩效率。",
+    "sourceFingerprint": "7e883ad7966d0578fe3263a6a8e5851d7010eab2e0a6d48cc20893ac54c95300",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238095+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238098+00:00",
+    "reviewNote": "screening 作为跨宽度隐藏状态蒸馏的方法参考基本相关，但“功能表示对齐接口”应限于隐藏状态表示对齐，不能直接等同于函数空间等价。annotation 的主要问题是将蒸馏与表示对齐归入“效率与压缩”，且“蒸馏”不在标签枚举中。"
+  },
+  {
+    "id": "AHJW5xjbVq",
+    "titleZh": "非线性低秩模型中基于梯度的秩一恢复局部理论",
+    "summaryZh": "研究非线性低秩模型中梯度能否揭示下一秩一方向，并在Gaussian Leaky-ReLU师生模型中建立残差代理、单阶段恢复与多阶段误差界。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文围绕序贯秩一更新的梯度恢复机制，证明总体梯度与当前残差的关系，并分析采样误差、谱间隔和累积漂移对恢复的影响，属于优化与收敛理论。",
+    "sourceFingerprint": "61cf8fb8e44707e67873f97d7a8b514a60890fe6796e46d6783c21f9503b3316",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532458+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238100+00:00",
+    "reviewNote": "screening 正确说明这是单层非线性师生模型中的序贯秩一 LoRA 理论，而非大模型后训练实证；annotation 准确涵盖残差代理、采样误差、谱间隔和多阶段恢复，优化器与收敛细类及优化标签恰当。"
+  },
+  {
+    "id": "ALSVgwNzLI",
+    "titleZh": "为 LLM 建立秩序：李括号虽缺失但可训练",
+    "summaryZh": "研究预训练与指令微调模型是否表征 SO(3) 群元素及李括号；LoRA 非阿贝尔组合微调可安装元素解码和部分括号结构，并显示结构保真度与行为增益并不一致。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文区分群元素表示、李代数表示及行为使用，比较预训练、指令微调和LoRA后的模型，并发现括号保真度不预测行为增益；同时指出跨模型解码、对齐迁移和顺序交换统计量的正值可由其构造机制强制产生，核心是辨析表示结构与行为的机制关系。",
+    "sourceFingerprint": "1780e8fd0a44b94505b290e491cad9d2cc5e8d4a4b18ef508083ac67c7927e6b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238104+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238107+00:00",
+    "reviewNote": "screening相关性判断基本准确；但摘要描述的是统计量因共享监督、等变保真度或BCH恒等式而被强制为正，并非一般意义上的因果检验。"
+  },
+  {
+    "id": "AoBpLhdXID",
+    "titleZh": "跨领域整合 RLVR 能力：融合范式的深入剖析",
+    "summaryZh": "研究如何整合跨领域 RLVR 专家能力，在共享专家与数据下比较任务向量合并、混合 RL 和多教师在线策略蒸馏，并关联领域差异与任务向量几何。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "蒸馏",
+      "优化"
+    ],
+    "reason": "论文以任务向量 Merge 为核心融合范式之一，在统一条件下与 Mix RL、MOPD 比较，并用任务向量几何解释领域差异；主问题是多专家能力的融合，故归入模型合并。",
+    "sourceFingerprint": "b4f9b9379a93122b65d6b4e559bea6a4f36292a64bb051b77f947daccf1de616",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532464+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238109+00:00",
+    "reviewNote": "screening准确覆盖三种RLVR融合范式及其比较；annotation忠实保留共享专家与数据、任务向量几何、蒸馏和条件化实践建议，未混淆参数空间与功能空间，也未加入摘要外事实。"
+  },
+  {
+    "id": "AyanNhokLJ",
+    "titleZh": "参数空间对称性的神经切线核视角",
+    "summaryZh": "研究保持输出不变的参数对称变换如何影响优化，以NTK证明最大化梯度范数等价于最大化核与网络的对齐，并证明变换保持NTK极限。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化"
+    ],
+    "reason": "核心贡献是用NTK解释参数空间对称变换加速训练的机制，将梯度范数最大化联系到核对齐与优化速率，并证明NTK极限保持，因此归入优化器与收敛。",
+    "sourceFingerprint": "56dfb225406196cdd0ea8dc010a5da400e1529f703dabedc4ca54a1ba05ffcd1",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532467+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238113+00:00",
+    "reviewNote": "screening准确定位参数空间对称、NTK、梯度范数与优化速率的理论关系；annotation明确区分输出不变的参数对称与NTK对齐，分类和标签均有摘要依据。"
+  },
+  {
+    "id": "BFY37xuyd1",
+    "titleZh": "擦除非加性残差不足以修复过度缩放的模型合并",
+    "summaryZh": "研究任务算术过度缩放失败与非加性残差的关系，通过逐层账本追踪残差传递和再生成，并以持续擦除干预检验其能否恢复代码评测表现。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "可解释性",
+      "评估"
+    ],
+    "reason": "论文追踪模型合并中非加性残差的层间传递、再生成及方向效应，并通过完整或部分持续擦除检验其对代码得分和专家参考似然的影响；结果显示完整擦除在所测配置中不足以修复失败，核心是内部状态与行为结果的机制联系。",
+    "sourceFingerprint": "73357975a70810f0028b450a38b58aa593822e11ae8cb0a38b5ac7d4378a2907",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238117+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238119+00:00",
+    "reviewNote": "screening和中文语义基本忠实；但摘要未明确说明研究对象是LLM，仅称模型并报告1.5B/7B规模，因此删除无直接摘要依据的LLM标签。"
+  },
+  {
+    "id": "BmVmnQXR1A",
+    "titleZh": "遗忘的热带几何视角：用于知识保持微调的逐单元投影器",
+    "summaryZh": "针对语言模型微调遗忘，论文以 ReLU 层的热带几何推导门控感知的逐单元投影器，并按各单元开放 token 的秩刻画精确保护代价。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "优化",
+      "可解释性"
+    ],
+    "reason": "主问题是在学习新文本时如何减少已有行为的遗忘；贡献是利用 ReLU 门控划分和热带几何建立输出变化恒等式，据此构造逐单元保护投影，并比较其与共享子空间约束的秩代价，故归入持续学习。",
+    "sourceFingerprint": "43c6726815e00a344d106da287840765ae2477f8704396348db51b3f099125f4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532474+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238122+00:00",
+    "reviewNote": "screening准确覆盖热带几何、逐单元门控投影、秩代价及遗忘实验；annotation忠实描述开放token分区和知识保持目标，分类与标签均未超出摘要。"
+  },
+  {
+    "id": "CDCbGzutM3",
+    "titleZh": "模型合并中的谱分量需要不同系数",
+    "summaryZh": "针对正交化后合并模型仍偏离任务专家的问题，论文在固定的任务结构正交基中，用无标签校准输入匹配专家预测并逐分量学习谱系数。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "多模态",
+      "优化"
+    ],
+    "reason": "主问题是保留方向已跨任务正交时，合并模型为何仍与专家预测不一致；方法保持谱方向固定，为各任务和层的谱分量分别学习系数，直接服务于多专家模型合并。",
+    "sourceFingerprint": "7e50460e3a21c8d4dd11989d375333b878604cae610d6560830231439183746c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532477+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238125+00:00",
+    "reviewNote": "screening准确概括固定谱方向下逐分量学习系数并匹配专家预测；annotation保留了无标签校准、CLIP与Llama实验及模型合并主线，标签有摘要依据。"
+  },
+  {
+    "id": "CO2wRidPwt",
+    "titleZh": "随机但有结构：RLVR 下的推理分支选择动态",
+    "summaryZh": "为刻画 RLVR 中推理分支的演化，论文将训练轨迹投影至可解释行为状态空间，并从同一状态受控续训以分析随机性、方向记忆与长期分化。",
+    "subcategory": "训练动态",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "推理",
+      "可解释性"
+    ],
+    "reason": "论文研究 RLVR 优化过程中行为分支概率如何随训练演化，并通过固定训练状态的独立续训区分可复现结构与随机分叉；核心贡献是对状态依赖的分支选择动态进行刻画，故归入训练动态。",
+    "sourceFingerprint": "71ec29084551c01febe736e4b4707d00db5f70e368ae4ac275d3bf2ea6ac0108",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532481+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238128+00:00",
+    "reviewNote": "screening准确对应RLVR行为分支概率在功能状态空间中的动态；annotation保留随机性、短程方向记忆、长期分化和状态依赖性，未把相关描述夸大为确定因果结论。"
+  },
+  {
+    "id": "CTOWnmnRI1",
+    "titleZh": "任务奇异向量迈向功能空间：数据度量下的模型合并",
+    "summaryZh": "针对参数空间正交方向仍可能产生激活重叠的问题，F-TSV 用少量无标签样本估计数据诱导度量，据此选择低秩任务子空间并实施跨任务正交化。",
+    "subcategory": "模型合并",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文指出参数空间中的正交方向仍可能在模型激活上重叠，并以无标签数据估计的功能度量同时选择任务低秩子空间和跨任务正交性；核心贡献是用数据诱导度量改进模型合并，而非自监督训练或多模态建模。",
+    "sourceFingerprint": "d350ab0803c8e112ef556e36e9d5712890d860375a52a3313ab5d5ee5c0fede3",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238133+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238136+00:00",
+    "reviewNote": "screening和标题、导读正确区分参数空间正交与数据诱导功能度量；但摘要只说明使用无标签样本和跨视觉、GLUE及生成式基准，并未声明自监督方法或多模态模型，删除这两个标签。"
+  },
+  {
+    "id": "CkDok4kcqX",
+    "titleZh": "回到权重：通过训练轨迹外推实现免训练模型增强",
+    "summaryZh": "针对余弦学习率衰减使微调过早停步的问题，TrajectoryForge 仅用起止检查点，沿总训练方向施加逐矩阵随机缩放并外推模型参数。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "优化"
+    ],
+    "reason": "论文关注微调终点之后是否仍存在可利用的下降方向；其贡献是从起止检查点提取聚合训练方向并进行免梯度外推，同时用 Hessian 谱分析显示该方向的损失地形结构，属于后训练模型增强。",
+    "sourceFingerprint": "69fe65189c83d6a867b156bcea778ce0c0e2299f8b6424ad55aff63bd056d44b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238140+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238143+00:00",
+    "reviewNote": "标题、导读和主细类基本忠实；但摘要只有 HumanEval 评测，并非代码任务研究，将“代码”列为主题标签会误导。Hessian 分析显示有利几何结构，但不宜表述为已充分解释因果机制。"
+  },
+  {
+    "id": "CxkbgW7lIf",
+    "titleZh": "总体相似性使表征对齐比较具有统计依据",
+    "summaryZh": "研究小样本表征相似度能否反映总体对齐，建立TSI、QSI与CKA-RBF的总体极限、一致性和无分布尾界，并据此构造单侧检验。",
+    "subcategory": "评估方法",
+    "tags": [
+      "评估"
+    ],
+    "reason": "主问题是有限样本相似度分数能否可靠比较表征对齐，贡献包括总体相似性的定义、多个指标的一致性与有限样本界，以及可操作的显著性检验，属于评估方法。",
+    "sourceFingerprint": "54fe306f9ef16265e9eba99bded43673357163972554e15a320d820a0cd8530d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532493+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238146+00:00",
+    "reviewNote": "标题和导读准确概括总体相似性的定义、TSI/QSI/CKA-RBF 的一致性与无分布尾界，以及单侧检验；未混淆参数空间相似与表征功能空间相似，也未加入摘要外事实。主细类和“评估”标签匹配。"
+  },
+  {
+    "id": "DMczRQpvPK",
+    "titleZh": "超越提示数量：数据如何塑造同策略蒸馏中的迁移",
+    "summaryZh": "论文研究提示数量、来源和选择如何影响不同教师—学生组合的 OPD 迁移，并比较参数与功能变化；在延续配对中，教师对齐的预测变化可与较弱参数对齐并存。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "对齐"
+    ],
+    "reason": "主问题是 OPD 的迁移效果如何受提示支持、教师—学生配对和目标任务共同影响；论文比较不同数据选择，并报告功能对齐在支持集和目标任务间变化，且仅在延续配对中观察到教师对齐预测变化可与较弱参数对齐并存。",
+    "sourceFingerprint": "f10a5b77fc9df19c0faf064e8bc2d756c27c26d824c427c476466291b39b7f26",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238151+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238154+00:00",
+    "reviewNote": "主题定位正确，但摘要将“功能对齐与较弱参数对齐并存”限定在 continuation pairs；screening 和原导读未明确保留这一条件，且摘要只说 cross-model settings，不能扩展为一般跨架构结论。"
+  },
+  {
+    "id": "DTdEyPltJX",
+    "titleZh": "重新审视基于奖励的扩散模型后训练中的无分类器引导",
+    "summaryZh": "针对 CFG 推理增益与强引导采样削弱后续学习的错位，论文由条件—无条件残差构造局部奖励坐标，并以 FANFT 融合方向信用与全局样本信用。",
+    "subcategory": "扩散与流匹配",
+    "tags": [
+      "扩散",
+      "强化学习",
+      "对齐",
+      "优化"
+    ],
+    "reason": "主问题是 CFG 在奖励驱动扩散后训练中应如何提供有效学习方向；论文以条件—无条件残差组织局部奖励查询，并通过 FANFT 将局部方向信息写入参数更新，研究对象和方法均以扩散模型为核心。",
+    "sourceFingerprint": "99842ac91fae7b43bcab4bc5304f2faa396e70f7167331775b49f4d086a6c7f1",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532499+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238156+00:00",
+    "reviewNote": "导读准确保留了 CFG 推理与学习之间的错位、条件—无条件残差构造局部奖励坐标，以及 FANFT 融合局部方向信用和全局信用；“扩散与流匹配”及各标签均与摘要一致。"
+  },
+  {
+    "id": "E6rUI8kcgu",
+    "titleZh": "传递中丢失的信用：验证器引导的 LLM 后训练中的优化器几何",
+    "summaryZh": "在 Qwen2.5-7B 低秩适配的局部审计中，论文比较等范数原始下降步与 AdamW 位移的行为对齐和有限步实现；原子分析提示二阶矩预条件可能参与其中。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "优化",
+      "对齐"
+    ],
+    "reason": "论文在受控局部审计中比较相同梯度和参数位移范数下的原始下降步与 AdamW 更新，发现行为对齐和有限步实现存在差异；原子组件分析提示自适应二阶矩预条件可能参与，但组合审计的相应复制尚待验证。",
+    "sourceFingerprint": "8a23bd13958c070a906ad37dd38a13424779b199c5e6ead72416859a2a937f46",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238161+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238163+00:00",
+    "reviewNote": "标题、比较对象和局部审计设定基本准确；但原导读把二阶矩预条件写成已造成整体几何失真。摘要仅称原子组件分析对此有提示，组合审计的复制仍待完成，且明确限制为局部发现。"
+  },
+  {
+    "id": "EAPLudodCg",
+    "titleZh": "DESA：用于合并强化学习专家的交付能量谱分配",
+    "summaryZh": "针对 RLVR 专家更新稀疏且能量异质导致的合并失衡，DESA 在共享谱框架中显式重分配专家交付能量，并以预算均衡和保留下限保护敏感能力。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "多模态",
+      "强化学习",
+      "优化"
+    ],
+    "reason": "主问题是为监督微调设计的合并方法不能适应 RLVR 任务向量的低精度稀疏性和专家间能量异质性；DESA 通过共享谱框架、预算均衡与保留下限重新分配能量，直接解决强化学习专家合并。",
+    "sourceFingerprint": "53876e8714c010e180e638f18009d944ab47063ba525802853fad4d6490ea0b5",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532506+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238166+00:00",
+    "reviewNote": "标题、导读和理由忠实概括了 RLVR 更新的低精度表观稀疏性、专家间能量异质性、共享谱框架、预算均衡和保留下限；未把合并效果泛化到摘要之外。主细类和标签匹配。"
+  },
+  {
+    "id": "ENSNzYRyqX",
+    "titleZh": "WINR：权重空间的神经隐式表示",
+    "summaryZh": "研究如何摆脱手工复制规则扩展预训练网络，WINR将权重视为结构化坐标上的连续场，可查询生成新形状、深度与层组合的目标权重。",
+    "subcategory": "模型架构",
+    "tags": [
+      "效率"
+    ],
+    "reason": "论文将离散权重张量重新表示为可查询的连续权重场，用于合成不同尺寸、深度和层组成的网络参数；其核心是支持架构扩展的权重表示与生成机制，因此归入模型架构。",
+    "sourceFingerprint": "988050eb0288bafd3a27cf872672568a91167f38f5aba2d31a8553d1e40809f4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532510+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238169+00:00",
+    "reviewNote": "导读准确描述 WINR 将预训练权重视为连续场并查询生成新形状、深度和层组合的权重；未误称其研究后训练更新，也未混淆参数空间与功能空间相似。主细类和“效率”标签合理。"
+  },
+  {
+    "id": "EUwk45dxvX",
+    "titleZh": "不同分解，同一路径：从自回归语言模型到扩散语言模型的同策略蒸馏",
+    "summaryZh": "研究自回归与扩散语言模型条件结构不一致下的蒸馏，以前向掩码构造共同路径空间，并用Path KL对齐路径分布及上界最终响应的反向KL。",
+    "subcategory": "扩散与流匹配",
+    "tags": [
+      "LLM",
+      "扩散",
+      "蒸馏",
+      "对齐"
+    ],
+    "reason": "主问题是将ARLM的生成能力迁移给采用不同分解方式的DLM，核心方法是在共同的扩散路径空间中用Path KL实施同策略蒸馏，因此主要归入扩散与流匹配。",
+    "sourceFingerprint": "8409d63fce53665dc8feb02cb7275181b5db7c94eae765160f9dba8db9f9bf41",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532515+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238172+00:00",
+    "reviewNote": "screening 正确将其定位为跨架构生成路径分布对齐的方法参考；导读准确说明前向掩码、Path KL 及其对最终响应分布反向 KL 的上界，没有把它误写成参数更新几何研究。"
+  },
+  {
+    "id": "EkfAs4oamT",
+    "titleZh": "先合并，再蒸馏：多教师在线策略蒸馏的 Fisher 几何视角",
+    "summaryZh": "论文在同源专家的共享参数盆地内，证明多教师在线策略蒸馏目标与 Fisher 合并在二阶近似下等价；RGBM 再用任务向量和域残差谱决定分支训练及安全写回。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "优化",
+      "对齐"
+    ],
+    "reason": "论文明确限定在同源专家的共享参数盆地内建立多教师在线策略蒸馏与 Fisher 合并的二阶等价关系，并提出 RGBM：先在任务向量子空间闭式合并，再由无标签提示上的域残差谱控制高残差分支训练及带收缩的安全写回。核心贡献属于模型合并，同时涉及 LLM 后训练优化与对齐。",
+    "sourceFingerprint": "d11d753779d07cb1511c167cd679e964b9a5a6ee838bd1c6f6a7fce1b9b3f40b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238176+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238181+00:00",
+    "reviewNote": "主题筛选基本忠实，但导读遗漏了“同源专家共享参数盆地”这一二阶等价的适用条件；标签“蒸馏”不在允许枚举中，标题中的“同策略”也容易与同一策略混淆。"
+  },
+  {
+    "id": "Eps4cLceTQ",
+    "titleZh": "ReFract：通过可分解微调残差实现模型重定基",
+    "summaryZh": "ReFract 将微调造成的末层隐藏表示变化视为功能残差，在 NTK 条件下按参数与层精确加性分解，并学习逐层预测器把修正迁移到不同架构的冻结目标模型。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "泛化"
+    ],
+    "reason": "论文的核心问题是如何绕过跨架构模型间难以建立的权重对应关系，将源模型微调获得的任务能力迁移至目标模型。其贡献是在 NTK 微调条件下证明功能残差可按参数精确加性分解，并通过特征空间运输和逐层预测器完成跨架构能力迁移，因此主要归入迁移与元学习。",
+    "sourceFingerprint": "d61ab310316c15cc7ee07761e6e20519d55087f119f1863332363833bfdbc26b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532522+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238184+00:00",
+    "reviewNote": "筛选与摘要一致；导读准确区分了激活/功能残差与参数权重对应，保留了 NTK 条件、逐层分解和跨模型迁移过程。主细类、标签和依据均无摘要外扩展。"
+  },
+  {
+    "id": "FJzHVz6rND",
+    "titleZh": "用于免对齐神经网络权重生成的置换等变流匹配",
+    "summaryZh": "论文利用置换等变的 Graph Meta Network 参数化流匹配速度场，直接从独立训练网络学习权重分布，避免神经元对齐，并可生成异构架构及未见宽度的网络。",
+    "subcategory": "扩散与流匹配",
+    "tags": [
+      "泛化"
+    ],
+    "reason": "核心是参数空间生成和置换对称处理：置换等变 Graph Meta Network 参数化流匹配速度场，从独立训练网络学习权重分布而无需神经元对齐；摘要还报告了功能、权重相似性统计及跨架构和未见宽度配置的泛化，但未研究后训练更新。",
+    "sourceFingerprint": "1eacf22c9ac691ff4e06e3378da5046691080de6c4716026d7dfeb373533f82a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238189+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238192+00:00",
+    "reviewNote": "筛选主题和导读忠实描述了置换对称、免对齐权重生成及跨架构泛化；但“流匹配”“图学习”不在允许标签枚举中，需改用现有合法标签。"
+  },
+  {
+    "id": "FKXZqSTywN",
+    "titleZh": "任务的内在几何",
+    "summaryZh": "论文以交叉熵诱导的 Fisher–Rao 几何刻画任务条件规律，说明充分表示与该几何的关系，并将其拉回参数空间给出局部损失界、残差预测和剪枝准则。",
+    "subcategory": "几何与拓扑学习",
+    "tags": [
+      "泛化"
+    ],
+    "reason": "核心是任务几何、表示充分性及参数空间拉回后的局部损失与剪枝分析，属于几何与拓扑学习，并提供了与泛化相关的理论和实验验证；摘要没有研究具体后训练更新。",
+    "sourceFingerprint": "46bf3cdc575126242f3637d89ec572ecc45adb42c3a89dab6002474ae5bb6f99",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238195+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238198+00:00",
+    "reviewNote": "筛选判断、标题和导读均忠实，正确区分了任务/表示的 Fisher–Rao 几何与参数空间拉回；但标签“可解释性”不在允许枚举中。"
+  },
+  {
+    "id": "G1HhcRrXTG",
+    "titleZh": "各向同性曲率下通过联合切空间优化实现秩高效 LoRA",
+    "summaryZh": "针对 LoRA 名义秩未被优化器充分利用的问题，Iso-LoRA 在权重空间诱导切向扰动上耦合因子更新并执行谱下降，以均衡奇异方向能量并提高有效秩。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文的主问题是优化器如何影响 LoRA 诱导权重更新的奇异谱与有效秩；核心贡献是提出在权重空间切向扰动上联合优化 LoRA 因子、采用谱下降改善秩利用的 Iso-LoRA，并在尖峰梯度模型下给出单步分析，因此主要归入优化器与收敛。",
+    "sourceFingerprint": "b74e425fd824d03e95fab884eb72606773572ef391e32a2c59d459db7bd363f0",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532532+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238200+00:00",
+    "reviewNote": "筛选和标注准确覆盖了优化器对 LoRA 实际权重更新奇异谱、有效秩和方向利用的影响，并保留了 Iso-LoRA 的切空间谱优化及尖峰梯度模型条件。未混淆名义参数秩与实际更新秩，也未加入摘要外事实。"
+  },
+  {
+    "id": "G25kCPopTN",
+    "titleZh": "度量学习到的等变性：一种信息论方法",
+    "summaryZh": "论文在有限离散情形用归一化互信息检验原始与变换输入表征是否彼此确定，并以 CKA 测量高维激活，在正交特征变换下给出精确保证；增强实验显示一致性通常提高。",
+    "subcategory": "表征分析",
+    "tags": [],
+    "reason": "论文关注直接诊断中间表征是否学习到输入变换的等变性，提出有限离散情形的 NMI 检验和高维激活的 CKA 检验，并给出正交特征变换下的精确保证；摘要未主张其专门用于后训练或跨模型比较。",
+    "sourceFingerprint": "4ecbbbd494f0bb31792adb6001fa44b5f9c4bf2836ef32d4f91ebc5018278470",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238205+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238207+00:00",
+    "reviewNote": "标题和导读准确概括了 NMI、CKA 及正交变换保证；但筛选依据额外推断可迁移到后训练或跨模型比较，摘要未作此应用主张；标签“可解释性”“评估”也不在允许枚举中。"
+  },
+  {
+    "id": "G60scH7sQp",
+    "titleZh": "重新思考 RLVR Rollout 筛选的替代准则",
+    "summaryZh": "论文检验 RLVR rollout 子集能否在固定保留预算下重建完整响应的策略梯度，分离方向与尺度误差，并显示仅方向一致仍可能有较大重构误差。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "对齐",
+      "优化"
+    ],
+    "reason": "论文研究 RLVR 后训练中筛选响应能否保留完整响应产生的策略梯度，分离梯度方向和尺度误差，并提出联合匹配二者的固定预算筛选准则；核心属于后训练与对齐，同时涉及优化分析。",
+    "sourceFingerprint": "35ad5a3263774949442df87d5b4e65004832115f92f7d78a047945ad1c916116",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238211+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238214+00:00",
+    "reviewNote": "筛选、标题、导读和依据均忠实描述了固定保留预算下 RLVR rollout 的梯度方向/尺度误差及原始可训练参数空间评估；但标签“强化学习”不在允许枚举中。"
+  },
+  {
+    "id": "GDTAORcpJ3",
+    "titleZh": "当权重保真度产生误导：扩散模型量化下的概念擦除安全编辑",
+    "summaryZh": "在 Stable Diffusion 1.5 上，论文分别比较量化后编辑的权重差异、激活效应和生成行为，发现权重保真度不能代表功能保留，并通过隔离实验指向激活舍入造成的安全效果减弱。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "量化",
+      "安全",
+      "效率"
+    ],
+    "reason": "核心是数值量化部署下安全编辑的参数—功能解耦：摘要分别测量部署权重差异、内部激活效应和生成行为，并通过隔离实验将部分安全效果削弱归因于激活舍入。证据限定于一个安全目标、相关 Stable Diffusion 1.5 检查点及选定投影的模拟量化，主要归入效率与压缩。",
+    "sourceFingerprint": "8b0cfdaed34309c8d3d6b8ffbc7d3b5d2d4f0364dcefefe3f6befc4875dc44b5",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238217+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238220+00:00",
+    "reviewNote": "筛选主题与导读忠实，明确比较了权重、激活和生成功能空间，并保留了激活舍入导致安全效果减弱及研究范围限制；但标签“扩散”“可解释性”不在允许枚举中。"
+  },
+  {
+    "id": "Gqo0cDeps8",
+    "titleZh": "微调中的参数空间对称性",
+    "summaryZh": "研究LoRA、prefix tuning与prompt tuning中不同参数表示同一函数的冗余，刻画多头注意力中的参数空间对称，为连通性与模型合并提供基础。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "对齐"
+    ],
+    "reason": "论文系统刻画三类参数高效微调方法中的同函数参数对称性，帮助在微调、线性模式连通性和模型合并中区分功能差异与参数表示差异，因此归入后训练与对齐。",
+    "sourceFingerprint": "c790b119684e36fb44933ea8a71f5af59eed41996018220469992c27c2929736",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532545+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238222+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "GtPUNUOdIX",
+    "titleZh": "表征惯性：激活拼接可逆转大语言模型的微调行为",
+    "summaryZh": "研究跨检查点的表征兼容性，以激活拼接将基础模型的中间表示注入对齐模型，定位微调行为改变并检验其对遗忘与安全修正的影响。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "对齐",
+      "可解释性",
+      "安全"
+    ],
+    "reason": "核心通过跨检查点激活拼接分析微调前后表示的功能兼容性及行为变化位置，归入表征分析。",
+    "sourceFingerprint": "92238f2fe1bb11405e950a598eec75189aa04c477f85e89b4b639c5eb32f1e7a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532549+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238225+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "HGaKxkVL3p",
+    "titleZh": "线性化模型影响函数的对偶表示",
+    "summaryZh": "提出复杂度随数据集而非模型规模增长的影响函数对偶表示，用于估计线性化模型删除数据点后的参数、输出与损失变化。",
+    "subcategory": "归因与探针",
+    "tags": [
+      "可解释性"
+    ],
+    "reason": "主问题是如何在模型规模较大或参数空间计算不可行时估计单个数据点的影响；贡献是借助适用于线性化模型的对偶表示，高效刻画数据删除引起的参数、输出和损失变化，属于基于影响函数的数据归因方法。",
+    "sourceFingerprint": "0b5b0a7f2f0241b4ddd8d6b11e7cbd953c8f095f74b36d1c5c1cf47f8fcdcf8d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532552+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238229+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "JBSbtgytUW",
+    "titleZh": "SuperAI：融合异构基础模型的能力",
+    "summaryZh": "针对异构基础模型因架构与表征不兼容而难以复用能力的问题，SuperAI以共享锚点构建PCA功能子空间，经正交Procrustes对齐后学习残差增量并注入宿主模型。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "知识编辑"
+    ],
+    "reason": "论文的核心问题是把多个异构源基础模型的互补能力融合进宿主模型；其通过共享锚点提取任务相关表征、以PCA构造同维功能子空间、用正交Procrustes建立跨模型对应关系，并训练轻量残差MLP将源模型增量注入宿主模型，因此主要归入模型合并。",
+    "sourceFingerprint": "abcff7db639313530cd2abb5b697c52e86f541f60aebd4371d9070468480b6f8",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532558+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238237+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "JSoL3sbWIL",
+    "titleZh": "顺序效应与顺序印记并非同一回事",
+    "summaryZh": "研究语言模型能力算子顺序的参数印记与性能效应，借助重置优化器状态、多随机种子审计及权重平均，揭示二者可被解耦。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "优化",
+      "评估"
+    ],
+    "reason": "论文的主问题是两种能力后训练算子按不同顺序组合时，参数空间中的顺序印记是否等同于基准性能上的顺序效应。其核心贡献是通过重置阶段边界处的优化器状态，将显著缩小的性能顺序效应与基本不变的参数印记解耦，并结合测量基点、多随机种子、SFT 对照、随机方向和不同模型规模审计后训练更新的几何性质，因此归入“后训练与对齐”。",
+    "sourceFingerprint": "3970e357c6270c36fbdaa99b25c2528aa273f8765c7de24c4d312b25e390a889",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532562+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238241+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "JWp43k7nDU",
+    "titleZh": "谱形状残差：一种面向注意力权重矩阵的轻量级谱诊断方法",
+    "summaryZh": "提出直接比较注意力层查询与键权重奇异值分布的谱形状残差，无需前向传播或训练数据即可跟踪训练及对齐中的结构变化。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "对齐"
+    ],
+    "reason": "主问题是能否仅从注意力权重中获得可持续跟踪的结构信号；贡献是定义比较 W_Q 与 W_K 奇异值分布的 SSR，并将其用于分析 grokking、层深规律及 RL 蒸馏前后的谱结构差异，故归入权重表征分析。",
+    "sourceFingerprint": "a126635a83233a135ea872e4d1ed5a91bfb5b3009938f1387f97721538de8149",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532565+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238244+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "JjKcmEQu4m",
+    "titleZh": "用于探索、净化与模型合并的谱重连",
+    "summaryZh": "针对强化学习后训练更新抑制推理及多域能力互扰，SAR保留基座模型谱空间中的推理有效核心并移除正交残余，以支持更新净化与专家模型合并。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "推理"
+    ],
+    "reason": "论文的主问题是从强化学习后训练的稠密参数更新中分离推理有效成分，并减少多域训练及专家合并时的能力干扰；其核心贡献SAR依据基座模型谱空间保留有效更新、滤除正交残余，并直接用于跨专家模型合并，因此归入模型合并。",
+    "sourceFingerprint": "03031aa6eda3e67cba521a998ac396cbebe78a2ad60318912f99727f8ca87b40",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532568+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238247+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "JugERAqRuO",
+    "titleZh": "大型语言模型 RLVR 训练中的线性动力学",
+    "summaryZh": "本文研究RLVR后训练为何呈现可预测轨迹，发现高方差噪声信号如低通滤波器般将优化集中于稳定低维漂移，并据此进行权重与输出空间外推。",
+    "subcategory": "训练动态",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化",
+      "推理",
+      "效率"
+    ],
+    "reason": "论文的主问题是刻画LLM在RLVR后训练中的内部轨迹及线性结构来源；其核心贡献是揭示参数权重与输出对数概率跨模型、算法和配置进入稳定低维的线性漂移状态，以高方差噪声训练信号的低通滤波效应解释该现象，并利用这一结构实施权重空间和输出空间外推。因此主要归入“训练动态”。",
+    "sourceFingerprint": "70638599aa9199a1ea3be67c3e78e63618de4983ecb1a3b291564a1103f832df",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532572+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238251+00:00",
+    "reviewNote": "screening 与摘要一致：研究对象是 RLVR 训练轨迹，明确区分权重空间外推与输出对数概率空间外推；跨模型、算法和配置的结论及低通滤波机制均有摘要依据。中文标题、导读、训练动态分类、标签和依据忠实。"
+  },
+  {
+    "id": "JzgNJlUZ5C",
+    "titleZh": "用于机制可解释性的样例分区",
+    "summaryZh": "提出以流式激活的领导者聚类构造 Voronoi 特征字典，用于跨层、训练检查点和架构比较激活区域，并支持概念发现与干预。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "主问题是从 LLM 激活中无监督构建可解释且可比较的特征字典。Exemplar Partitioning 以观测样例和区域均值定义 Voronoi 分区，支持跨层、训练检查点和架构的激活空间比较、概念发现及干预；其比较对象是激活表示，不是参数空间或输出功能空间。",
+    "sourceFingerprint": "fba4abac4caf8f8a086b169f1fc0cfed8ed9080437e00649efa60aa7ca260310",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238256+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238259+00:00",
+    "reviewNote": "最终 method-reference 定位合适，但 screening 将激活空间比较表述为功能空间比较，容易混淆表示空间与模型输出功能空间；原标签“对齐”也容易误导为对齐方法。"
+  },
+  {
+    "id": "K0INaZH2m1",
+    "titleZh": "用于刻画与识别 LLM 能力的互补 PAVE 规格",
+    "summaryZh": "将候选 LLM 与任务编码为各个公共辅助模型上的微调更新，在无需运行目标任务的前提下，用参考引导的多辅助投票组合互补参数空间视图进行模型选择。",
+    "subcategory": "评估方法",
+    "tags": [
+      "LLM",
+      "评估"
+    ],
+    "reason": "主问题是在不执行目标任务的情况下比较模型—任务兼容性。PAVE 将模型和任务表示为辅助模型上的微调更新，RG-MAV 再按参考任务在各辅助参数空间中的信息性组合成对比较，因此属于模型选择与评估工具，而不是把任务向量迁移到候选模型的迁移方法。",
+    "sourceFingerprint": "5d2e200e260fc1b76b2f42766a2a0a56956c8b43cbdbea8016211815a9282830",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238262+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238265+00:00",
+    "reviewNote": "摘要支持模型选择和参数空间视图组合，但不支持将其概括为任务向量迁移方法；screening 中“公共权重空间接口”也略显过强。应突出多辅助模型参数空间的评估与排序功能。"
+  },
+  {
+    "id": "KwPMydtPay",
+    "titleZh": "利用独立副本恢复干净的表征相似性",
+    "summaryZh": "在均值保持的观测噪声假设下，IR-CKA 在三个 HSIC 因子中使用条件独立副本，降低偏差并更准确恢复表示相似矩阵与双向层关系。",
+    "subcategory": "表征分析",
+    "tags": [
+      "评估"
+    ],
+    "reason": "主问题是观测噪声会膨胀 CKA 的自相似因子并扭曲模型与层级比较。IR-CKA 在均值保持等假设下让三个 HSIC 因子使用条件独立副本，并给出无偏性、集中性和均方误差保证；实验对象是冻结模型的表示相似性，而非后训练更新或输出功能相似性。",
+    "sourceFingerprint": "1f116af961422f3a03a94f960b4ff05b6bd10cdf973b0ad118517a2dbc702918",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238269+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238271+00:00",
+    "reviewNote": "核心方法与分类基本准确，但导读把“消除观测噪声偏差”说成无条件结论；摘要仅在明确噪声假设下给出无偏性，并且研究的是表示相似性，不是输出功能空间对齐。"
+  },
+  {
+    "id": "LHVG1HENCR",
+    "titleZh": "对抗漂移：跨后训练阶段的探针迁移",
+    "summaryZh": "分别在 OLMo-3 7B 的 SFT、DPO、RL 阶段及 Qwen3-4B 的 SFT、GRPO 阶段研究探针迁移，提出可结合表示对齐的少量标签正交漂移校正。",
+    "subcategory": "归因与探针",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "对齐",
+      "安全"
+    ],
+    "reason": "主问题是后训练阶段的激活表示漂移如何影响线性探针迁移。论文分别在 OLMo-3 7B 的 SFT、DPO、RL 设置和 Qwen3-4B 的 SFT、GRPO 设置中评估迁移，并提出可结合无标签表示对齐的正交漂移校正；摘要不支持将四种方法视为同一模型上的统一比较。",
+    "sourceFingerprint": "cf4a328e7b8e9f3b7d6c34d1acf9f07ce3f374385a4f5f198baf1826719d8442",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238275+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238278+00:00",
+    "reviewNote": "摘要没有把 SFT、DPO、RL、GRPO 放在同一模型或同一统一比较中：OLMo-3 7B 覆盖 SFT/DPO/RL，Qwen3-4B 覆盖 SFT/GRPO。原 screening 和导读未保留这一条件。"
+  },
+  {
+    "id": "LIZOtF93DL",
+    "titleZh": "对齐构成更新的要素：用于跨模型任务向量迁移的双线性因子对齐",
+    "summaryZh": "针对任务向量难以跨模型复用的问题，BIFA 利用层梯度的激活—输出梯度双线性分解，分别对齐两侧因子空间后无训练迁移更新。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "效率"
+    ],
+    "reason": "主问题是如何将依赖源模型参数化的任务向量迁移至不同宽度、深度或预训练配置的模型。BIFA 从层级参数梯度的激活侧与输出梯度侧外积分解出发，分别对齐两类因子空间，并以无训练方式跨模型迁移任务向量；实验覆盖视觉模型和语言模型，但不等于多模态建模。",
+    "sourceFingerprint": "4bd7f7a9deb9d95c19e57f1c18ab4bab45549afca8fbf620b6e488b1cb5853d9",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238282+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238284+00:00",
+    "reviewNote": "方法、跨宽度/深度/预训练配置的结论及双因子空间对齐均忠实，但标签“多模态”不准确：摘要是视觉模型与语言模型基准，并非多模态模型或多模态任务。"
+  },
+  {
+    "id": "LSxjUXtNNe",
+    "titleZh": "SWIN：用于 LLM 微调的随机种子权重整合",
+    "summaryZh": "针对不同随机种子微调结果波动，SWIN 在共享低秩坐标系中以极分解分离更新方向与尺度，再聚合并重构单一低秩更新。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "效率"
+    ],
+    "reason": "主问题是如何在不增加推理成本的情况下整合不同随机种子产生的微调模型；SWIN 对各层低秩更新的共识子空间、方向和尺度进行几何感知聚合，属于模型合并。",
+    "sourceFingerprint": "671b7860a2ac3cd8dd4235bd070e88d9abde7e7f7324f087ffc78b194376d03b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532594+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238286+00:00",
+    "reviewNote": "摘要明确研究不同随机种子微调更新的低秩共识子空间、方向和尺度，并据此进行几何感知模型合并；中文导读准确保留了极分解和共享坐标系等关键方法。模型合并分类、标签和依据均忠实，未混淆参数更新几何与功能相似性。"
+  },
+  {
+    "id": "LYVBF520VG",
+    "titleZh": "V-HFLoRA：面向异构联邦 LoRA 的目标基聚合",
+    "summaryZh": "针对异构视觉基础模型的 LoRA 无法直接联邦聚合，V-HFLoRA 以冻结骨干诱导的目标坐标匹配层，运输源更新后进行支持感知、可靠性加权聚合和低秩恢复。",
+    "subcategory": "联邦与分布式学习",
+    "tags": [
+      "效率"
+    ],
+    "reason": "主问题是异构视觉骨干的层结构、维度和参数几何不兼容造成的联邦 LoRA 聚合困难。方法通过冻结骨干诱导的坐标和功能相似性匹配层，将源更新运输到目标几何，再进行支持感知、可靠性加权聚合和低秩恢复；其核心是异构联邦更新对齐与聚合。",
+    "sourceFingerprint": "30f42089112d69e1fccac842d5ac8bfe73b02bfeeb64220ff8a22e1094df010b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238294+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238297+00:00",
+    "reviewNote": "主题、方法和条件基本忠实，但原标签“联邦学习”不在给定标签枚举中；“多模态”也会弱化摘要明确的异构视觉基础模型范围。"
+  },
+  {
+    "id": "LkHtSWZeT2",
+    "titleZh": "留意线性化位置：预测并校正模型合并干扰",
+    "summaryZh": "研究任务向量合并前如何预测功能干扰，以接收模型局部 Jacobian 的方向响应预估输出损伤，并用 LR-Merge 在无标签探针上凸优化合并系数。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "知识编辑",
+      "效率"
+    ],
+    "reason": "主问题是候选模型合并前无法获知任务向量造成的功能干扰；论文以接收模型局部几何中的方向导数预测干扰，并据此无标签选择合并系数，直接服务于模型合并。",
+    "sourceFingerprint": "d1016f16093aab0a3e8d06cb7ecce0ad763d0e259affd1d5e4392fd4242afa4b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532600+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238300+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "MaLsIwdr0a",
+    "titleZh": "PINN 没有免费浓汤：只需保留最佳模型",
+    "summaryZh": "系统评测 PINN 权重平均，并提出同时匹配置换与符号对称的 Sign Re-Basin，以输出空间集成对照参数空间合并。",
+    "subcategory": "模型合并",
+    "tags": [
+      "优化",
+      "泛化"
+    ],
+    "reason": "主问题是模型汤式权重平均能否在 PINN 中保留单模型推理成本并获得集成收益；贡献是提出处理奇激活符号对称性的 Sign Re-Basin，并用输出空间集成隔离参数平均的效果，核心属于模型对齐与合并研究。",
+    "sourceFingerprint": "365dd32bb33aa43b0a549f6aea0bd92b65f9d0b7f6ccd4980490cee7e2e6aa46",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532606+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238306+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "OBMw8FwmyZ",
+    "titleZh": "利用进化策略克服 LLM 微调中的遗忘",
+    "summaryZh": "研究 ES 与 RL 微调中旧任务性能漂移的成因，将其联系到弱约束权重方向的随机游走，并用 Anchored Weight Decay 锚定初始参数。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化"
+    ],
+    "reason": "主问题是 LLM 在 ES 或 RL 微调新任务时旧任务性能发生漂移；论文分析其权重空间动力学，并以锚定初始参数的正则化稳定历史能力，核心是缓解持续学习中的遗忘。",
+    "sourceFingerprint": "9b6090c6705255f79986fbd730bae7842b891246e8094af2f8d87720b091da85",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532610+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238310+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "OFVWcaGfdi",
+    "titleZh": "增量并非技能：零先验引出实现跨模型家族的 LoRA 行为迁移",
+    "summaryZh": "研究 LoRA 技能能否跨模型家族复用，揭示跨家族可迁移的是行为而非权重增量，并通过零先验探针演化与文本蒸馏向学生模型转移技能。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "效率"
+    ],
+    "reason": "主问题是缺少原始训练数据和任务先验时如何跨模型家族复用 LoRA 能力；方法从教师行为中自动引出探针并进行文本蒸馏，属于跨模型知识迁移。",
+    "sourceFingerprint": "20447231a08b9b73e154ed591d731be49b7c4dd9cea87a6ea809ca9479e883d3",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532613+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238313+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "OJCNb79D1M",
+    "titleZh": "相同增量，不同效应：持续预训练后复用后训练更新",
+    "summaryZh": "研究固定后训练 delta 沿持续预训练轨迹复用时的功能变化，通过缩放和限定前馈层范围，对比指令增益、样本级修正与语言建模代价。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "知识编辑"
+    ],
+    "reason": "主问题是将固定后训练权重差添加到不同持续预训练检查点后，其指令收益、具体修正样本和语言建模代价是否保持；研究对象是任务增量在不同接收模型上的复用与组合效应，因此归入模型合并。",
+    "sourceFingerprint": "59c40e890b4ba05086576364c10a34935c3312996723b9e0f9a87295ffef5758",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532617+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238319+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "OQeOzhGVJK",
+    "titleZh": "超越单一几何：用于缺失模态 PEFT 的状态条件化双路径重构",
+    "summaryZh": "针对多模态缺失状态间偏好的更新子空间不同，CODAR 以状态条件化双路径从可复用字典重构低秩因子，同时保留专属变化与共享方向。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "多模态",
+      "效率"
+    ],
+    "reason": "主问题是单一低秩适配结构无法同时覆盖不同模态可用状态的更新方向，而独立适配器又削弱跨状态迁移；CODAR 重用共享字典和输入侧方向并保留状态专属路径，核心是参数高效的跨状态适配与迁移。",
+    "sourceFingerprint": "9260138c8895046785c91dc6d05f07cd38fa1eab7165247edf6190a6f5373e70",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532620+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238322+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "OnQCb08Xe9",
+    "titleZh": "通过移除被劫持方向净化含后门的大型视觉语言模型",
+    "summaryZh": "分析视觉语言模型后门微调中的权重更新，利用少量干净样本构造参考更新，识别被劫持的主导方向并以正交投影从模型权重中移除。",
+    "subcategory": "鲁棒性与对抗",
+    "tags": [
+      "多模态",
+      "安全",
+      "可解释性"
+    ],
+    "reason": "论文从权重更新方向解释并净化视觉语言模型后门，主要问题属于模型鲁棒性与对抗防御。",
+    "sourceFingerprint": "81f82f31a8aaf1aa6c8c0685022bc6b5ebffdd4f99d51847a87c47c8258efbcf",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532623+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238326+00:00",
+    "reviewNote": "已逐项对照完整英文摘要复核；中文标题、导读、主细类与标签均忠实于摘要，且保留了参数空间、对齐后空间或功能空间结论的适用条件。"
+  },
+  {
+    "id": "PmN7pxrYc3",
+    "titleZh": "哪项任务会受损？理解模型合并中的非对称退化",
+    "summaryZh": "研究模型合并中哪项任务更易退化，将合并建模为任务向量叠加，以向量范数、路径曲率与干扰能量推导双侧容量界并解释非对称损失。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM"
+    ],
+    "reason": "论文主问题是解释多任务模型合并中不同任务为何出现非对称性能退化。核心是把合并建模为任务向量叠加，在曲率假设下用干扰能量给出损失增长的双侧容量界，并以向量范数、训练暴露和重训练分析退化排序；因此主要归入模型合并。",
+    "sourceFingerprint": "3fc9df652945b9d34af59edfccaac5e931e8b55ac6d35ff8af3e34f3c7a1dc71",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238330+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238333+00:00",
+    "reviewNote": "screening 的主题判断和模型合并、任务向量、曲率及训练暴露分析均忠实。annotation 的标题、导读和主细类基本准确，但“泛化”标签不是摘要明确讨论的主题，删除该标签更稳妥。"
+  },
+  {
+    "id": "Pz7PpCK6Py",
+    "titleZh": "LLM 微调中的维度之福：方差—曲率视角",
+    "summaryZh": "研究小种群 ES 为何能微调十亿参数 LLM，以及 ES 与 GRPO 的奖励为何先升后降；以曲率上低维的景观、随机二次模型和 Hessian 谱解释有效曲率维度。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "优化",
+      "强化学习",
+      "效率"
+    ],
+    "reason": "论文主问题是解释零阶优化 ES 在超高维 LLM 微调中的可扩展性，以及 ES 与 GRPO 共有的奖励先升后降现象。核心解释是少数高曲率方向嵌在大规模近乎平坦空间中的曲率上低维结构，并通过随机二次随机上升模型、改进扰动概率分析和 Hessian 谱测量加以支持，因此主要归入优化器与收敛。",
+    "sourceFingerprint": "fa1c5d787652a6d49e930966725917444d2b9f2fd2371e9408cd83c501789f57",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238337+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238339+00:00",
+    "reviewNote": "筛选相关性和分类方向正确。原导读与依据中的“低曲率维度景观”容易把摘要的“曲率上低维”误解为曲率值偏低；摘要实际指少数高曲率方向嵌在近乎平坦的大参数空间中，已据此改写。"
+  },
+  {
+    "id": "Q4gS70AH9E",
+    "titleZh": "少数优质权重：偏好优化大语言模型中的稀疏子网络",
+    "summaryZh": "研究偏好优化 LLM 的稀疏权重更新，提出参数重要性评分与阈值估计算法，并比较 DPO、GRPO 在不同数据上的子网络结构。",
+    "subcategory": "偏好学习",
+    "tags": [
+      "LLM",
+      "对齐",
+      "强化学习",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文的主问题是刻画 DPO、GRPO 等偏好优化方法在 LLM 中形成的稀疏参数更新子网络。其贡献包括带损失保持保证的参数重要性评分理论、可扩展的阈值估计方法、目标函数与数据对更新结构影响的比较，以及稀疏感知 AdamW 实现；核心场景和比较对象均属于偏好学习。",
+    "sourceFingerprint": "1bd3fed0d27abcc2fe6eeba69333a17cb2e67ba8509124c149b2e2c73e071874",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532634+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238341+00:00",
+    "reviewNote": "screening 准确抓住稀疏、满秩更新子网络及目标函数与数据的对比；annotation 正确覆盖重要性评分、阈值估计、DPO/GRPO、CKA/线性探针和稀疏优化，未混淆参数支持集与内部表征相似度。"
+  },
+  {
+    "id": "QZzzVO39xA",
+    "titleZh": "语言模型间线性方向的传输定律",
+    "summaryZh": "推导以典型相关加权刻画攻击行为线性方向跨模型迁移的传输定律，并分解方向传输、类内传输与标签传输。  ",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性"
+    ],
+    "reason": "主问题是一个模型中的成功攻击线性方向能否在另一模型中恢复和迁移；贡献是基于可容许统计量与典型相关推导定量传输定律及精确分解，并检验跨规模和跨架构迁移，属于跨模型表示方向分析。",
+    "sourceFingerprint": "32570cd358e8a50026ba6d96b5a4d9f4e9413855271698a86a8c40e869602d26",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532637+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238345+00:00",
+    "reviewNote": "screening 明确区分了该文的跨模型线性表示方向传输与后训练参数更新，并正确作为方法参考；annotation 忠实概括了典型相关传输定律、类内/标签传输分解及跨规模跨架构验证，未把功能方向相似误写成参数空间相似。"
+  },
+  {
+    "id": "RGI3iyJOsE",
+    "titleZh": "Train4Merge：基于 OPD 模型合并的 RL 与 SFT 教师受控单教师研究",
+    "summaryZh": "研究性能相当的 RL 与 SFT 专家作为 OPD 教师时能力传递为何不同，通过共享 Qwen3.5-9B 初始化的受控实验及参数距离分析比较学生对教师增益的恢复效果。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "蒸馏"
+    ],
+    "reason": "主问题是由共同检查点训练出的领域专家在 OPD 模型合并中，采用 RL 或 SFT 构建教师会如何影响学生对教师能力增益的恢复。论文以 Qwen3.5-9B 为共同初始化，在 Agentic、Reasoning 和 Perception 任务中比较性能相当的教师，并用教师相对初始模型的参数距离解释 RL 教师更易被学生跟随的现象，因此主要归入模型合并。",
+    "sourceFingerprint": "6d94da89f7c8d2df44244e404a871a5fa4ab2fca071bcc68685b2a0c5b8c22e9",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238349+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238352+00:00",
+    "reviewNote": "主题相关性、模型合并主细类及 RL/SFT、蒸馏标签均准确；但摘要只称教师性能“相当”（comparably performing），原导读和依据的“同等性能/等能力”语气过强，已改为“性能相当”。"
+  },
+  {
+    "id": "RNvJ9TblDS",
+    "titleZh": "GramLoRA：用于 LoRA 微调的跨尺度优化轨迹迁移",
+    "summaryZh": "GramLoRA 将同系列小模型完整微调的中间参数残差转换为适配大模型的秩 r 因子，以任务初始化和分阶段方向引导大模型 LoRA 微调。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文的主问题是如何利用小模型的优化轨迹改进大模型的参数高效微调；其核心贡献是将源模型中间参数残差转换为目标模型兼容的低秩因子，并分别用于初始化和阶段性方向引导，因此主要归入后训练与对齐。",
+    "sourceFingerprint": "5c428c60cd24673c009323c77e429c27c451fecad065d397dc9064daed5dcf0f",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532644+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238355+00:00",
+    "reviewNote": "screening 和 annotation 都准确描述了同系列小模型到大模型的优化轨迹迁移、参数残差到低秩因子的转换，以及初始化与阶段性方向引导；没有把参数更新迁移误写成表征对齐。"
+  },
+  {
+    "id": "RQwMDUEzSQ",
+    "titleZh": "百分之一中的一比特：行为权重编辑的稀疏有符号子结构",
+    "summaryZh": "研究行为权重编辑的有效信息分布，将低秩对比向量压缩为每权重一比特且仅保留1%坐标，并以符号、坐标及层级置换干预定位效果来源。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "LLM",
+      "量化",
+      "效率",
+      "可解释性",
+      "安全"
+    ],
+    "reason": "论文的主问题是行为权重编辑能否由极少坐标及一比特符号结构承载；核心贡献是将低秩编辑二值化并稀疏到1%坐标，再通过随机坐标、符号置换、层间打乱和幅值支持等干预分析信息所在。其重点是权重编辑的极端稀疏化与二值压缩，同时检验压缩结构对偏差消除及附带影响的作用，因此归入“效率与压缩”。",
+    "sourceFingerprint": "3de9a5d0bffe2fb1d711b5a7a5c5cb4a4f79cf583b9f259d2e4a8b13a7946542",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532647+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238359+00:00",
+    "reviewNote": "screening 正确聚焦行为权重编辑的稀疏支持、符号结构和幅度选择；annotation 忠实覆盖一比特、1%坐标、符号/坐标/层级置换及附带影响评估，未加入摘要外事实。"
+  },
+  {
+    "id": "SrUMDIQ3hg",
+    "titleZh": "神经场编码适应几何",
+    "summaryZh": "以局部线性模型和切线核谱刻画神经场适应新观测的代价，并联系易学习方向、顺序拟合中的历史记忆与覆盖速度。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "记忆",
+      "时间序列"
+    ],
+    "reason": "主问题是已拟合神经场如何适应新观测以及权重保留何种历史；贡献是用局部线性化、模型特异的切线核及其特征值统一预测适应代价、可学习变化和后续拟合造成的覆盖速度，核心指向更新过程的训练动态。",
+    "sourceFingerprint": "bcb4275dd1db469c2ae9aa567c269b252247650e8edc36ac0c2397d49693e525",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532651+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238363+00:00",
+    "reviewNote": "screening 正确将其作为神经场适应几何的工具性方法参考，并准确概括局部线性化、切线核谱、易学习方向和历史覆盖；annotation 的训练动态分类与记忆、时间序列标签均有摘要依据。"
+  },
+  {
+    "id": "T1FqXuBqfQ",
+    "titleZh": "利用低秩分解对称性实现 LoRA 融合",
+    "summaryZh": "针对独立训练的 LoRA 适配器因低秩分解对称性而参数错位的问题，先以闭式旋转对齐共享潜在基，再用梯度优化放宽至可逆重参数化后进行融合。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "效率",
+      "优化"
+    ],
+    "reason": "论文的主问题是多个任务专用 LoRA 适配器在直接融合时因功能等价的低秩分解重参数化而发生参数空间错位；其核心贡献是在融合前通过闭式旋转与梯度细化将适配器对齐到共享潜在基，并可作为现有 LoRA 融合方法的即插即用增强，因此主要归入模型合并。",
+    "sourceFingerprint": "fc180361dabf7af93112082bfc13361a5ac2fd5072b46fb0403df3eb8e7eca55",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532654+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238366+00:00",
+    "reviewNote": "标题、导读、主细类、标签和依据均忠实。内容明确区分了功能等价重参数化导致的参数空间错位与对齐，没有混同为功能空间相似；方法和融合结论也限定在LoRA适配器及实验范围内。"
+  },
+  {
+    "id": "TGeyyxpH68",
+    "titleZh": "迁移的几何学",
+    "summaryZh": "针对源数据不可用且目标标注稀缺时如何量化源模型覆盖目标适应，GEOTRANSFER在目标条件函数切空间中投影源检查点，并以稀疏投影、残差适配器和风险门控完成迁移。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "泛化",
+      "优化"
+    ],
+    "reason": "论文的主问题是在少样本目标任务中，量化源模型库已经覆盖了多少目标适应方向；其核心贡献是把迁移表述为目标条件函数切空间中的投影，定义主迁移角与迁移完备度，并结合组稀疏源投影、正交正则化残差适配器及目标任务回退门控，因此主要归入迁移与元学习。",
+    "sourceFingerprint": "4dcbfd7f6a7b4359094926d538aaa76a6fdcc253cd8855c85903613fe8c2ba3d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238371+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238373+00:00",
+    "reviewNote": "主题判断、标题、导读、主细类和依据基本忠实；但“最优传输”未出现在摘要中，摘要采用的是组稀疏源投影、残差适配器和风险门控，因此删除该标签。"
+  },
+  {
+    "id": "TYTRndMNVu",
+    "titleZh": "不同特征，可复现响应：跨模型变化的稀疏自编码器",
+    "summaryZh": "研究模型适配前后独立 SAE 字典中的响应复现，使用预先固定的紧凑特征组合恢复单一潜变量无法准确预测的激活。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "最优传输"
+    ],
+    "reason": "主问题是跨 SAE 字典匹配单个潜变量能否充分判断激活响应的可复现性；贡献是比较 UOT、描述符代价和校准响应相关性选出的紧凑特征组，表明响应证据可跨字典保留，属于 SAE 机制解释与特征对应分析。",
+    "sourceFingerprint": "bd99ecd3b89b2352f473f068d5c6fbb3aac800e67943a3345a96e0157a7595ef",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532661+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238376+00:00",
+    "reviewNote": "筛选将其作为功能空间比较与机制可解释性的方法参考是合理的。标题、导读和依据准确概括了跨适配前后及跨模型的SAE响应可复现性，并保留了摘要中UOT等组选择方法；没有把响应复现误写成参数空间相似。"
+  },
+  {
+    "id": "Th9EmakZ47",
+    "titleZh": "PMOPD：多教师在线策略蒸馏中的任务排序、循环与参数更新子空间保护",
+    "summaryZh": "针对多教师在线策略蒸馏中的能力跷跷板问题，PMOPD以累计参数位移构建任务子空间记忆，并投影梯度与优化器更新，结合冲突探针、任务排序和循环策略抑制跨任务干扰。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "优化"
+    ],
+    "reason": "论文的主问题是在多教师在线策略蒸馏中将多种能力整合进共享参数，同时避免任务间的能力跷跷板。其核心贡献是利用不同任务更新集中于低维子空间的几何性质，通过子空间记忆及梯度和优化器更新投影保护既有任务方向，并以冲突探针、任务排序和循环策略协调多任务蒸馏，因此主要归入后训练与对齐。",
+    "sourceFingerprint": "edd756838c1a11cc8df27ccdd0c3abef2b03d5571f95b921d2dbf5eb74d988e2",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238381+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238384+00:00",
+    "reviewNote": "标题、导读、主细类和依据均忠实，准确保留了任务更新低维子空间、投影保护、任务排序与循环策略；但“蒸馏”不属于允许的标签枚举，改为摘要可支持且符合枚举的标签。"
+  },
+  {
+    "id": "ToTuhzZPcv",
+    "titleZh": "损失景观几何如何跨尺度迁移？",
+    "summaryZh": "以线性模式连通性研究插值损失障碍随网络宽度、深度和训练时长的尺度迁移，并建立简化情形下的缩放极限。  ",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "泛化"
+    ],
+    "reason": "主问题是损失景观的线性插值几何能否像超参数一样跨模型尺度保持一致；贡献是系统分析宽度、深度和长训练阶段下的损失障碍，并给出缩放极限及其对权重平均和模型合并的联系，故归入训练动态。",
+    "sourceFingerprint": "e4e8a9b1a0e8e4912995b07bcc3cbde017d00e31a281facd06bbd7b63cede4ba",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532667+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238386+00:00",
+    "reviewNote": "标题、导读、主细类、标签和依据均与摘要一致，准确概括了线性模式连通性、插值损失障碍、宽度深度及长训练时域的跨尺度行为，也保留了其与权重平均和模型合并的联系，没有扩展为具体后训练方法结论。"
+  },
+  {
+    "id": "UdWIDZTM0Q",
+    "titleZh": "不聆听也能学习：用于弱证据音频—语言微调的静音孪生",
+    "summaryZh": "针对弱声学证据下音频语言模型可能依赖非声学信号的问题，以等时静音孪生为参照，并从正常微调更新中减去可调比例的静音更新。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "多模态",
+      "音频",
+      "对齐",
+      "优化"
+    ],
+    "reason": "核心问题是音频语言模型在证据不足时从微调中实际学到了什么；STS以匹配的静音微调更新为参照分离非声学成分，属于后训练更新的分析与改进。",
+    "sourceFingerprint": "ea21e35e6150b5c7e8d759c825512512f6d5141c0d3cecc7439e3a3e05700074",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532670+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238389+00:00",
+    "reviewNote": "标题、导读、主细类、标签和依据均忠实。静音孪生、正常与静音微调更新的参照关系及STS减法操作均有摘要依据；跨模型和跨基准结论没有被泛化为无条件结论。"
+  },
+  {
+    "id": "Vec6tnWv0s",
+    "titleZh": "几何并非陷阱：面向协议受限优化锁定的谱重开诊断",
+    "summaryZh": "论文追问表征几何塌缩何时造成交叉熵协议下的持久锁定，并以50个小批次内Feature-NTK能否谱重开作为动态可恢复性诊断。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "可解释性"
+    ],
+    "reason": "主问题是静态几何塌缩与持续优化锁定之间的关系；贡献是以受控继续训练时Feature-NTK能否重新打开区分可恢复与锁定状态，并通过BN尺度干预考察其维持机制，因此主要归入训练动态。",
+    "sourceFingerprint": "fde3787414393d0a02fd670684a039ec574a3317072b81980244cda1e5b1eb27",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532673+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238392+00:00",
+    "reviewNote": "标题、导读、主细类、标签和依据均准确，保留了交叉熵协议、50个小批次的Feature-NTK谱重开探针及BN尺度干预等条件；没有把静态参数或表征几何直接等同于功能可恢复性。"
+  },
+  {
+    "id": "Vx20LNJKMp",
+    "titleZh": "系数梯度影响：校准 LLM 强化学习中实际执行的信赖域",
+    "summaryZh": "针对LLM强化学习中不同信赖域机制难以比较的问题，提出Coefficient Gradient Impact度量token系数位移，并据此校准阈值和限制影响。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化",
+      "推理",
+      "评估"
+    ],
+    "reason": "论文关注信赖域控制如何改变策略梯度及训练稳定性，提出统一的系数位移度量、校准程序和影响上限规则，主要贡献属于优化机制及其稳定性诊断。",
+    "sourceFingerprint": "53c48b14d316dfb9de0a65afb50daa7aebaf78a43080bd6c70edec05e08f807f",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532676+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238395+00:00",
+    "reviewNote": "标题、导读、主细类、标签和依据均忠实概括了token系数位移、共同报告坐标、影响上限和可审计测量协议。摘要中的稳定性、跨设置和推理准确率结论均带有实验范围，未被扩展为无条件的跨方法或跨架构结论。"
+  },
+  {
+    "id": "WBhnid2JvS",
+    "titleZh": "用于研究不同输入间表征收敛差异的重心对齐",
+    "summaryZh": "论文用广义Procrustes重心对齐消除单元置换和激活旋转，在共同嵌入空间中比较单个刺激的表征收敛与发散，并扩展到脑表征及图像—文本相似性。",
+    "subcategory": "表征分析",
+    "tags": [
+      "多模态"
+    ],
+    "reason": "论文研究的是对激活表征施加广义Procrustes重心对齐，消除单元置换和旋转等表示对称性，并在共同嵌入空间中比较单个刺激；还覆盖脑表征和图像—文本模型，但不涉及参数更新，也不等同于输入—输出功能空间相似性。",
+    "sourceFingerprint": "0b703d2bca7307adadb570250521aed2bee92611ebe9041688de6bdc44d3e5ed",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238400+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238402+00:00",
+    "reviewNote": "筛选对象相关，但将激活表征对齐与“功能空间比较”混称；论文核心是对齐后的表征相似性，不是参数空间或输入—输出功能空间相似性。原标签“可解释性”也缺乏摘要依据。"
+  },
+  {
+    "id": "XBRWRQvkBQ",
+    "titleZh": "特征学习的机制理论",
+    "summaryZh": "论文解释过参数化网络如何学习特征，将Jacobian张成的活动参数子空间建模为由损失Hessian驱动的Grassmann流形轨迹。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "泛化",
+      "可解释性"
+    ],
+    "reason": "论文以活动参数子空间随训练的演化为研究对象，提出损失Hessian作为该Grassmann轨迹的无穷小生成元，并分析权重衰减、子空间冻结与泛化的联系，主要属于训练动态。",
+    "sourceFingerprint": "11c450ead7b63b999d93e254365bb1d16922691c5a037f200d10eb0e0b55c3a8",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532683+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238404+00:00",
+    "reviewNote": "筛选准确指出其为活动参数子空间、Grassmann轨迹和Hessian生成元的训练理论，并明确不是后训练实证。标题、导读、训练动态分类、优化/泛化/机制标签及依据均有摘要支持。"
+  },
+  {
+    "id": "XJBQQ9ZeCn",
+    "titleZh": "用于跨架构任务向量重基化的最优传输层对齐",
+    "summaryZh": "论文提出无需训练的OTLA，用少量无标签校准集结合CKA表示相似度与相对深度先验，以松弛最优传输学习异构模型的加权层对应，并用于任务向量重基化。",
+    "subcategory": "模型合并",
+    "tags": [
+      "最优传输"
+    ],
+    "reason": "核心是异构宽度和深度模型的任务向量重基化；OTLA学习加权层对应并接入现有重基化方法，摘要未涉及知识蒸馏。",
+    "sourceFingerprint": "c26af6d8547061ebf80b52dbf285c1b2d9302a7f69c170e1b2819e0459e3836d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238408+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238411+00:00",
+    "reviewNote": "筛选主题和导读基本准确，但论文不是知识蒸馏；“蒸馏”标签将任务向量重基化与蒸馏混淆，应删除。"
+  },
+  {
+    "id": "XNFIVOHyBn",
+    "titleZh": "基于梯度的数据选择何时是预测器的属性？",
+    "summaryZh": "论文检验基于梯度的数据选择是否由预测器函数唯一决定，发现函数保持重参数化可改变参数空间度量、Gram/Fisher几何及离散选择，即使logits不变；选择轨迹与最终效用也可能分离。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化",
+      "数据集"
+    ],
+    "reason": "论文是关于函数保持重参数化、梯度选择几何和选择非可辨识性的优化方法参考；虽然实验包含LoRA微调，但并非后训练更新对齐或专门的LLM研究。",
+    "sourceFingerprint": "b568df8bc4742bef398852533c8d909fed70bc9981a6dbd98318008af1b3969c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238415+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238417+00:00",
+    "reviewNote": "论文与参数化几何相关，但筛选理由把其应用外推到后训练更新对齐；摘要实际研究的是梯度数据选择的预测器级可定义性。原“LLM”标签也不应因实验包含MiniLM和ModernBERT而作为主题标签。"
+  },
+  {
+    "id": "XsKCII8EMS",
+    "titleZh": "论同策略蒸馏的几何结构",
+    "summaryZh": "论文比较OPD与SFT、RLVR的注意力权重更新谱及OPD的累积轨迹，发现OPD早期更新对齐于持续低维通道；在该实验中限制到早期rank-16子空间几乎不损失OPD性能，但SFT受损更大。",
+    "subcategory": "训练动态",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "强化学习",
+      "优化",
+      "推理"
+    ],
+    "reason": "核心是OPD在所测设置中的参数更新轨迹，包括早期子空间锁定及其受限训练检验；摘要同时指出目标信号会改变几何，且未主张普遍锁定机制或效率收益。",
+    "sourceFingerprint": "5012bc52d3cee221ec5454d91b91d199d03a4486f106d38faa51d5925aa9cc63",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238420+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238424+00:00",
+    "reviewNote": "主题和分类基本正确，但筛选及导读把比较表述为三种方法的“完整轨迹”；摘要明确的轨迹级核心主要是OPD，且结论不主张普遍锁定机制或效率收益。"
+  },
+  {
+    "id": "YCFzRROyiC",
+    "titleZh": "预训练为下游任务适配诱导稳定谱子空间",
+    "summaryZh": "论文分析视觉和语言模型微调时保持稳定的领先谱子空间，发现其在预训练中逐步形成、早层更稳定；在GLUE实验中，将深层更新限制于该子空间仅更新0.2%参数仍接近全量微调。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "泛化",
+      "效率"
+    ],
+    "reason": "论文研究预训练形成的领先谱子空间在下游微调中的稳定性及其适配作用；受限更新接近全量微调的证据来自GLUE实验，不能泛化到所有任务或模型。",
+    "sourceFingerprint": "0c3374ccc451b99893e16137f921edaa3a82ccd04fe37ac67dcf4e39ad563ba6",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238427+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238430+00:00",
+    "reviewNote": "核心判断正确，但导读和筛选理由省略了性能验证的条件：仅摘要明确的GLUE实验达到接近全量微调，不能泛化为所有任务和模型。"
+  },
+  {
+    "id": "YS3GVgktvQ",
+    "titleZh": "后训练重塑真实性—迎合性几何",
+    "summaryZh": "论文提出GFS衡量激活空间中真实性与迎合性方向的关系；在22对、9个家族的基础/指令模型中，后训练使二者更负相关，但方向干预对行为的影响只在部分模型出现且并非稳定降低迎合性。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "对齐",
+      "安全"
+    ],
+    "reason": "论文用GFS比较基础模型与指令微调模型中的激活方向关系；跨九个模型家族的结论主要是几何变化，而行为干预效果具有模型依赖性，可能无效甚至恶化结果。",
+    "sourceFingerprint": "17c6aca9e96b22455315e6e486ba39ae06eaede06aaee905cefc99ffe9888577",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238433+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238436+00:00",
+    "reviewNote": "标注整体准确，但筛选理由称行为关系已跨九个模型家族验证；摘要中跨九家族的是几何关系，行为干预只在部分模型测试且效果并不一致。"
+  },
+  {
+    "id": "ZafDWjuU8y",
+    "titleZh": "通过直接同策略蒸馏实现弱到强泛化",
+    "summaryZh": "Direct-OPD比较弱模型RL前后检查点的log-ratio，将其作为稠密隐式奖励，在强模型自己的同策略状态上迁移RL诱导的策略位移；实验还显示可顺序组合多个策略位移。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "蒸馏",
+      "强化学习",
+      "推理",
+      "泛化"
+    ],
+    "reason": "主贡献是跨模型尺度迁移RL产生的策略位移，而不是参数空间对齐或一般功能空间相似性；摘要报告其在所述实验中持续改善更强目标模型，并优于步数匹配的直接RL。",
+    "sourceFingerprint": "561232c829b26f925e36bebdddcb324899eb1d18f624521b542722560e48289a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238440+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238444+00:00",
+    "reviewNote": "方法和跨模型迁移主题准确，但筛选理由使用“功能位移”容易与功能空间相似性混淆；摘要明确转移的是弱模型RL前后的策略位移及其log-ratio隐式奖励。"
+  },
+  {
+    "id": "ZsKDGbxLmk",
+    "titleZh": "影响谱：大语言模型中逐层重要性的力量",
+    "summaryZh": "论文研究LLM中任务相关的层重要性，以结合一阶梯度和二阶方向曲率的参数空间影响函数构建影响谱，并用HVP降低计算需求。",
+    "subcategory": "归因与探针",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "优化"
+    ],
+    "reason": "论文旨在将特定任务的损失敏感性归因到LLM各层，PIF及其影响谱以梯度和方向曲率形成逐层诊断量，属于面向内部组件重要性的归因与探针方法。",
+    "sourceFingerprint": "7fc521b2c15b8d3cb0aebd508b717495649e7c0024922baef80f6df5e5087e91",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532706+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238446+00:00",
+    "reviewNote": "screening准确概括了PIF基于一阶梯度、二阶方向曲率和HVP的层重要性分析，并明确其不是后训练更新结构研究。中文标题、导读、归因与探针分类、标签及依据均与摘要一致，未混淆参数空间与功能空间。"
+  },
+  {
+    "id": "Ztx6GtIeKG",
+    "titleZh": "信号仍在，阈值滑移：量化与微调后的小型 LLM 智能体",
+    "summaryZh": "研究量化与工具微调共同作用后小型LLM智能体的安全变化，将行为效应分解到决策log-odds，发现拒答方向稳定而行动阈值发生位移。",
+    "subcategory": "Agent 安全",
+    "tags": [
+      "LLM",
+      "Agent",
+      "安全",
+      "量化",
+      "可解释性"
+    ],
+    "reason": "论文考察部署量化和工具调用微调如何影响智能体的有害行动，以可执行行为、拒答方向和决策阈值解释安全变化，核心对象是工具型LLM智能体的安全机制。",
+    "sourceFingerprint": "83f2f186fe2a6674e2ac9ad78b05ec2988f33a38b27b552c4c1ae0440289efc7",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532710+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238449+00:00",
+    "reviewNote": "screening和annotation均忠实呈现了量化、工具微调及其他干预下的结果：拒答方向相对稳定，决策变量和阈值移动；也保留了智能体可执行行为与安全分析的语境。分类、标签和依据均无摘要外扩展。"
+  },
+  {
+    "id": "bJI3LHVQRT",
+    "titleZh": "当坐标改变特征时：稀疏自编码器的对称性测试",
+    "summaryZh": "论文检验正交坐标变换是否改变TopK SAE所学特征，通过成对训练定位Adam破坏参数对应的机制，并推导保持对应关系的自适应更新条件。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "优化"
+    ],
+    "reason": "论文研究语言模型激活经正交变换后，SAE字典是否仍保持已知参数对应关系；贡献包括耦合对称性测试、Adam非等变来源分析，以及可保持该对应关系的更新准则。",
+    "sourceFingerprint": "20ba5098d32d70bc003c181ec0f0ce6c8f1aead7eef4fc2bd8c0d67680bde819",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238455+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238457+00:00",
+    "reviewNote": "核心判断正确，但annotation依据中的“等信息正交换基”表述有误，应为“等信息的正交变换”；同时需明确论文研究的是SAE字典在对应坐标和优化更新下的稳定性，而非泛化的LLM参数更新比较。"
+  },
+  {
+    "id": "bkQMryGDaf",
+    "titleZh": "注意力不变量：无需前向传播的权重空间可解释性",
+    "summaryZh": "论文从权重直接构造QK不变量ρ与α，刻画位置计算能力并区分三类典型注意力头；还在另一架构上测试迁移性能，并用ρ选择YaRN头。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文提出仅依赖QK权重的基不变量ρ和α，用于分析位置计算并区分归纳头、重复词元头和前一词元头；跨架构结果是在指定模型与测试设置下报告的机制识别性能。",
+    "sourceFingerprint": "d714a9734ccdc73696137a54df8341bb3582d4f932121fc1e57b4a1e1bd3ef36",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238461+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238464+00:00",
+    "reviewNote": "annotation基本准确，但“跨架构迁移典型头类型”表述过于笼统；摘要只报告在五个模型、四类架构中的区分结果，以及转移到另一架构时的测试性能，不能泛化为无条件的跨架构结论。screening中关于更新前后比较属于方法潜在用途，不是摘要直接实验结论。"
+  },
+  {
+    "id": "bxNIYabtJQ",
+    "titleZh": "论基础模型的潜能与实现",
+    "summaryZh": "研究任务适配是在增加新能力还是激活基座能力，将更新分解为输入共享分量与残差，并以逐层常量shift adapter复现LoRA和全量微调行为。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文研究基础模型进行任务适配时能力变化的来源，并提出输入无关的逐层常量偏移来复现LoRA及全量微调效果，主要贡献属于任务迁移与参数高效适配。",
+    "sourceFingerprint": "a0019e83ef4eb19cbda19f670d941dbecf6a3435754a22d2af5dd659f17931f0",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532721+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238466+00:00",
+    "reviewNote": "screening准确说明了输入无关共享分量、输入相关残差以及逐层常量shift adapter对LoRA和全量微调行为的复现。annotation的迁移与元学习分类、标签和依据均符合摘要，未把功能空间结果误写成参数空间相似。"
+  },
+  {
+    "id": "c8pCCILIne",
+    "titleZh": "为模型合并保留任务向量中的锚定核心",
+    "summaryZh": "针对任务向量合并忽略预训练权重中任务关键成分的问题，PACT识别标量与子空间层面的LBW维度，对齐并移除其正交补后再执行合并。",
+    "subcategory": "模型合并",
+    "tags": [
+      "优化",
+      "效率"
+    ],
+    "reason": "论文指出任务知识并非完全位于任务向量中，刻画预训练权重内的LBW关键维度，并以PACT保护这些锚定成分、增强现有任务向量合并方法。",
+    "sourceFingerprint": "eb332a46f930f3f93c885d5db3647c987ae093a759fe982564b25e6ded09de79",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532725+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238472+00:00",
+    "reviewNote": "screening正确抓住了任务知识并非完全位于task vector、LBW维度的标量与子空间刻画，以及PACT对正交补相关成分的处理。annotation准确区分了预训练权重中的锚定核心与任务向量，模型合并分类和标签均恰当。"
+  },
+  {
+    "id": "cEfo61BG3E",
+    "titleZh": "Cayley 参数化任务向量迁移：微调更新的不变重基化",
+    "summaryZh": "研究如何将微调任务向量对齐并迁移至接收模型，CTT以Cayley变换联合学习正交残差流旋转与缩放因子完成重基化，并比较图像与文本域表现。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "多模态",
+      "效率"
+    ],
+    "reason": "论文核心是跨模型复用微调任务向量：CTT用可微Cayley参数化保持正交旋转，并联合学习旋转和缩放以完成更新重基化。摘要显示其在文本域优于对比方法、图像域表现相当，且效果具有模态依赖性。",
+    "sourceFingerprint": "b4dc911dc06202527211b21f162a80918096f331627e4dfba6bd57c1b5356a19",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238477+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238479+00:00",
+    "reviewNote": "screening对方法和实验条件的概括基本准确，但annotation将任务向量跨模型迁移误归为“模型合并”；摘要核心是重参数化对称性下的任务向量迁移与重基化。跨模态效果还明确依赖图像/文本域，不能作无条件泛化。"
+  },
+  {
+    "id": "d63xcfJTb2",
+    "titleZh": "USA：用于语言智能体跨领域 On-Policy 蒸馏的更新感知 SAM",
+    "summaryZh": "研究多领域 On-Policy 蒸馏后模型合并的负迁移，USA 依据预热期逐参数更新幅度设置逐坐标扰动半径，以降低关键坐标曲率。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "Agent",
+      "蒸馏",
+      "优化"
+    ],
+    "reason": "论文将跨领域任务向量合并的负迁移归因于坐标级更新耦合与合并位移，并用更新感知的逐坐标 SAM 扰动半径降低相关坐标曲率，主要贡献直接服务于模型合并。",
+    "sourceFingerprint": "8a057b58eeb46da5cca7d05d81d9418ffa6076c9a335e5557c792b2075e4370e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532732+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238482+00:00",
+    "reviewNote": "screening和annotation均准确概括了跨领域蒸馏后的任务向量合并、逐坐标更新耦合、合并位移及更新感知SAM。摘要中的数学、科学和代码实验范围、模型合并定位及优化标签均得到忠实保留。"
+  },
+  {
+    "id": "dB5cPt86r3",
+    "titleZh": "预训练感知的合并提升：将预训练响应引入模型合并",
+    "summaryZh": "论文指出任务向量的数值位移不能单独反映预训练模型的响应；PAL 用少量通用无标签输入估计敏感度，在可逆变换坐标中执行合并，再映回原参数空间。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM"
+    ],
+    "reason": "论文发现相同数值扰动在不同参数位置会产生不同输出响应，并以预训练模型的敏感性构造可逆坐标变换，在变换坐标中应用既有合并规则后映回原参数空间；核心贡献属于模型合并。",
+    "sourceFingerprint": "b48447886b4d41544c7ce1de42a3e508bcbed1a9339382e293af6183dafce24e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238486+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238489+00:00",
+    "reviewNote": "主题筛选及标题、导读、细类和依据均忠实；但摘要仅明确覆盖 CLIP 视觉任务、RoBERTa 和 Llama 等评测，未明确支持“多模态”标签，故删除该标签。"
+  },
+  {
+    "id": "dDa1UXAmTz",
+    "titleZh": "梯度门控 DPO：稳定语言模型偏好优化",
+    "summaryZh": "研究 DPO 扩大偏好间隔时概率质量塌缩的问题，Gate-DPO 依据拒绝回答的当前概率几何门控其梯度贡献，抑制过度负向更新。",
+    "subcategory": "偏好学习",
+    "tags": [
+      "LLM",
+      "对齐",
+      "优化"
+    ],
+    "reason": "主问题是偏好间隔增大无法保证健康的概率质量重分配；Gate-DPO 根据拒绝回答所处的低概率区域选择性削弱梯度，直接改进语言模型的偏好优化过程。",
+    "sourceFingerprint": "bb0fcb203cf7ec01b7f4d8d879a556cee3808997276cfadfb48a560e764ec48b",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532742+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238492+00:00",
+    "reviewNote": "筛选准确对应 DPO 的概率质量重分配问题；标题、导读和依据正确保留了低概率谷、softmax 耦合、梯度门控及跨架构与目标的验证，没有混淆参数相似与功能响应，也未加入摘要外事实。"
+  },
+  {
+    "id": "duV1JcuVSM",
+    "titleZh": "作为任务适配表征的结构化模型嵌入",
+    "summaryZh": "论文研究如何把共享预训练模型上的任务更新表示为可执行的结构化嵌入，并用预训练模型定义的固定基分析适配保真度、关系几何、功能变化界与任务算术。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文把任务特定参数更新编码为由预训练模型固定基定义的结构化嵌入，考察适配保真度、关系几何、功能变化界和任务算术，并测试由已有嵌入构造留出任务适配；核心属于任务适配表征分析。",
+    "sourceFingerprint": "95e714ed1fd2eac54b6b8adbc512f600fb0c1d87132996e623a65a76a27f4a02",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238496+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238499+00:00",
+    "reviewNote": "主题筛选及中文语义字段基本准确；但 ViT 图像数据集与 GPT-2 NLP 数据集并不等于多模态模型或任务，摘要未支持“多模态”标签，故删除。"
+  },
+  {
+    "id": "eO93WYB5QI",
+    "titleZh": "谱模态何时具有因果性？学习动态中先识别、后干预",
+    "summaryZh": "论文追问谱模态是特征学习的因果方向还是伴随信号，先以分离性、稳定性与特异性门槛识别候选，再在参数或功能空间进行定向抑制。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "可解释性",
+      "因果",
+      "优化",
+      "泛化"
+    ],
+    "reason": "论文建立先识别再干预的谱方向检验框架，并比较Hessian、Gauss–Newton与功能空间算子能否暴露可操纵的特征方向；其核心是用因果干预定位学习与泛化机制。",
+    "sourceFingerprint": "155c6ca6020a0ebe6e84e338110628bd26fba3c2406965b7699e2d2d42c616c1",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532751+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238501+00:00",
+    "reviewNote": "筛选正确定位为方法参考；导读和依据准确区分参数空间算子、Gauss–Newton 算子与功能空间输入敏感性算子，并保留了识别条件、因果干预和深度网络中的限制。"
+  },
+  {
+    "id": "eRFm0Rqvmb",
+    "titleZh": "无需训练地向教师学习：用于能力迁移的功能几何",
+    "summaryZh": "论文研究无需重演后训练如何从教师迁移能力；FGC 用基模型激活诱导的功能几何校准逐通道更新，并可将多个教师的互补能力直接组合。",
+    "subcategory": "模型合并",
+    "tags": [
+      "多模态",
+      "效率"
+    ],
+    "reason": "论文用基模型激活诱导的功能几何替代单纯参数位移，校准教师的逐通道更新，并允许直接组合多个教师的互补能力；主要贡献是无需训练的能力更新迁移与合并。",
+    "sourceFingerprint": "c8927b76491cffbf8581191a44e4ae18379bf5c789e448b592a7e078ba605a23",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238506+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238509+00:00",
+    "reviewNote": "主题、标题、导读、细类和依据均基本忠实；摘要明确支持视觉—语言模型和多模态评测，但未明确使用“LLM”这一标签，故删除该可能过宽的标签。"
+  },
+  {
+    "id": "eTSri5pJ2X",
+    "titleZh": "并非所有更新都有帮助：人格向量合并的功能路径归因",
+    "summaryZh": "论文发现人格微调位移含有削弱目标特征的功能抵消；方法沿参数空间合并路径归因更新贡献，筛选并合成更稀疏的人格向量，同时保留通用能力。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文发现完整人格微调位移包含削弱目标人格的参数更新，并沿参数空间合并路径归因各更新的功能贡献，以筛选构造稀疏人格向量；核心对象与方法均属于模型合并。",
+    "sourceFingerprint": "e9075e21063082713108e92ad9e1f8dc4a94867296ae443c757bea24f5747c8d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238513+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238516+00:00",
+    "reviewNote": "正文筛选理由和 annotation 的核心语义准确；但 screening 的 preAdjudicationReason 加入了摘要未提及的“跨 tokenizer 和模型族迁移”，且摘要没有明确支持“对齐”标签。"
+  },
+  {
+    "id": "em6BBWQUbs",
+    "titleZh": "一阶操控：将权重适配转化为激活操控",
+    "summaryZh": "研究如何将权重适配转为可组合的激活控制，First-Order Steering 以一阶近似映射权重更新，并由 HeRD-Merging 最小化近似误差。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "可解释性",
+      "对齐",
+      "安全"
+    ],
+    "reason": "论文建立权重更新矩阵与残差流操控向量之间的一阶对应并给出误差界，随后通过 HeRD-Merging 改善该近似及组合行为控制，主要贡献是解释和利用权重适配的激活层功能机制。",
+    "sourceFingerprint": "4686907e6e1514bcf898dcc3e4d72917620a6900ac1ec149622d72e5e215fc6a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532764+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238518+00:00",
+    "reviewNote": "筛选准确对应权重更新到激活操控的一阶映射及其组合行为控制；标题、导读、细类、标签和依据均有摘要依据，误差界与 HeRD-Merging 的作用也表述准确。"
+  },
+  {
+    "id": "f4WMYYwHzn",
+    "titleZh": "冻结权重空间中的内在维度：解处失真，原点塌缩",
+    "summaryZh": "论文研究固定低维权重映射是否产生良态优化坐标，以pullback Fisher刻画解处方向失真，并用功能阶分析零基点附近的高阶塌缩。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化"
+    ],
+    "reason": "主问题是权重空间中良态的固定低维参数化能否保持训练坐标中的优化几何；论文刻画pullback Fisher质量集中和计算图导致的零点塌缩，核心属于重参数化下的优化性质。",
+    "sourceFingerprint": "cea32e26fe1fea36ca0eb1f6ef50ac6aa0544dfb9fc4575dad7fdbe1ab594544",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532767+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238521+00:00",
+    "reviewNote": "筛选恰当地将论文作为低维重参数化和更新几何的方法参考；中文字段准确保留 pullback Fisher 失真、零基点高阶塌缩及其条件，没有将其误述为大模型后训练结论。"
+  },
+  {
+    "id": "fOAVk5j4BH",
+    "titleZh": "保持旋转的监督微调",
+    "summaryZh": "研究 SFT 造成主导奇异子空间旋转与 OOD 泛化退化的问题，RPSFT 在预训练 SVD 基中锚定 top-k 乘积块以约束更新。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "泛化",
+      "优化"
+    ],
+    "reason": "论文关注 SFT 期间预训练权重主导奇异子空间的旋转；RPSFT 在预训练 SVD 坐标中锚定 top-k 乘积块，方法动机是经验 Fisher 梯度能量集中于领先坐标，并据此约束更新结构，改善域内与 OOD 表现权衡及下游 RL 初始化。",
+    "sourceFingerprint": "990c34f66a6665122c66bb2cad7198870694e9a53eae3cc6d0f02f98f9869319",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238525+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238528+00:00",
+    "reviewNote": "主题相关性成立，但 screening 的 preAdjudicationReason 将经验 Fisher 梯度能量表述为直接约束；摘要仅说其坐标集中性构成方法动机，实际方法是锚定预训练 SVD 中的 top-k 乘积块。"
+  },
+  {
+    "id": "fS9VOVkRQe",
+    "titleZh": "修复非线性模型合并：GELU 网络的秩–宽度分离",
+    "summaryZh": "研究 GELU 网络中参数更新相加何时对应函数相加，理论刻画局部修复的秩、神经元兼容性、误差阶与精确表示所需宽度。",
+    "subcategory": "模型合并",
+    "tags": [],
+    "reason": "论文从理论上刻画两层 exact-GELU 网络合并时参数可加性与函数可加性的差距，给出由适配器秩、神经元兼容性和网络宽度决定的修复误差与精确表示条件，核心问题是非线性模型合并。",
+    "sourceFingerprint": "37cd835185d7836d819ace1d79987d99043750b614119e1020a19e278dc56d8c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532774+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238530+00:00",
+    "reviewNote": "摘要明确讨论 exact-GELU 网络中参数更新相加与函数相加的差异、局部修复的秩与兼容性、误差阶及精确宽度；中文导读和依据均未混淆参数空间与功能空间，也未加入摘要外事实。"
+  },
+  {
+    "id": "fjg2pukBZ0",
+    "titleZh": "神经网络的趋同演化：拉链化与弱—强等价性",
+    "summaryZh": "论文研究端到端函数何时迫使独立训练网络形成相同内部机制，以zippering与弱—强等价定理刻画跨深度、跨架构的表示及组件对应。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "LLM"
+    ],
+    "reason": "论文从可识别性出发，证明端到端函数一致何时蕴含内部表示在线性变换下对应，以及何时进一步迫使通道、门和注意力头重现；核心贡献是跨模型内部表征与组件的对齐理论。",
+    "sourceFingerprint": "3583b03cb83a78e97ae16e53041bed7300f110fc81eb7dfda3dd8baf5fa986f9",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238535+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238538+00:00",
+    "reviewNote": "主题和 annotation 基本准确，但 screening.reason 增加了“可逆”这一摘要未明确给出的限定；摘要只表述为在线性变换下对应。"
+  },
+  {
+    "id": "grVXhl52br",
+    "titleZh": "安全脆弱性是路由问题：危害检测与拒答之间的注意力瓶颈",
+    "summaryZh": "研究对齐语言模型的拒答为何易受权重扰动，提出危害检测、注意力路由与拒答输出三部分机制，并以瓶颈注意力头噪声注入微调分散依赖、拓宽安全盆地。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性",
+      "对齐"
+    ],
+    "reason": "论文的主问题是解释语言模型拒答安全性的机制性脆弱来源；其核心贡献是将危害检测到拒答输出之间的故障定位为少数非冗余注意力头构成的路由瓶颈，并通过定向噪声微调验证该机制，因此主要归入机制可解释性。",
+    "sourceFingerprint": "7ce26cd6ea41521fd8449e07189d019dc962ff924f431d55f08e332c00c92973",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238541+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238544+00:00",
+    "reviewNote": "主题相关性成立；但摘要将危害检测、路由和拒答输出称为三个组成部分，而非明确的“三阶段”，需避免引入阶段性流程含义。"
+  },
+  {
+    "id": "hU6OXYZzpe",
+    "titleZh": "LLM 预训练的相对泛化不变性",
+    "summaryZh": "研究优化器、架构与数据流如何分别影响 LLM 预训练，提出逐 token 验证损失差的 RGI，并用过参数化二次模型给出其可出现的理论实例。",
+    "subcategory": "泛化理论",
+    "tags": [
+      "LLM",
+      "泛化",
+      "优化"
+    ],
+    "reason": "主问题是不同训练要素如何影响逐 token 泛化，核心贡献是定义 RGI、验证其跨优化器与适度架构变化的近似不变性，显示训练数据流会显著改变相对泛化，并证明该现象可在过参数化二次模型中出现。",
+    "sourceFingerprint": "87e4153bee46604dabc20aa6fc059087f8de5c83c921978a3452c2ebb298cd10",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238548+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238551+00:00",
+    "reviewNote": "摘要支持 RGI 在不同优化器和适度架构变化下近似成立、受数据流改变影响，并给出过参数化二次模型中的理论实例；“分析其成立边界”超出摘要的明确表述。"
+  },
+  {
+    "id": "hlQtUIgCal",
+    "titleZh": "OrDiPO：用于语言模型偏好优化的正交蒸馏",
+    "summaryZh": "针对知识蒸馏未必改善目标偏好对齐的问题，OrDiPO以DPO为主目标，用历史偏好梯度的指数移动平均确定投影法向，移除蒸馏梯度平行分量并保留正交残差作辅助信号。",
+    "subcategory": "偏好学习",
+    "tags": [
+      "LLM",
+      "对齐",
+      "蒸馏",
+      "优化"
+    ],
+    "reason": "论文在语言模型偏好优化中研究 DPO 与 chosen-prefix 蒸馏信号的组合；在所述数据集和评测中，利用历史偏好梯度的指数移动平均定义投影法向，移除蒸馏梯度的平行分量，再将正交残差与当前偏好梯度组合，并报告相对基线的对齐指标和生成胜率提升，因此主要归入偏好学习。",
+    "sourceFingerprint": "f209b4436296976f0bc51dc18a32b9a1b9190942c80e8eaf347bea351a8df9ce",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238554+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238557+00:00",
+    "reviewNote": "annotation 本身基本忠实，但 screening.reason 将实验支持的对齐表现表述为“能力增益”；摘要报告的是特定数据集和评测上的对齐准确率、生成胜率及外部基准结果，不应泛化为一般能力提升。"
+  },
+  {
+    "id": "i26Cjm6qSf",
+    "titleZh": "SpanShift：通过原始文本奖励进行跨分词器策略偏移蒸馏",
+    "summaryZh": "SpanShift将教师强化学习前后对同一回答的对数似然差作为原始文本奖励，并以逐前缀奖励增量及reward-to-go训练不同分词器的学生模型。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "对齐",
+      "蒸馏"
+    ],
+    "reason": "论文的主问题是如何摆脱共享词表限制，将教师模型经RL后训练获得的策略偏移迁移给不同分词器和模型族的学生；其核心贡献是用同一回答在教师RL前后的对数似然差表征偏好变化，并通过前缀奖励增量与reward-to-go实施蒸馏，因此主要归入后训练与对齐。",
+    "sourceFingerprint": "2e287802d5d92a5074df3f27727f5d7b56ea7b52c0f01c3fa299a0020a52377e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532792+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238560+00:00",
+    "reviewNote": "摘要明确把策略偏移定义为教师模型 RL 前后对同一回答的对数似然差，并通过前缀奖励、reward-to-go 和跨分词器学生训练实现迁移；annotation 保留了这是文本奖励和蒸馏机制，而未误写成参数空间相似。"
+  },
+  {
+    "id": "i4s0c7y3VM",
+    "titleZh": "微调的行为速率：以压缩衡量有用信息",
+    "summaryZh": "本文定义压缩后仍保留固定比例微调收益的最小适配器比特数，并以接收模型相关修正谱预测 LoRA 更新的行为保持速率。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "LLM",
+      "效率"
+    ],
+    "reason": "论文的主问题是如何用实际序列化比特数衡量 LoRA 微调写入并维持行为所需的有用信息；其核心贡献是提出行为速率 R*，并通过跨数据集、基础模型、秩和层的实验表明该速率取决于数据集—接收模型组合及适配器载体，且接收模型相关修正谱最能预测行为保持速率，因此主要归入效率与压缩。",
+    "sourceFingerprint": "88b2a143c3953641643d14d8b21003007a310e32f5e8144e36012d6fba8b256a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238564+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238566+00:00",
+    "reviewNote": "摘要中的 behavioral rate 是保留固定行为收益所需的最小序列化比特数，不是通常意义上的“压缩率”；annotation reason 末尾将 rate 误写为压缩率。"
+  },
+  {
+    "id": "iPYLBWqDSG",
+    "titleZh": "RISE：通过自外推策略蒸馏实现递归改进",
+    "summaryZh": "针对在线策略蒸馏受教师质量限制的问题，RISE外推模型自身RLVR检查点间的参数或logit位移，构造逐轮更新的合成教师并提供稠密逐词元监督。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "蒸馏",
+      "推理"
+    ],
+    "reason": "论文的主问题是如何在无需外部教师或特权条件的情况下提升语言模型后训练中的在线策略蒸馏。其核心贡献是从RLVR训练轨迹中外推当前检查点与滞后锚点之间的参数位移或输出logit位移，将结果奖励产生的稀疏更新转化为稠密逐词元目标，并以RLVR与OPD的循环实现递归改进，因此主要归入“后训练与对齐”。",
+    "sourceFingerprint": "b2555cb156b47c5e7a720cbaf85f2ba4481b565be1a8f6d90b278f4580457996",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532799+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238569+00:00",
+    "reviewNote": "screening准确抓住RLVR轨迹位移在参数空间或logit空间外推、并用于在线策略蒸馏的核心；中文标题、导读、主类、标签和依据均忠实，未混淆参数空间与功能空间，也未加入摘要外事实。"
+  },
+  {
+    "id": "ibzsoUqJYP",
+    "titleZh": "分类中的神经切线核稳定性",
+    "summaryZh": "研究分类损失下宽神经网络的 NTK 能否保持稳定，给出正则化或非退化目标条件，并以线性化模型刻画训练解及初始化诱导的不确定性。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化",
+      "泛化"
+    ],
+    "reason": "主问题是分类训练期间 NTK 与线性化近似的稳定性。论文刻画了宽网络维持惰性训练的条件、相应的 NTK 解及随机初始化诱导的预测分布，属于训练动态；摘要未涉及安全问题。",
+    "sourceFingerprint": "e5c786f2ff2c879a23d7e085e5444ff56b266e5bfd2704699588c6d69acbbdd6",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238572+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238575+00:00",
+    "reviewNote": "screening及中文标题、导读、主类和依据基本忠实；“安全”标签在英文摘要中没有依据，应删除。"
+  },
+  {
+    "id": "ijUdFTpJVr",
+    "titleZh": "通过线性化功能分解理解多任务模型合并中的稀疏化",
+    "summaryZh": "针对多任务模型合并中参数稀疏化机理不清的问题，提出线性化功能分解，分离目标与非目标任务贡献，并以路径诊断和误差界刻画跨任务交互及能力保持。",
+    "subcategory": "模型合并",
+    "tags": [
+      "效率",
+      "泛化"
+    ],
+    "reason": "主问题是解释参数稀疏化如何影响多任务模型合并。LFD 将合并结果分解为目标与非目标任务贡献，给出合并结果与分解之间的差异界，并通过路径诊断分析任务向量范数、跨任务交互、目标一致性、单任务质量及留出任务表现，因此归入模型合并；摘要支持效率和泛化，但未明确提出优化器或优化方法。",
+    "sourceFingerprint": "bf6e562d0835b1eb42be23562dbd55c3c472f27321d875218164882803560ef8",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238578+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238583+00:00",
+    "reviewNote": "screening、标题、导读、主类和依据总体符合摘要；“优化”标签不是摘要明确涉及的主题，论文重点是模型合并中的功能分解、稀疏化诊断及跨任务泛化，因此删除该标签。"
+  },
+  {
+    "id": "jacDGbzQpx",
+    "titleZh": "理解 LoRA 中学习率随批量大小的缩放规律",
+    "summaryZh": "研究 LoRA 的学习率为何随批量大小呈现不同于全量微调的缩放行为，通过推导权重空间动力学算子与闭式缩放律解释机制并实现跨模型迁移。",
+    "subcategory": "优化器与收敛",
+    "tags": [
+      "优化",
+      "效率"
+    ],
+    "reason": "论文的主问题是 LoRA 最优学习率随批量大小变化的规律及其与 FullFT 的差异；核心贡献是从低秩因子的耦合更新推导状态相关的权重空间线性算子，分析局部曲率、梯度信号与随机噪声的相对保留，并给出依赖批量大小、秩和模型宽度的闭式学习率缩放律，因此主要归入“优化器与收敛”。",
+    "sourceFingerprint": "50c00a7e3afc684cf655be68be229d8b4d16ff91893fce14655132221cd78799",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532810+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238585+00:00",
+    "reviewNote": "screening准确对应LoRA与全量微调的学习率缩放差异、权重空间动力学、批量大小及跨宽度和架构迁移；中文标题、导读、主类、标签和依据均忠实，跨架构结论保留了摘要中的无再拟合条件。"
+  },
+  {
+    "id": "jybDMZO2OW",
+    "titleZh": "复用还是重学？地球观测基础模型的谱视角",
+    "summaryZh": "研究地球观测基础模型微调时是复用还是重学预训练表示，并以奇异子空间保留、权重更新分布与幅度的谱诊断关联表示复用及参数高效适配表现。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "效率",
+      "评估"
+    ],
+    "reason": "主问题是判断微调后的地球观测基础模型在多大程度上保留并复用预训练表示。论文用主导奇异子空间保留、权重更新分布范围、秩和幅度等诊断刻画结构变化，并分析这些诊断与参数高效适配表现的关系，因此归入表征分析；摘要未支持多模态标签。",
+    "sourceFingerprint": "1800d8140ae5950b3bccfd1958025b067172e5b67122616318ba761196699294",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238589+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238592+00:00",
+    "reviewNote": "screening及中文标题、导读、主类和依据基本忠实；英文摘要没有说明模型为多模态模型，相关标签属于摘要外推断，应删除。"
+  },
+  {
+    "id": "k6BT3nnxkR",
+    "titleZh": "分析权重空间取向以衡量 RLVR 中的熵与准确率",
+    "summaryZh": "研究RLVR中准确率提升与预测熵下降是否同源，通过在低维更新子空间内保持奇异值和范数并旋转权重方向，再搜索替代矩阵改动以分离两种效应。",
+    "subcategory": "机制可解释性",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "可解释性"
+    ],
+    "reason": "论文的主问题是解释RLVR权重更新方向如何分别影响预测熵与准确率；其核心贡献是在低维更新子空间中对保持奇异值和更新范数的方向进行旋转干预，并围绕SFT模型搜索替代权重改动，以因果区分两种输出效应，因此归入机制可解释性。",
+    "sourceFingerprint": "ee23f8b21e33a1df1f49050f1dd0777a2c360a985a258e264367642e9629da48",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532817+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238594+00:00",
+    "reviewNote": "screening准确区分了RLVR更新方向、低维子空间和随机旋转干预，并未误称为SFT与RLVR更新相似性比较；中文标题、导读、主类、标签和依据均对应摘要，结论范围也限定在所测试模型和扰动设置内。"
+  },
+  {
+    "id": "k7mtIYlofS",
+    "titleZh": "面向多任务学习与机器遗忘的模式连通性优化",
+    "summaryZh": "研究多任务学习与机器遗忘中的参数空间模式连通性，在 NTK 及有限宽网络中推导路径损失，并给出二次 Bézier 曲线优于线性插值的条件。",
+    "subcategory": "几何与拓扑学习",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文核心是多任务学习与机器遗忘中的参数空间模式连通性理论，分析 NTK 与有限宽网络的路径损失，并给出二次 Bézier 曲线优于线性插值的条件；因此主类应为几何与拓扑学习，而非通用优化器与收敛。",
+    "sourceFingerprint": "057e5f0427402bd468f38e0c3544d15be45f1af939464d50cf4f4b649eba0d75",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238599+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238603+00:00",
+    "reviewNote": "screening作为参数空间模式连通性的理论方法参考是相关的，标题、导读和依据基本忠实；主类“优化器与收敛”偏离论文核心，论文主要研究参数空间路径的几何与拓扑性质，应改为“几何与拓扑学习”。"
+  },
+  {
+    "id": "lmTkVklSW0",
+    "titleZh": "面向非协调一次性联邦学习的证据式模型对齐",
+    "summaryZh": "研究客户端初始化与训练轮数不一致的一次性联邦学习，FLAME 以合并模型的贝叶斯证据确定神经元排列，再结合权重不确定性执行贝叶斯合并。",
+    "subcategory": "联邦与分布式学习",
+    "tags": [
+      "联邦学习",
+      "分布式训练",
+      "对齐",
+      "优化"
+    ],
+    "reason": "lmTkVklSW0：主问题是在仅通信一次且客户端训练不协调时构造全局模型，贡献是以贝叶斯证据联合处理神经元排列对齐和权重不确定性，因此归入联邦与分布式学习。",
+    "sourceFingerprint": "caa6e934bbf4b0319b1980b2059152a16def34ff62e7233df208bac31e4ea605",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532823+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238605+00:00",
+    "reviewNote": "screening准确概括了一次性非协调联邦学习中的排列对齐、贝叶斯证据和权重不确定性合并；中文标题、导读、主类、标签和依据均忠实，没有把参数对齐误写成功能相似性或加入摘要外事实。"
+  },
+  {
+    "id": "m4csF1UzT4",
+    "titleZh": "双向迁移，非对称表达：数学微调掩盖了其携带的代码增益",
+    "summaryZh": "研究数学与代码监督微调的跨域迁移，区分习得能力与首词回答模式，并通过格式匹配对照及删除特定权重方向揭示被掩盖的代码增益。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "代码",
+      "推理",
+      "可解释性"
+    ],
+    "reason": "主问题是数学与代码 SFT 后观察到的跨域性能变化是否真实反映更新所携带的能力。论文将习得能力与首词回答模式分离，以格式匹配模型为对照，并通过权重空间编辑、特定方向删除及随机方向对照，说明数学微调的代码迁移可被回答模式掩盖；核心对象与方法均属于后训练行为及其参数更新分析。",
+    "sourceFingerprint": "ee37ba7402bf9d89cb288592b8ef9b3da691d6276580d6af79605f3da1817214",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532827+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238609+00:00",
+    "reviewNote": "screening 与 annotation 均忠实：准确区分数学/代码微调的跨域迁移、首词回答模式与习得能力，并保留格式匹配对照、定向移除、随机方向、跨检查点和跨架构条件；未将参数方向相似误写成功能空间相似，也未加入摘要外事实。"
+  },
+  {
+    "id": "m6EodLS3SX",
+    "titleZh": "曲率感知的函数空间 LoRA 初始化",
+    "summaryZh": "针对 LoRA 在收敛速度与最终表现上落后于全量微调的问题，CG-LoRA 根据首步和收敛时功能对齐对应的曲率着色或白化梯度主奇异子空间初始化适配器列空间。",
+    "subcategory": "后训练与对齐",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "论文核心不是直接匹配参数更新，而是要求 LoRA 的预测输出在首个训练步和收敛时对齐全量微调。作者从损失曲率推导曲率着色梯度与 Newton 式曲率白化梯度，并据此提出两种 CG-LoRA 初始化方法；其余实验结论覆盖自然语言理解、数学推理和代码生成基准。",
+    "sourceFingerprint": "84e0e7cba9233f6bf85ae1e70a0c28c6740d713bed2e9a34acf5ce9cc74e359d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238613+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238616+00:00",
+    "reviewNote": "screening.reason 将论文表述成“直接比较 LoRA 与全量微调的参数更新及预测函数”，混淆了参数空间对齐与功能空间对齐。摘要明确指出参数空间对齐只是间接控制预测，论文核心是直接构造首步和收敛时的功能空间预测对齐。annotation 本身基本忠实，以下同步给出完整替换字段。"
+  },
+  {
+    "id": "mA0Q49gygd",
+    "titleZh": "借助交互作用解释并改进 LLM Agent 工具使用的监督微调",
+    "summaryZh": "为解释 SFT 方法、模型规模和数据量如何影响 LLM 工具调用，本文以 Harsanyi 交互分解输出，并用 ICR 增强复杂交互、削弱简单交互。",
+    "subcategory": "Agent 与工具使用",
+    "tags": [
+      "LLM",
+      "Agent",
+      "可解释性"
+    ],
+    "reason": "论文聚焦 Agent 工具选择和参数生成能力，利用 Harsanyi 交互解释 SFT 的作用机制，并提出可加入工具使用训练的 ICR 辅助损失，主要归入 Agent 与工具使用。",
+    "sourceFingerprint": "2208eac8f6350d18f20781d4890331a56454659f901a98bd1541fffa6784ef0c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532834+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238618+00:00",
+    "reviewNote": "screening 与 annotation 准确覆盖工具选择和参数生成两个阶段、Harsanyi 交互分解以及 ICR 对复杂/简单交互的调节；关于不同 SFT 方法、模型规模和数据量的结论未被扩展为无条件定律，分类与标签均合适。"
+  },
+  {
+    "id": "mAj7LrBMou",
+    "titleZh": "参考点至关重要：用于权重空间学习的位移探针",
+    "summaryZh": "为解释同源微调模型的参数为何可预测模型属性，DSProbe 探测相对预训练起点的权重位移，并以二阶 Gram 响应和可学习参考点提取特征。",
+    "subcategory": "归因与探针",
+    "tags": [
+      "可解释性"
+    ],
+    "reason": "主问题是如何从模型参数探测其属性，贡献是将探测对象由原始权重改为相对参考点的位移，并扩展到二阶 Gram 响应，因此属于归因与探针。",
+    "sourceFingerprint": "390df88f262ca904b3cbaaead6ee096855d80646d495e0f10a29cd8492633b3d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532837+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238621+00:00",
+    "reviewNote": "准确把 DSProbe 的对象限定为相对共享预训练起点的参数位移，并保留二阶 Gram 响应、可学习参考点、四种架构和探针效率等条件；未混淆参数位移探测与功能空间相似或加入摘要外能力结论。"
+  },
+  {
+    "id": "mrY6kq3Mjg",
+    "titleZh": "模型在何处分化：线性可预测性追踪表征变化方向",
+    "summaryZh": "为无标签刻画模型表征分化的方向与位置，本文拟合双向线性映射，以留出集可预测性不对称定位被保留的区分及其驱动样本。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "评估"
+    ],
+    "reason": "论文比较模型间表征的双向线性可预测性，以不对称程度分析监督粒度、训练覆盖和微调专门化造成的方向性变化，核心属于表征分析。",
+    "sourceFingerprint": "1480b10a6b3cf2ca3ec06f874fd3ca71f10efd55be7fe02b5003ff445188ad4c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532841+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238624+00:00",
+    "reviewNote": "准确转述双向线性可预测性不对称作为无标签表征分析工具，以及其对监督粒度、数据覆盖、训练进程和微调专门化的诊断；未把线性可预测性等同于参数相似或功能等价，跨模型结论保留为实验性发现。"
+  },
+  {
+    "id": "mxzIiptCVK",
+    "titleZh": "对应关系胜于内容：是什么让神经网络权重中的任务信息可读",
+    "summaryZh": "研究神经网络权重中的任务信息为何可读，通过稀疏布线、线性探针与模板匹配实验，区分排列对称消除和显式单元对应对读取成本的作用。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性"
+    ],
+    "reason": "mxzIiptCVK：主问题是权重表征中的任务信息以何种成本可被探针读取，贡献是揭示单元对应关系、排列对称与模板匹配对可读性的不同作用，归入表征分析。",
+    "sourceFingerprint": "cbb377a5ffa1370ce4984290ee11f37aedf81b0331e137c71e907c19e29d7390",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532844+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238628+00:00",
+    "reviewNote": "screening 与 annotation 正确聚焦权重信息的可读成本、单元对应、排列对称和模板匹配；明确区分消除对称与提供对应关系，未声称这些操作改变了任务信息本身，也未加入后训练结论。"
+  },
+  {
+    "id": "mzpcQFwCfJ",
+    "titleZh": "基于概念的表征相似性统一框架",
+    "summaryZh": "研究跨模型与模态的概念对齐定义，将其分解为表示或概念、实例级或分布级四类性质，并提出 InterVenchA 与 CoSAE 分别评测和联合优化。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "多模态",
+      "评估"
+    ],
+    "reason": "主问题是澄清概念对齐所涵盖的不同表征相似性目标。论文建立表示/概念与实例级/分布级的四类性质，提出干预式评测基准 InterVenchA，并用 CoSAE 联合施加互补对齐目标，属于表征分析。",
+    "sourceFingerprint": "2dfc2205662e652b3509e6f4767c1002282ebbab92458153abf1f7ef189d1e27",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238632+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238635+00:00",
+    "reviewNote": "annotation 的标题、导读、主细类和依据均忠实；但 tags 中“对齐”不在给定标签枚举内，因此需删除该标签。"
+  },
+  {
+    "id": "nZPqqSZc9t",
+    "titleZh": "表征趋同的噪声上限",
+    "summaryZh": "研究表示趋同分数中训练可复现性与共享结构的混杂，针对互为最近邻重叠和线性 CKA 构造精确噪声上限分解与校正协议。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "多模态",
+      "评估",
+      "LLM"
+    ],
+    "reason": "nZPqqSZc9t：主问题是将训练种子可靠性与真实表征共识分离，贡献是为最近邻重叠和线性 CKA 给出精确分解及测量协议，因此归入表征分析。",
+    "sourceFingerprint": "c698abe5d1ee6b3a80f8d3a251e2a214f95da95c750aa952c60d967194bac2c7",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532851+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238637+00:00",
+    "reviewNote": "准确区分训练种子可靠性、共享表征结构和模型实用性的不同含义，忠实覆盖互为最近邻重叠、线性 CKA、精确分解、跨种子与跨模型套件实验；未把原始对齐分数直接当作真实趋同。"
+  },
+  {
+    "id": "oHxqXXdQh1",
+    "titleZh": "谱上宽广、行为上可压缩：安全微调更新的功能核心及下游微调对其影响",
+    "summaryZh": "为理解安全微调的参数几何及后续微调造成的安全侵蚀，本文提取谱上宽广但行为可压缩的功能核心，并在该坐标中以安全记忆损失校正更新。",
+    "subcategory": "安全与越狱",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性"
+    ],
+    "reason": "论文分析安全微调更新的谱宽与功能可压缩核心，跟踪其在下游微调中的小能量位移，并用有符号干预验证坐标的行为相关性；再以安全记忆损失引导最小校正，以改善终点安全并保留下游效用。",
+    "sourceFingerprint": "b189f3b13d68c8dd71cbe5c3c67f00b2a78c90554ea33e6e69127deba9516b16",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238642+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238645+00:00",
+    "reviewNote": "主题相关性判断正确，但 screening 将有符号干预扩大为对安全能力获取、侵蚀和修复的整体因果验证；摘要仅明确其建立坐标的行为相关性，校正空间用于改善终点安全。"
+  },
+  {
+    "id": "pl1QrL22hg",
+    "titleZh": "稀疏性的几何：不同神经网络剪枝方法中的 Fisher 信息",
+    "summaryZh": "研究剪枝如何改变剩余参数的局部 Fisher 几何，提出衡量 FIM 偏离对角性的逐维对数行列式比，并分析其与自然梯度方向对齐的关系。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "效率",
+      "优化"
+    ],
+    "reason": "pl1QrL22hg：主问题是剪枝对稀疏参数子空间几何的影响，贡献是提出 Fisher 耦合度量并分析稀疏化、对角结构和更新方向之间的关系，故归入效率与压缩。",
+    "sourceFingerprint": "22f2f72979fbab4d07a53d723dd3a78e77067210f7183642e468e4f532887fb4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532858+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238647+00:00",
+    "reviewNote": "筛选为方法参考与摘要吻合；标注准确描述了剪枝对局部 Fisher 几何和参数耦合的影响，并保留了固定 Jacobian 阻尼 Gram 替代物、对角自适应优化器与 SGD 的条件差异，未混淆参数空间与功能空间。"
+  },
+  {
+    "id": "poJTvNuPke",
+    "titleZh": "CrossGMN：用于跨架构权重空间变换的图元网络",
+    "summaryZh": "研究不同架构及置换对称性下的权重空间变换，CrossGMN 以源网络和目标初始化为双输入，通过保对称跨网络消息传递生成目标参数。",
+    "subcategory": "图学习",
+    "tags": [
+      "效率"
+    ],
+    "reason": "研究跨架构权重空间变换及不同置换对称性的处理，CrossGMN 以源网络和目标初始化为双输入，通过对称保持的跨网络消息传递预测目标参数，并给出连续算子通用性与压缩加速实验。",
+    "sourceFingerprint": "ecd88c8f3c833350dde676b20ef0cb6133068bd4fa5214fa9985f668dcb76a03",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238651+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238654+00:00",
+    "reviewNote": "主题相关性基本正确，但 screening 理由将用途外推到“任务更新对齐”，摘要明确支持的是跨架构参数变换、模型压缩和蒸馏加速；原标签“图学习”“蒸馏”不在允许标签枚举中。"
+  },
+  {
+    "id": "qbuqW5zMNg",
+    "titleZh": "涌现失配模型生物的共享参数几何与数据来源",
+    "summaryZh": "为解释狭窄有害 SFT 为何引发跨域涌现失配，本文分析共享低维参数子空间与线性模式连通性，并以取反和正交投影实施事后防护。",
+    "subcategory": "安全与越狱",
+    "tags": [
+      "LLM",
+      "安全",
+      "可解释性"
+    ],
+    "reason": "论文研究有害 SFT 引发涌现失配的权重空间机制，并检验数据来源、共享子空间及取反和正交投影两种事后防护策略对安全行为的影响，主要属于安全与越狱。",
+    "sourceFingerprint": "03af603470f559a4c2779caf6cf0e49c8acf4d15ea8aff8464f9fb8b9ba407b1",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238657+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238660+00:00",
+    "reviewNote": "筛选主题和主要结论基本忠实；annotation 将“取反”和“正交投影”合称为“两种投影式防护”，但摘要中只有后者是投影，已改为“事后防护策略”。"
+  },
+  {
+    "id": "qtAlEAivIQ",
+    "titleZh": "任务检查点能识别什么？用于模型合并的不变任务核心融合",
+    "summaryZh": "针对无任务数据合并中任务向量不能唯一表征来源数据的问题，ITCF 从检查点可识别方向构造基不变任务核心，并按核心重叠协调专家更新。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "效率"
+    ],
+    "reason": "主问题是仅凭检查点如何可靠合并独立微调的专家，贡献是构造基不变任务核心并利用核心重叠融合更新，直接属于模型合并。",
+    "sourceFingerprint": "4cf3ba9ffbd2d73847f5bbc534048629fdbd5347376e34a5fdc9f681fe2be7b0",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532868+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238663+00:00",
+    "reviewNote": "标题、导读和模型合并分类均忠实；准确区分了检查点参数向量与其来源任务数据，保留了基不变任务核心、核心重叠和无额外推理成本等摘要结论，未把参数空间相似误述成功能等价。"
+  },
+  {
+    "id": "reQVgFF5Vh",
+    "titleZh": "LLM 的低秩规范几何",
+    "summaryZh": "为刻画 LLM 的高维词表预测实际使用何种结构，本文在概率空间分解上下文相关变化的规范模式，并检验下游微调对主导低维子空间的保留。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "可解释性"
+    ],
+    "reason": "论文直接分析下一词元预测分布的维度、方向和谱集中性，并比较下游适配前后的主导规范子空间，核心贡献属于表征分析。",
+    "sourceFingerprint": "7ea6effc736749d68781a99a51bc93d5afd5590e41ac3ddefb39396b2ca7f23a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532873+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238666+00:00",
+    "reviewNote": "标注明确对象是概率空间中的预测几何和规范 token 子空间，而非参数空间相似；导读保留了下游微调仅大体保持谱集中与主导子空间的限定，分类为表征分析恰当。"
+  },
+  {
+    "id": "rp5YKEbpSe",
+    "titleZh": "ChainLoRA：面向 LLM 持续学习的保几何任务向量合并",
+    "summaryZh": "为在参数预算下兼顾 LLM 持续适配与旧知识保持，ChainLoRA 以链式任务向量更新、单侧正交约束和自适应 SVD 合并控制任务干扰。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "优化",
+      "效率"
+    ],
+    "reason": "主问题是连续参数高效微调中的遗忘与任务干扰，贡献是结合链式更新、正交代理、有效秩约束及自适应 SVD 合并，主要归入持续学习。",
+    "sourceFingerprint": "b663a0d3ad40af4af7626903b2c94b80907f4c3a8cb267b7b93dedf63bed811c",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532876+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238669+00:00",
+    "reviewNote": "准确描述了连续参数高效微调中的任务向量、方向重叠、系数耦合、正交代理、自适应 SVD 和 Procrustes 对齐；未把参数更新几何混同为功能空间相似，也未扩展摘要中受评测基准限定的结果。"
+  },
+  {
+    "id": "rz9XM7LCkv",
+    "titleZh": "闭环中的任务向量：面向 LLM 多任务强化学习的在线几何协调",
+    "summaryZh": "为平衡多任务 RL 的跨任务迁移与任务专门化，TVG-RL 从短时任务暖启动提取共享和私有子空间，并据此投影、缩放后续 RL 梯度。",
+    "subcategory": "应用型强化学习",
+    "tags": [
+      "LLM",
+      "优化"
+    ],
+    "reason": "论文面向 LLM 多任务 RL 后训练，利用短时任务专门化暖启动揭示的共享与私有子空间，在线投影和缩放后续 RL 梯度；核心是以任务向量几何协调联合学习。",
+    "sourceFingerprint": "f943cbbc581d35b6fcdd5091de29178980e25db94c76e4a1fd292137b1466c6e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238673+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238675+00:00",
+    "reviewNote": "主题、导读和应用型强化学习分类均忠实；原标签“强化学习”不在允许标签枚举中，已删除，并保留 LLM 与优化两个有摘要依据的标签。"
+  },
+  {
+    "id": "s1LKsHTyUa",
+    "titleZh": "对齐改变的是响应策略，而非测得的情感表征",
+    "summaryZh": "研究对齐训练是否改变模型对用户情感的表征，跨涵盖 base、SFT、DPO 及可用时 RL 的连续检查点，结合探针、回复效价评估和激活操控；SFT→DPO 的差异更支持响应策略变化。",
+    "subcategory": "表征分析",
+    "tags": [
+      "LLM",
+      "对齐",
+      "可解释性"
+    ],
+    "reason": "主问题是后训练造成的情感回复变化究竟源于测得的情感表征还是响应策略；跨阶段探针迁移、可解码性和激活操控显示，尤其在 SFT→DPO 过渡，响应策略变化更明显，而测得的表征指标保持稳定。",
+    "sourceFingerprint": "906a872df705e2b66394c93f7d99fe2fa86e453faa22f33e107678d2d39099fd",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238679+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238681+00:00",
+    "reviewNote": "原标注未保留 RL 阶段仅在可用时纳入的条件，也将结论概括得过于跨阶段；摘要明确的定位尤其发生在 SFT→DPO 过渡。"
+  },
+  {
+    "id": "sjOw2IjvUw",
+    "titleZh": "LoRA 合并诊断评估的是部署模型吗？",
+    "summaryZh": "研究 LoRA 合并诊断能否预测部署端功能，以因子协方差恒等式区分因子聚合、标量等价修正与秩截断，并校正序列平衡 Fisher；还比较专家概率加权对保留误差的影响。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "评估",
+      "优化"
+    ],
+    "reason": "论文区分诊断所评分的更新、所估计的曲率与所预测的部署端点；因子恒等式处理聚合和秩截断，Fisher 校正只消除特定聚合及标签抽样方差，专家概率加权改善 KL 保留指标但不等于原生准确率提升，因此归入模型合并。",
+    "sourceFingerprint": "d76e52c612b724e28cc64bf0e63f0833683830cfed87053ef226eb3828e11de4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238684+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238687+00:00",
+    "reviewNote": "“拆分更新误差”不够准确：摘要中的恒等式区分的是因子聚合、标量等价修正和秩截断；同时需保留专家概率加权改善保留指标但不等于原生准确率提升的条件。"
+  },
+  {
+    "id": "t7ESIOL3ch",
+    "titleZh": "更新层析：通过监督空间构建可复用的学习记录",
+    "summaryZh": "研究异构架构间如何复用学习更新，提出 Update Tomography，将更新表示为同一监督差异的线性测量；当未解析的监督歧义不影响目标时，目标更新可唯一确定。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "泛化"
+    ],
+    "reason": "主问题是无法共享参数空间的异构模型如何转移学习事件；Update Tomography 将可复用信息置于监督空间，并在未解析监督歧义不影响目标更新时，给出跨架构恢复目标更新的可观测性条件。",
+    "sourceFingerprint": "544a098dfb1cb81bfd2bdb681880c1bbbdb1396c30a130d17f5f61f1775825ca",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238691+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238694+00:00",
+    "reviewNote": "原导读省略了核心可观测性条件，容易将目标更新恢复表述成无条件结论；摘要要求未解析的监督歧义不能影响目标更新。"
+  },
+  {
+    "id": "tHh8TREObl",
+    "titleZh": "二阶差分空间搜索（SODSS）",
+    "summaryZh": "研究能否仅从训练检查点恢复剪枝或量化所需信息，SODSS 利用参数二阶差分检测阶段事件，并以分段加权的路径 Fisher 计算权重显著性。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "效率",
+      "量化",
+      "优化"
+    ],
+    "reason": "tHh8TREObl：主问题是无梯度、数据或 Hessian 乘积地从检查点估计权重重要性，贡献是以轨迹二阶差分和路径 Fisher 支持剪枝及量化，因此归入效率与压缩。",
+    "sourceFingerprint": "8e0335ce2f54b04f150a96ba1919ccfdd18f6a452f761ffb331f819323709a6e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532893+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238696+00:00",
+    "reviewNote": "筛选正确标为方法参考而非后训练实证论文；导读、剪枝/量化标签和路径 Fisher 描述均有摘要依据，未把参数轨迹工具误写成已验证的后训练结论。"
+  },
+  {
+    "id": "tgDd0Lx5R3",
+    "titleZh": "接口与模块：一种可扩展的跨架构权重空间学习表示",
+    "summaryZh": "面向跨架构权重空间学习，构建以接口为节点、模块为类型化超边的图表示，并以局部等变更新结合接口摘要上的全局注意力编码参数。",
+    "subcategory": "图学习",
+    "tags": [
+      "图学习",
+      "效率"
+    ],
+    "reason": "主问题是如何以尊重参数置换对称且可扩展的统一表示处理不同神经网络架构；核心贡献是接口—模块类型化图及其等变的 Universal Weight Encoder，因此归入图学习。",
+    "sourceFingerprint": "aae0d24c2f4615267a34601315c714f7b70b2448f6d438ac8efeb6443b2b1bb3",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532896+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238699+00:00",
+    "reviewNote": "筛选与标注准确区分了参数置换对称和跨架构权重空间表示，未将其误述为功能空间相似或后训练更新实证；接口—模块图、等变编码器和图学习归类均有摘要依据。"
+  },
+  {
+    "id": "tzXBBz5tmq",
+    "titleZh": "Logit 嫁接：后训练增量稀疏、可迁移且强大",
+    "summaryZh": "研究如何从后训练模型提取并跨模型转移行为变化，提出 logit grafting；跨模型族时经词表桥注入 logit 差分，并以指数倾斜解释，摘要显示其仅在少数解码步改变采样 argmax。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "推理",
+      "泛化"
+    ],
+    "reason": "论文把后训练产生的行为增量表示为解码时的 logit 差，并在跨模型族或规模迁移时复用；摘要报告其仅在少数解码步改变采样 argmax，重点是功能空间中的行为迁移，故归入迁移与元学习。",
+    "sourceFingerprint": "eb769aaf3f9fa6b2bb3daeb3a0454f634062fc1f794ec25861087ef9f2122a09",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238703+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238706+00:00",
+    "reviewNote": "原导读的“稀疏 logit 增量”可能被理解为坐标稀疏；摘要具体支持的是少数解码步改变采样 argmax，并且跨模型族迁移时使用词表桥，需保留这些限定。"
+  },
+  {
+    "id": "uRfQbdyNxJ",
+    "titleZh": "先解耦再集成：SFT 与 RLVR 任务向量的事后合成",
+    "summaryZh": "研究如何事后融合 SFT 与 RLVR 的互补更新，提出 Decoupled Synthesis，分别稀疏化并恢复任务向量范数，再以贝叶斯优化校准两项系数。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "优化"
+    ],
+    "reason": "主问题是如何在无需重新训练的情况下合成 SFT 与 RLVR 检查点的贡献；方法直接处理两个任务向量的稀疏化、尺度恢复和加权组合，因此属于模型合并。",
+    "sourceFingerprint": "f88a14df869581646e98e266dbbcf42f9dac4e6964b2776fe1f615761cdfed04",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532903+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238708+00:00",
+    "reviewNote": "筛选和标注准确描述了 SFT 与 RLVR 参数任务向量在尺度、符号重叠和模块分布上的差异，以及稀疏化、范数恢复和两系数贝叶斯校准；未混淆参数更新与功能相似。"
+  },
+  {
+    "id": "urGv0VNiKe",
+    "titleZh": "GeoMerge-OPD：视觉-语言-动作模型中的均衡技能集成",
+    "summaryZh": "研究 VLA 多技能合并中的动作偏移，提出 GeoMerge-OPD，以任务子空间响应正则、参数合并和在线策略蒸馏校准专家间残余行为差异。",
+    "subcategory": "模型合并",
+    "tags": [
+      "VLA",
+      "机器人",
+      "蒸馏"
+    ],
+    "reason": "论文针对不同机器人技能专家合并后的非预期动作，依据任务响应子空间中的方向冲突设计正则化合并，并用在线策略蒸馏修正残余偏差，核心贡献是 VLA 专家模型合并。",
+    "sourceFingerprint": "bcdb5c12c202b12a660c4574746fbcd350b8302b3d06d39dc7a79b02ea4de664",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532907+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238712+00:00",
+    "reviewNote": "筛选正确抓住任务相关响应子空间中的能量集中与相反响应；标注同时保留响应正则、参数合并和 on-policy 蒸馏，未把响应空间几何误写成参数空间相似，跨模型结论也限定为两个 VLA 主干的实验。"
+  },
+  {
+    "id": "v9o0A0YbXt",
+    "titleZh": "关键不在多少，而在何处：低秩适配中的参数放置",
+    "summaryZh": "研究固定预算下 LoRA 的哪些参数应被训练，通过比较 SFT 与 GRPO 梯度的秩、跨步对齐和符号一致性，选择稳定保留学习信号的条目。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "效率",
+      "优化"
+    ],
+    "reason": "主问题是在固定可训练参数预算下优化 LoRA 条目位置；论文用 SFT 与 GRPO 的梯度结构解释随机放置差异，并以低成本梯度评分选择稀疏参数，属于参数高效训练。",
+    "sourceFingerprint": "48d6ad61a76206e15ab2a3718ce14763259afb28471a08d2cc651c2e22033846",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532910+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238715+00:00",
+    "reviewNote": "筛选理由与摘要一致：比较 SFT/GRPO 梯度秩、跨步方向稳定性和符号一致性，并解释固定稀疏预算下参数放置的效果差异。标题、导读、细类、标签和依据均未混淆参数更新结构与功能效果，也未加入摘要外事实。"
+  },
+  {
+    "id": "vDiLg9KY8Q",
+    "titleZh": "超越低秩参数化：通过梯度分解缩小 LoRA 与全量微调的差距",
+    "summaryZh": "刻画当前 LoRA 参数化可达的梯度切空间及其与全量梯度的正交分解，提出 GDLoRA 提取法向分量直接更新基座权重，同时保留 LoRA 因子的 AdamW 优化。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "LLM",
+      "效率",
+      "优化"
+    ],
+    "reason": "论文刻画当前 LoRA 参数化诱导的可达梯度空间，并提出 GDLoRA 从前向激活和反向信号重建全量权重梯度、提取法向分量更新基座权重，同时保持 LoRA 因子的标准 AdamW；在匹配配置下不增加 LoRA 优化器状态内存预算，核心仍是参数高效微调。",
+    "sourceFingerprint": "e4482031dab563522e0be5b67a6b720bb6665784b1657b80a1fe7b5cc10bede3",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238722+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238724+00:00",
+    "reviewNote": "原导读将“保留 LoRA 因子优化”表述为直接优化切向部分，略超出摘要的明确表述；摘要只明确 GDLoRA 提取法向梯度更新基座权重，并保留 LoRA 因子的标准 AdamW 优化。"
+  },
+  {
+    "id": "wBNqzHsvaM",
+    "titleZh": "没有孤立的任务向量：在线策略蒸馏任务向量可组合性的全面研究",
+    "summaryZh": "研究在线策略蒸馏任务向量能否与 RL 教师更新互补并跨任务组合，通过合并实验及更新非共线性、前馈通道能量重叠分析检验可组合性。",
+    "subcategory": "模型合并",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "蒸馏"
+    ],
+    "reason": "主问题是 OPD 产生的任务向量能否与 RL 教师向量及其他任务向量有效组合；论文直接比较多种合并结果并分析参数方向和通道能量重叠，因此归入模型合并。",
+    "sourceFingerprint": "11816eed521ae92c45665bc10850596875de0038ccfed1d87b102270e9d18e6a",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532916+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238726+00:00",
+    "reviewNote": "筛选和标注准确覆盖 OPD 与 RL 更新的参数空间非共线性、通道能量重叠及任务内外合并效果。导读保留了“测试配置”和“组合效果”的条件，没有把参数空间方向相似性误写成功能空间相似性，也未添加摘要外事实。"
+  },
+  {
+    "id": "wFFMQ5PXD7",
+    "titleZh": "迈向持续学习：以子空间调优缓解遗忘",
+    "summaryZh": "研究 LLM 微调中的灾难性遗忘，提出 SST 将每次权重更新限制在底部奇异子空间，避开主方向，并配合刷新机制兼容 SFT 与自蒸馏。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "优化",
+      "蒸馏"
+    ],
+    "reason": "论文以微调后能力保持为目标，指出不同训练方式沿权重主奇异方向的更新差异与遗忘相关，并提出限制在底部奇异子空间的 SST；其可与 SFT、自蒸馏结合，属于持续学习。",
+    "sourceFingerprint": "2afe78c705f787b489424fd5627d4a4912d64b88e51bcc683c6ad3e9f8d11d91",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238730+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238733+00:00",
+    "reviewNote": "筛选理由把更新方向与能力保持称为“因果联系”，强于摘要的机制性描述；导读中的“周期刷新”也比摘要明确的“simple refresh mechanism”更具体。"
+  },
+  {
+    "id": "wSvkHyuv4J",
+    "titleZh": "屏障背后的几何：宽神经网络中的 Fisher 几何与线性模式连通性",
+    "summaryZh": "为解释宽网络置换对齐后线性插值的损失屏障，将 Fisher 几何分解为曲率形状与位移长度，并证明屏障受 Fisher 二次型和预测不确定性约束。",
+    "subcategory": "几何与拓扑学习",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文解释宽网络置换对齐后线性插值的损失屏障，区分 Fisher 度量的局部曲率形状与位移长度，并给出由 Fisher 二次型和预测不确定性控制的屏障不等式；核心是几何与模式连通性，而非优化器设计。",
+    "sourceFingerprint": "2f0fcdf8aa439c76a3c35f34ee3fd1bff25395578032b2658d2d5b9d35c68c2e",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238737+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238739+00:00",
+    "reviewNote": "筛选内容与摘要相符，但原主细类“优化器与收敛”不准确：论文核心是 Fisher 几何、模式连通性和损失屏障，而非优化器设计或收敛分析。"
+  },
+  {
+    "id": "wuZff77mFn",
+    "titleZh": "当遗忘并非灾难性的：伪遗忘的机制",
+    "summaryZh": "研究微调中新事实为何会暂时遮蔽旧知识，借助最小联想记忆模型分解共同可逆位移与事实特异性侵蚀，并以移除单一更新方向恢复旧事实。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "记忆",
+      "可解释性"
+    ],
+    "reason": "主问题是语言模型微调中的遗忘何时仅为可逆的访问丧失、何时成为事实本身的永久侵蚀。论文以联想记忆模型解释共同方向位移及归一化带来的恢复，并通过减去共同位移和移除权重更新中的单一方向验证机制，直接属于持续学习中的遗忘分析。",
+    "sourceFingerprint": "2f7344c9508d4552ab24bde83fc22bc673f0a618ac13874cc4f1873667857f72",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532926+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238742+00:00",
+    "reviewNote": "摘要支持共同方向造成的可逆访问丧失、事实特异性侵蚀，以及移除共同位移或单一更新方向后的恢复结果。标题、导读、持续学习细类、记忆与可解释性标签和依据均忠实，未把参数方向变化误写成一般功能空间相似性。"
+  },
+  {
+    "id": "xDnQqqfZQN",
+    "titleZh": "核速度：超越 NTK 的特征学习局部证书",
+    "summaryZh": "为判别网络是否偏离冻结 NTK 训练，提出任务有效核速度并证明其决定预测轨迹的二阶分离，同时用缩放族刻画不同宽度下的速度规律。",
+    "subcategory": "训练动态",
+    "tags": [
+      "优化"
+    ],
+    "reason": "主问题是初始 NTK 无法判断训练中是否发生任务相关特征学习；论文以任务有效核速度刻画自适应核轨迹与冻结 NTK 轨迹的局部分离，因此归入训练动态。",
+    "sourceFingerprint": "a8759e81ec6b6feff6c087ccb19b548212e16f64e1736ad80941a6cd6b04b85f",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532931+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238745+00:00",
+    "reviewNote": "筛选准确指出该文是 NTK 与功能轨迹的理论工具，而非大模型后训练研究。导读忠实描述任务有效核速度、二阶轨迹分离和缩放规律，并保留局部证书的范围，没有把局部结果扩展成全局表示学习保证。"
+  },
+  {
+    "id": "xYdAMJH7zh",
+    "titleZh": "图神经网络的免训练跨架构合并",
+    "summaryZh": "针对异构 GNN 无法直接可靠合并的问题，MOSAIC 以通用消息传递混合将不同层提升到共享算子空间，实现免训练的跨架构组合。",
+    "subcategory": "模型合并",
+    "tags": [
+      "图学习"
+    ],
+    "reason": "论文直接解决 GCN、GAT 等异构 GNN 的免训练合并问题，核心是用 UMPM 将不同消息传递层表示在共同算子空间并通过 MOSAIC 组合，故归入模型合并。",
+    "sourceFingerprint": "f21e97138347486039b05e6d3c3c498a2fabdd693a5afe41c7b07711fbe9b1f4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532934+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238749+00:00",
+    "reviewNote": "筛选正确识别其为 GNN 跨架构的算子空间合并工具，并明确不是大模型后训练研究。标题、导读、模型合并细类、图学习标签和依据均对应 UMPM/MOSAIC 及免训练组合，没有混淆参数空间与共享功能算子空间。"
+  },
+  {
+    "id": "xcs1pgDcMN",
+    "titleZh": "更广泛地审视模型合并：重新思考任务算术引入的隐式正则化",
+    "summaryZh": "研究任务算术的更新子空间是否构成有益约束，通过直接优化合并模型权重发现更优多任务解可位于任务向量张成的子空间之外。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "优化"
+    ],
+    "reason": "论文研究任务特定权重更新张成的子空间如何限制模型合并，核心贡献是实证表明解除这一隐式正则、在更广权重空间优化可找到更好的多任务权重，因此归入迁移与元学习。",
+    "sourceFingerprint": "c04897fd8a7369e7abf52ea6797e21408d68e88296a89211bddf0be8d85ca025",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238753+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238756+00:00",
+    "reviewNote": "主题筛选与标题、导读、依据基本忠实；但主细类“模型合并”不在给定枚举中，且摘要未明确限定为 LLM，原标签加入 LLM 缺乏依据。"
+  },
+  {
+    "id": "xmJrldZD2r",
+    "titleZh": "VLA 强化学习的低秩结构",
+    "summaryZh": "研究强化学习如何重塑流式 VLA，发现低秩更新集中于动作专家的 Timestep Modules，并以模块替换、探针和方向引导关联更新几何与任务成功。",
+    "subcategory": "视觉语言动作（VLA）",
+    "tags": [
+      "VLA",
+      "强化学习",
+      "机器人",
+      "可解释性",
+      "效率"
+    ],
+    "reason": "主问题是强化学习后训练在 VLA 参数空间中编码了什么。论文定位到动作专家 Timestep Modules 中集中的低秩更新，并分析 shift 方向与成功率、任务关系和策略引导的联系，研究对象和贡献均以 VLA 策略为核心。",
+    "sourceFingerprint": "e2b515eb9bde14e2be759f836dd56e95aeebe4e13b973ba4e011e11d61c592cb",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532941+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238758+00:00",
+    "reviewNote": "筛选准确对应流式 VLA 的 RL 后训练更新；导读、分类和标签均覆盖低秩更新、Timestep Modules、shift 方向、任务成功预测与策略引导，未混淆参数几何和功能结果，也未加入摘要外事实。"
+  },
+  {
+    "id": "yKR1QfXvUC",
+    "titleZh": "什么使更新有害？模型适配中功能风险的动态",
+    "summaryZh": "研究适配更新如何损害已有能力，以更新和受保护损失梯度的内积定义功能风险，并用周期刷新估计的 DFRC 控制连续适配中的遗忘。",
+    "subcategory": "持续学习",
+    "tags": [
+      "LLM",
+      "优化",
+      "记忆"
+    ],
+    "reason": "论文关注顺序适配时如何判断并限制单次更新对受保护能力的损害。其功能风险定义、有限参考数据分析以及动态刷新并修正候选更新的 DFRC，均直接服务于减少灾难性遗忘，故归入持续学习。",
+    "sourceFingerprint": "fe8514b58763a39ee5608478ec2d148fbc00f8a73d89dd0b49a0aa01e0f26ef4",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532945+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238761+00:00",
+    "reviewNote": "筛选和标注忠实呈现功能风险的梯度内积定义、有限参考数据估计、动态刷新及 DFRC 的遗忘控制；“持续学习”、标签和依据均与摘要一致，未把功能风险误写成参数相似性。"
+  },
+  {
+    "id": "yZgrrYojAW",
+    "titleZh": "利用自回归后训练权重增强扩散语言模型",
+    "summaryZh": "研究自回归模型的后训练更新能否复用于扩散语言模型，提出免训练的 A2D，将 AR 与扩散模型的 SFT 或 RL 权重更新直接迁移并组合。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "LLM",
+      "强化学习",
+      "推理"
+    ],
+    "reason": "核心问题是如何把 AR 模型的 SFT 或 RL 后训练权重更新迁移到扩散语言模型，并与扩散后训练更新组合。A2D 通过直接添加和合成跨范式后训练更新实现能力转移，无需额外训练或推理时计算，因此归入迁移与元学习。",
+    "sourceFingerprint": "94c2e03ee388333c25b2ea37c12597523ee18f4377009cf151b765d910cd2091",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238766+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238769+00:00",
+    "reviewNote": "筛选准确保留了参数空间近正交与表示变化对齐的区别；但主细类“模型合并”不在给定枚举，标签“扩散”也不在允许标签中，依据中的“任务更新”应改为摘要明确的后训练更新。"
+  },
+  {
+    "id": "yybcQGbRlW",
+    "titleZh": "面向视觉推理的 RL 更新选择性迁移",
+    "summaryZh": "研究 RL 后训练更新中哪些成分可跨模型迁移，提出 Selective-RL，保留逐矩阵主导方向及其幅值并迁移至 VLM 的语言模块。",
+    "subcategory": "迁移与元学习",
+    "tags": [
+      "多模态",
+      "强化学习",
+      "推理"
+    ],
+    "reason": "论文将能力迁移表述为隔离 RL 阶段参数更新并选择性注入 VLM，而非比较模型端点；Selective-RL 提取逐矩阵主导方向并迁移至 VLM 语言模块，主要贡献属于跨模型迁移方法。",
+    "sourceFingerprint": "0ffcbcd2ddc6c6cb012df9a1793b209a3117a36d9a7b980c537849430d44cc57",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238773+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238775+00:00",
+    "reviewNote": "筛选、标题、导读和依据准确描述了 RL 阶段更新的选择性跨模型迁移及低秩、幅值对照；但 VLM 并非 VLA，原标签 VLA 不准确，且主细类“模型合并”不在给定枚举。"
+  },
+  {
+    "id": "zJjpNWymXH",
+    "titleZh": "水印盆地：蒸馏 LLM 的黑盒检测",
+    "summaryZh": "研究如何从黑盒输出识别经水印教师蒸馏的 LLM，提出 WM-Basin，用探针模型的梯度表示滤除普通微调方向并检验水印盆地对齐。",
+    "subcategory": "隐私与版权",
+    "tags": [
+      "LLM",
+      "隐私",
+      "安全",
+      "异常检测"
+    ],
+    "reason": "主问题是为专有模型遭 API 蒸馏提供可验证证据。论文发现蒸馏留下密钥特异且持久的参数几何信号，并据此构造无需访问嫌疑模型权重或 logits 的黑盒检测器，直接服务于水印检测与蒸馏溯源。",
+    "sourceFingerprint": "6519731be5e3cf424e4292de6f532694c485a4908111d9fa4037a6ced03ef4f1",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238779+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238782+00:00",
+    "reviewNote": "主题筛选、标题、导读、主细类和依据均忠实呈现了水印盆地的参数空间几何及黑盒检测；但“蒸馏”不是给定标签枚举，应改用摘要支持的异常检测标签。"
+  },
+  {
+    "id": "zYACyuZGP5",
+    "titleZh": "利用 Hessian 零空间延拓遍历神经网络解空间",
+    "summaryZh": "为刻画局部模式连通区域中的内部机制多样性，HNC 利用 Hessian 零空间和局部曲率沿近似保函数方向遍历并定向搜索解空间。",
+    "subcategory": "表征分析",
+    "tags": [
+      "可解释性",
+      "优化"
+    ],
+    "reason": "主问题是低损失连通区域内是否存在不同的内部表示与计算机制；HNC 沿 Hessian 零空间遍历近似保函数解并量化表示、动力学及策略差异，因此归入表征分析。",
+    "sourceFingerprint": "2277cef350a788ff6be02a914ac91986a2809a18eafe8b01d81b2e37bfa149aa",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532960+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238784+00:00",
+    "reviewNote": "筛选正确定位为方法参考；标题、导读和依据准确描述 HNC 利用局部曲率沿近似保函数方向遍历解空间，并揭示表征、动力学和行为策略多样性，未将表示相似误写为参数相似。"
+  },
+  {
+    "id": "zq8KoGAsKk",
+    "titleZh": "通过可达 Fisher 几何缩小适配差距",
+    "summaryZh": "为分析 PEFT 对不同子群损失差距的影响，将全模型 Fisher 经适配器 Jacobian 拉回可达方向，并区分迹、算子差异与 Hessian–Fisher 缺陷。",
+    "subcategory": "公平性与偏见",
+    "tags": [
+      "优化",
+      "对齐"
+    ],
+    "reason": "论文关注 PEFT 可达更新方向如何对不同子群产生不同损失变化，并研究缩小最佳与最差子群差距的方法；reachable Fisher 是分析和训练启发式的核心工具，故归入公平性与偏见。",
+    "sourceFingerprint": "852e518b8c2ef3990433fa4533cdd07a5345dff8a307a87eef547a3f0ef4d41d",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:12:50.532964+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238787+00:00",
+    "reviewNote": "筛选准确对应 PEFT 可达方向、reachable Fisher、迹与算子差异及 Hessian–Fisher 缺陷；标注正确保留公平性场景和“诊断/训练启发式而非证书”的限定，未加入摘要外结论。"
+  },
+  {
+    "id": "zrGZIXB0Be",
+    "titleZh": "等价表示并非等价的蒸馏目标",
+    "summaryZh": "研究跨维嵌入蒸馏中几何相同但坐标不同的目标为何导致不同结果；ORBIT-KD以闭式Procrustes解析基不确定性并直接监督学生，保持教师几何且无需可训练跨空间接口。",
+    "subcategory": "效率与压缩",
+    "tags": [
+      "优化",
+      "效率"
+    ],
+    "reason": "论文核心是跨维嵌入蒸馏中的表示坐标解析：正交等价目标虽保持相同关系几何，却可能因坐标呈现不同而产生不同学生结果。ORBIT-KD以语料级闭式Procrustes对齐处理基不确定性，在保持教师几何的同时提供直接端点监督，并报告优化步时间下降。这里讨论的是表示/坐标空间的对齐，不应表述为参数空间相似或模型函数空间等价。",
+    "sourceFingerprint": "30787e6af67d3cdea885ca1525e0391e33cf2ce48c537ed6c046e82ab14d93ce",
+    "taxonomyVersion": "2027.0-draft",
+    "classification": "complete",
+    "method": "assistant-read-full-abstract",
+    "model": "gpt-5.6-sol",
+    "annotatedAt": "2026-10-12T09:26:58.238792+00:00",
+    "reviewedAt": "2026-10-12T09:26:58.238794+00:00",
+    "reviewNote": "screening整体与摘要主题相符：论文确实研究跨维嵌入蒸馏、正交等价目标、Procrustes坐标解析与几何保持；但对象是表示/坐标空间，不是参数空间或模型函数空间。annotation标题基本忠实，导读基本忠实，主细类“效率与压缩”可接受，但标签“蒸馏”不在规定标签枚举中，需替换为允许的标签。"
   }
 ]

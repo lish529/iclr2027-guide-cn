@@ -1,8 +1,8 @@
 {
   "taxonomyVersion": "2027.0-draft",
   "target": 200,
-  "completed": 21,
-  "sampleIds": [
+  "completed": 200,
+  "initialCompletedIds": [
     "MLE0ZSHwTs",
     "708MZ9pBGw",
     "JTjP6QFRUd",
@@ -25,10 +25,17 @@
     "S9bOsGKCkd",
     "TQGEq8EgWI"
   ],
-  "stage": "in-progress",
+  "samplePlan": "data/calibration-plan.json",
+  "sampleIdSetSha256": "4fb4af767ec51002f2c842ebf01fccadfcb70478713d94ffbbcdf019a549b2fe",
+  "completedAt": "2026-10-10T23:20:00+08:00",
+  "completeRecords": 200,
+  "reviewRecords": 0,
+  "otherRecords": 0,
+  "stage": "complete",
   "notes": [
-    "分层样本首轮覆盖全部 21 个官方方向，每个方向 1 篇。",
-    "新增模型合并、硬件与数值计算、知识图谱与推理、Agent 安全候选细类。",
-    "尚未完成 200 篇校准，不能将草案词表标记为已校准。"
+    "固定分层样本已全部处理，覆盖全部 21 个官方方向；因 200 不能被 21 整除，10 个方向各 10 篇、11 个方向各 9 篇。",
+    "逐篇读取完整标题、摘要、关键词和官方 Primary Area；结构校验无协议问题或未知 ID。",
+    "校准后新增异常检测二级类，并复核原其他类别及相邻类别边界；详情见 data/calibration-review.json。",
+    "此校准只冻结分类词表和边界，不等于 42,358 篇全量分类质量验收。"
   ]
 }

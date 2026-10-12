@@ -1,0 +1,24 @@
+{
+  "encoding": "o200k_base; reference only, not guaranteed to match chosen model billing tokenizer",
+  "papers": 42358,
+  "abstractCharacters": 64243021,
+  "abstractTokens": 11839529,
+  "paperInputTokens": 16438854,
+  "protocolAndTaxonomyTokensPerBatch": 1543,
+  "batchSize": 20,
+  "batches": 2118,
+  "inputWithProtocolPer20": 19706928,
+  "annotationSampleSize": 29,
+  "meanOutputTokensFullRecord": 231.6551724137931,
+  "meanOutputTokensSemanticOnly": 144.6551724137931,
+  "projectedOutputTokensFullRecord": 9812450,
+  "projectedOutputTokensSemanticOnly": 6127304,
+  "exclusions": [
+    "reasoning tokens",
+    "chat message framing",
+    "conversation replay",
+    "validation and review prompts",
+    "failed calls and retries"
+  ],
+  "note": "Output projections use 29 authored records, not measured full-corpus API usage. No model API calls."
+}

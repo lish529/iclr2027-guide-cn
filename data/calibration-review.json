@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-10T23:20:00+08:00",
+  "taxonomyVersion": "2027.0-draft",
+  "samplePlan": "data/calibration-plan.json",
+  "sampleIdSetSha256": "4fb4af767ec51002f2c842ebf01fccadfcb70478713d94ffbbcdf019a549b2fe",
+  "sampleSize": 200,
+  "officialAreaCount": 21,
+  "officialAreaCoverage": {
+    "areasWith10Papers": 10,
+    "areasWith9Papers": 11,
+    "explanation": "固定目标为 200，按 21 个官方方向轮转分层抽样，因此不能让每个方向都达到 10 篇。"
+  },
+  "result": {
+    "complete": 200,
+    "review": 0,
+    "other": 0,
+    "protocolIssues": 0,
+    "unknownIds": 0
+  },
+  "taxonomyChanges": [
+    {
+      "change": "新增二级类“异常检测”",
+      "reason": "样本中出现表格、时间序列和跨域视觉等多类以异常检测为主要任务的论文，单纯使用模态类别或“其他”会混淆主要研究问题。",
+      "reclassifiedIds": ["SLV2v6cTJ6", "J3eSsnvGR4", "nnWeEWkYzp"]
+    }
+  ],
+  "boundaryDecisions": [
+    "推理系统用于服务、调度、缓存和请求间复用；效率与压缩用于模型、状态、表示或监督预算压缩。",
+    "机制可解释性要求内部机制定位或因果干预；表征分析用于结构与相似性研究；评估方法用于输入输出诊断、指标和审计协议。",
+    "数据集与基准仅在数据或评测环境是首要产出时使用，配套方法不自动改变主类。",
+    "跨领域论文按主要问题选择单一细类，模态、应用和次要方法使用交叉标签。"
+  ],
+  "targetedReview": {
+    "formerOtherIds": ["SLV2v6cTJ6"],
+    "anomalyDetectionIds": ["SLV2v6cTJ6", "J3eSsnvGR4", "nnWeEWkYzp"],
+    "systemVsCompressionIds": ["8KfmlQ0trp", "MoVuKhKwA5", "cYHReGptgT", "S3ukuEfenO", "nD5an32KRp"],
+    "representationVsMechanismIds": ["DXa50wgJNp", "6khgFgGGnX", "3E4qWaN7Te", "ii2utca7ga", "4nIPi5PPqz"],
+    "benchmarkVsMethodIds": ["x37bHgTVH6", "w4WaZoAYsG", "B9CzoxOVE7", "36IOL7zfTA", "9phg9cFsPx"]
+  },
+  "decision": "taxonomy-calibrated-ready-for-full-scale-classification",
+  "limitations": [
+    "这是词表校准与边界复核，不是对 42,358 篇全量结果的最终抽查。",
+    "全量阶段仍需对低置信度、其他、跨领域论文和每个官方方向执行独立质量复核。",
+    "当前不包含公开评分，也不据此做论文质量排序。"
+  ]
+}

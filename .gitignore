@@ -8,3 +8,4 @@ work/
 data/raw/
 data/batches/
 data/checkpoints/
+tsconfig.tsbuildinfo
