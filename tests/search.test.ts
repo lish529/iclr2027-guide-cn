@@ -23,11 +23,18 @@ test('abstract worker matches are authoritative and apply alongside facets',()=>
   assert.equal(filterPapers(data,filters).length,0);
   assert.deepEqual(filterPapers(data,filters,new Set(['a','b'])).map(p=>p.id),['a']);
 });
-test('share URL round trips Chinese, repeated tags, special chars and paper ID',()=>{
-  const filters={q:'A&B + 世界',area:'graphs & geometry',sub:'世界模型',tags:['因果','世界模型'],state:'review',page:3,paper:'abc-123'};
+test('share URL round trips Chinese, topic, repeated tags, special chars and paper ID',()=>{
+  const filters={q:'A&B + 世界',area:'graphs & geometry',sub:'世界模型',tags:['因果','世界模型'],topic:'heterogeneous-model-transfer',state:'review',page:3,paper:'abc-123'};
   assert.deepEqual(readFilters(writeFilters(filters)),filters);
   assert.equal(readFilters('?page=-9').page,1);
   assert.equal(readFilters('?page=NaN').page,1);
+});
+
+test('topic combines with ordinary filters and missing topics are empty',()=>{
+  const topic={slug:'heterogeneous-model-transfer',tier:'core' as const,dimensions:['architecture'],forms:['weight-merging']};
+  const data=[make('a',{topics:[topic]}),make('b'),make('c',{topics:[topic],tags:['世界模型']})];
+  const filters={...readFilters(''),topic:'heterogeneous-model-transfer',tags:['世界模型','因果']};
+  assert.deepEqual(filterPapers(data,filters).map(p=>p.id),['a']);
 });
 test('CSV preserves quotes/newlines and protects spreadsheet formula interpretation',()=>{
   const result=csv([{title:'=1+1',abstract:'a,"b"\n第二行',tags:['因果','LLM'],rating:null}]);

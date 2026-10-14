@@ -5,11 +5,12 @@
 ## 当前状态：全量元数据已核验，中文分类进行中
 
 - 已核验 **42,358 篇有效投稿、21 个官方方向**，全部具有英文摘要；采集完成于 2026-10-10 17:02（北京时间）。
-- **723 篇**已有中文标题、导读与语义分类，**41,635 篇**待处理；固定词表版本为 `2027.0-draft`，状态为 `calibrated`。
+- **1,406 篇**已有中文标题、导读与语义分类，**40,952 篇**待处理；固定词表版本为 `2027.0-draft`，状态为 `calibrated`。
 - 网站：https://lish529.github.io/iclr2027-guide-cn/ 。源码：https://github.com/lish529/iclr2027-guide-cn 。
 - `snapshotKind: complete` 仅表示元数据集合已核验；`publicationMode: metadata-preview` 表示中文内容尚未完成。主题标签统计仅反映已处理论文。
 - 无 PDF 下载或定时任务。全量语义分类尚需继续处理，不把关键词匹配视为分类。
 - 已优先完成“后训练更新几何”研究兴趣筛选：1,091 篇候选中有 117 篇核心论文、60 篇数学方法参考、914 篇排除；另复核 200 篇近邻排除项。177 篇入选论文均已逐篇复核并进入总站现有分类体系，详见 `data/research-interest-report.json`。
+- 已上线“异构模型合并与迁移”专题：3,773 篇候选中有 693 篇核心论文、88 篇方法参考、2,992 篇排除；分层复核 300 篇近邻排除项，781 篇入选论文均有摘要级中文内容与复核记录。专题直达：[异构模型合并与迁移](https://lish529.github.io/iclr2027-guide-cn/?topic=heterogeneous-model-transfer)。
 
 ## 更换模型接续
 
@@ -119,7 +120,7 @@ Batch 返回先原样保存到 `work/api-batches/`，通过 ID、摘要指纹、
 
 页面默认只展示 active 投稿；单篇链接可以查阅已保留的 inactive 记录并看到状态提示。多标签采用交集。默认按投稿编号倒序，不表示质量。评分值保留为 `null`。
 
-分享参数：`?q=关键词&area=官方方向&sub=细分类别&tag=标签1&tag=标签2&page=2`。单篇：`?paper=OpenReviewID`。导出按钮导出当前筛选结果，并注明快照类型；搜索尚未完成时暂不允许导出不完整结果。
+分享参数：`?q=关键词&area=官方方向&sub=细分类别&tag=标签1&tag=标签2&topic=heterogeneous-model-transfer&page=2`。单篇：`?paper=OpenReviewID`。导出按钮导出当前筛选结果，并注明快照类型；搜索尚未完成时暂不允许导出不完整结果。
 
 ## 分类验收与 GitHub Pages
 

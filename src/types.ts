@@ -4,6 +4,7 @@ export interface Paper {
   tags: string[]; keywords: string[]; status: 'active' | 'inactive';
   classification: 'complete' | 'review' | 'pending'; modified: number | null;
   fingerprint: string; detail: string; rating: number | null;
+  topics?: {slug:string; tier:'core'|'method-reference'; dimensions:string[]; forms:string[]}[];
 }
 export interface PaperDetail extends Paper { abstract: string; classificationReason?: string }
 export interface Manifest {
@@ -15,6 +16,7 @@ export interface Manifest {
   taxonomyVersion: string; taxonomyStage: string; note: string;
   areas: { name: string; label: string; count: number; subcategories: {name: string; count: number}[] }[];
   tags: {name: string; count: number}[];
+  topics?: {slug:string; name:string; description:string; count:number; core:number; methodReference:number}[];
   searchShards: string[];
 }
-export interface Filters { q: string; area: string; sub: string; tags: string[]; state: string; page: number; paper: string }
+export interface Filters { q: string; area: string; sub: string; tags: string[]; topic: string; state: string; page: number; paper: string }

@@ -97,9 +97,9 @@
   "officialCount": 42358,
   "total": 42358,
   "inactive": 0,
-  "classified": 723,
+  "classified": 1406,
   "review": 0,
-  "pending": 41635,
+  "pending": 40952,
   "missingAbstract": 0,
   "failures": 0,
   "note": "",
@@ -113,38 +113,74 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 6604
+          "count": 6401
         },
         {
           "name": "后训练与对齐",
-          "count": 15
+          "count": 71
         },
         {
           "name": "模型合并",
-          "count": 10
+          "count": 41
         },
         {
           "name": "Agent 与工具使用",
-          "count": 7
+          "count": 32
+        },
+        {
+          "name": "长上下文与记忆",
+          "count": 22
         },
         {
           "name": "效率与压缩",
-          "count": 5
-        },
-        {
-          "name": "持续学习",
-          "count": 4
+          "count": 18
         },
         {
           "name": "推理系统",
-          "count": 4
+          "count": 11
         },
         {
           "name": "迁移与元学习",
+          "count": 10
+        },
+        {
+          "name": "模型架构",
+          "count": 8
+        },
+        {
+          "name": "持续学习",
+          "count": 7
+        },
+        {
+          "name": "多智能体学习",
+          "count": 6
+        },
+        {
+          "name": "推理与思维链",
+          "count": 6
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 5
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 5
+        },
+        {
+          "name": "表征分析",
           "count": 4
         },
         {
           "name": "训练动态",
+          "count": 4
+        },
+        {
+          "name": "评估方法",
+          "count": 4
+        },
+        {
+          "name": "应用型强化学习",
           "count": 3
         },
         {
@@ -160,23 +196,7 @@
           "count": 2
         },
         {
-          "name": "多模态基础模型",
-          "count": 2
-        },
-        {
-          "name": "应用型强化学习",
-          "count": 2
-        },
-        {
-          "name": "推理与思维链",
-          "count": 2
-        },
-        {
-          "name": "表征分析",
-          "count": 2
-        },
-        {
-          "name": "评估方法",
+          "name": "扩散与流匹配",
           "count": 2
         },
         {
@@ -184,7 +204,15 @@
           "count": 1
         },
         {
+          "name": "医学与健康",
+          "count": 1
+        },
+        {
           "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "机制可解释性",
           "count": 1
         },
         {
@@ -192,11 +220,27 @@
           "count": 1
         },
         {
+          "name": "知识编辑",
+          "count": 1
+        },
+        {
+          "name": "离线强化学习",
+          "count": 1
+        },
+        {
           "name": "视觉语言动作（VLA）",
           "count": 1
         },
         {
+          "name": "视频理解",
+          "count": 1
+        },
+        {
           "name": "预训练",
+          "count": 1
+        },
+        {
+          "name": "鲁棒性与对抗",
           "count": 1
         }
       ]
@@ -208,22 +252,78 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 5429
+          "count": 5363
         },
         {
-          "name": "3D 视觉",
-          "count": 3
+          "name": "模型合并",
+          "count": 15
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 13
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 7
         },
         {
           "name": "Agent 与工具使用",
-          "count": 3
+          "count": 6
         },
         {
-          "name": "世界模型",
-          "count": 2
+          "name": "3D 视觉",
+          "count": 5
+        },
+        {
+          "name": "效率与压缩",
+          "count": 4
         },
         {
           "name": "视觉理解",
+          "count": 4
+        },
+        {
+          "name": "世界模型",
+          "count": 3
+        },
+        {
+          "name": "医学与健康",
+          "count": 3
+        },
+        {
+          "name": "视频生成",
+          "count": 3
+        },
+        {
+          "name": "语音与音频",
+          "count": 3
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 3
+        },
+        {
+          "name": "异常检测",
+          "count": 2
+        },
+        {
+          "name": "持续学习",
+          "count": 2
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 2
+        },
+        {
+          "name": "自然语言处理",
+          "count": 2
+        },
+        {
+          "name": "表征分析",
+          "count": 2
+        },
+        {
+          "name": "视频理解",
           "count": 2
         },
         {
@@ -231,15 +331,19 @@
           "count": 2
         },
         {
-          "name": "语音与音频",
+          "name": "长上下文与记忆",
           "count": 2
         },
         {
-          "name": "医学与健康",
+          "name": "图像生成与编辑",
           "count": 1
         },
         {
-          "name": "后训练与对齐",
+          "name": "域适应与泛化",
+          "count": 1
+        },
+        {
+          "name": "安全与越狱",
           "count": 1
         },
         {
@@ -247,11 +351,7 @@
           "count": 1
         },
         {
-          "name": "异常检测",
-          "count": 1
-        },
-        {
-          "name": "持续学习",
+          "name": "扩散与流匹配",
           "count": 1
         },
         {
@@ -263,35 +363,15 @@
           "count": 1
         },
         {
-          "name": "效率与压缩",
-          "count": 1
-        },
-        {
           "name": "数据集与基准",
           "count": 1
         },
         {
-          "name": "模型合并",
+          "name": "最优传输",
           "count": 1
         },
         {
           "name": "知识图谱与推理",
-          "count": 1
-        },
-        {
-          "name": "自然语言处理",
-          "count": 1
-        },
-        {
-          "name": "视频理解",
-          "count": 1
-        },
-        {
-          "name": "视频生成",
-          "count": 1
-        },
-        {
-          "name": "长上下文与记忆",
           "count": 1
         }
       ]
@@ -303,26 +383,46 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 3189
-        },
-        {
-          "name": "Agent 安全",
-          "count": 12
+          "count": 3139
         },
         {
           "name": "安全与越狱",
-          "count": 8
+          "count": 19
+        },
+        {
+          "name": "Agent 安全",
+          "count": 17
         },
         {
           "name": "隐私与版权",
-          "count": 6
+          "count": 15
         },
         {
-          "name": "机制可解释性",
-          "count": 3
+          "name": "模型合并",
+          "count": 7
         },
         {
           "name": "鲁棒性与对抗",
+          "count": 7
+        },
+        {
+          "name": "机制可解释性",
+          "count": 4
+        },
+        {
+          "name": "偏好学习",
+          "count": 3
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 3
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 3
+        },
+        {
+          "name": "表征分析",
           "count": 3
         },
         {
@@ -330,11 +430,7 @@
           "count": 2
         },
         {
-          "name": "表征分析",
-          "count": 2
-        },
-        {
-          "name": "偏好学习",
+          "name": "可控生成",
           "count": 1
         },
         {
@@ -346,7 +442,19 @@
           "count": 1
         },
         {
+          "name": "知识编辑",
+          "count": 1
+        },
+        {
           "name": "评估方法",
+          "count": 1
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 1
+        },
+        {
+          "name": "长上下文与记忆",
           "count": 1
         }
       ]
@@ -358,11 +466,11 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 3106
+          "count": 3102
         },
         {
           "name": "数据集与基准",
-          "count": 19
+          "count": 23
         },
         {
           "name": "评估方法",
@@ -385,34 +493,58 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2844
-        },
-        {
-          "name": "图像生成与编辑",
-          "count": 5
+          "count": 2801
         },
         {
           "name": "扩散与流匹配",
-          "count": 4
+          "count": 11
         },
         {
           "name": "后训练与对齐",
-          "count": 3
+          "count": 10
         },
         {
-          "name": "世界模型",
-          "count": 2
+          "name": "图像生成与编辑",
+          "count": 9
         },
         {
           "name": "模型合并",
-          "count": 2
+          "count": 8
         },
         {
           "name": "视频生成",
-          "count": 2
+          "count": 6
+        },
+        {
+          "name": "效率与压缩",
+          "count": 4
+        },
+        {
+          "name": "世界模型",
+          "count": 3
+        },
+        {
+          "name": "模型架构",
+          "count": 3
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 3
         },
         {
           "name": "3D / 4D 生成",
+          "count": 2
+        },
+        {
+          "name": "可控生成",
+          "count": 2
+        },
+        {
+          "name": "推理系统",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
           "count": 1
         },
         {
@@ -420,7 +552,7 @@
           "count": 1
         },
         {
-          "name": "可控生成",
+          "name": "因果发现",
           "count": 1
         },
         {
@@ -432,14 +564,6 @@
           "count": 1
         },
         {
-          "name": "推理系统",
-          "count": 1
-        },
-        {
-          "name": "效率与压缩",
-          "count": 1
-        },
-        {
           "name": "数据集与基准",
           "count": 1
         },
@@ -448,7 +572,11 @@
           "count": 1
         },
         {
-          "name": "模型架构",
+          "name": "表征分析",
+          "count": 1
+        },
+        {
+          "name": "视觉语言动作（VLA）",
           "count": 1
         },
         {
@@ -462,10 +590,6 @@
         {
           "name": "语音与音频",
           "count": 1
-        },
-        {
-          "name": "迁移与元学习",
-          "count": 1
         }
       ]
     },
@@ -476,34 +600,50 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2334
+          "count": 2305
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 11
         },
         {
           "name": "强化学习理论",
+          "count": 8
+        },
+        {
+          "name": "多智能体学习",
           "count": 7
         },
         {
           "name": "Agent 与工具使用",
-          "count": 4
-        },
-        {
-          "name": "多智能体学习",
-          "count": 4
+          "count": 6
         },
         {
           "name": "应用型强化学习",
-          "count": 3
+          "count": 5
+        },
+        {
+          "name": "离线强化学习",
+          "count": 4
         },
         {
           "name": "世界模型",
-          "count": 2
+          "count": 3
         },
         {
           "name": "优化器与收敛",
           "count": 2
         },
         {
-          "name": "离线强化学习",
+          "name": "模型合并",
+          "count": 2
+        },
+        {
+          "name": "视觉语言动作（VLA）",
+          "count": 2
+        },
+        {
+          "name": "迁移与元学习",
           "count": 2
         },
         {
@@ -523,11 +663,15 @@
           "count": 1
         },
         {
+          "name": "探索与奖励设计",
+          "count": 1
+        },
+        {
           "name": "推理与思维链",
           "count": 1
         },
         {
-          "name": "模型合并",
+          "name": "机器人操作",
           "count": 1
         },
         {
@@ -535,11 +679,11 @@
           "count": 1
         },
         {
-          "name": "训练动态",
+          "name": "联邦与分布式学习",
           "count": 1
         },
         {
-          "name": "迁移与元学习",
+          "name": "训练动态",
           "count": 1
         }
       ]
@@ -551,22 +695,34 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2208
+          "count": 2186
         },
         {
           "name": "视觉语言动作（VLA）",
-          "count": 8
+          "count": 14
         },
         {
           "name": "机器人操作",
-          "count": 5
+          "count": 7
+        },
+        {
+          "name": "模型合并",
+          "count": 6
+        },
+        {
+          "name": "世界模型",
+          "count": 3
         },
         {
           "name": "导航与规划",
           "count": 3
         },
         {
-          "name": "世界模型",
+          "name": "模仿学习",
+          "count": 3
+        },
+        {
+          "name": "后训练与对齐",
           "count": 2
         },
         {
@@ -574,11 +730,19 @@
           "count": 2
         },
         {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
           "name": "域适应与泛化",
           "count": 1
         },
         {
           "name": "多智能体学习",
+          "count": 1
+        },
+        {
+          "name": "持续学习",
           "count": 1
         },
         {
@@ -594,11 +758,11 @@
           "count": 1
         },
         {
-          "name": "模仿学习",
+          "name": "机制可解释性",
           "count": 1
         },
         {
-          "name": "模型合并",
+          "name": "联邦与分布式学习",
           "count": 1
         },
         {
@@ -614,22 +778,46 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 2092
+          "count": 2048
         },
         {
           "name": "表征分析",
-          "count": 6
+          "count": 19
         },
         {
-          "name": "自监督与对比学习",
-          "count": 4
-        },
-        {
-          "name": "域适应与泛化",
-          "count": 3
+          "name": "联邦与分布式学习",
+          "count": 8
         },
         {
           "name": "模型合并",
+          "count": 7
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 5
+        },
+        {
+          "name": "自监督与对比学习",
+          "count": 5
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 5
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 4
+        },
+        {
+          "name": "世界模型",
+          "count": 3
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 3
+        },
+        {
+          "name": "模型架构",
           "count": 3
         },
         {
@@ -637,7 +825,7 @@
           "count": 3
         },
         {
-          "name": "世界模型",
+          "name": "3D 视觉",
           "count": 2
         },
         {
@@ -645,11 +833,11 @@
           "count": 2
         },
         {
-          "name": "效率与压缩",
+          "name": "图学习",
           "count": 2
         },
         {
-          "name": "联邦与分布式学习",
+          "name": "效率与压缩",
           "count": 2
         },
         {
@@ -657,11 +845,7 @@
           "count": 2
         },
         {
-          "name": "3D 视觉",
-          "count": 1
-        },
-        {
-          "name": "图学习",
+          "name": "Agent 与工具使用",
           "count": 1
         },
         {
@@ -691,10 +875,6 @@
         {
           "name": "视觉理解",
           "count": 1
-        },
-        {
-          "name": "迁移与元学习",
-          "count": 1
         }
       ]
     },
@@ -705,11 +885,11 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1929
+          "count": 1918
         },
         {
           "name": "生物与药物",
-          "count": 9
+          "count": 13
         },
         {
           "name": "物理与科学计算",
@@ -724,6 +904,22 @@
           "count": 4
         },
         {
+          "name": "后训练与对齐",
+          "count": 2
+        },
+        {
+          "name": "模型合并",
+          "count": 2
+        },
+        {
+          "name": "应用型强化学习",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
+        },
+        {
           "name": "数据质量与合成",
           "count": 1
         },
@@ -732,7 +928,11 @@
           "count": 1
         },
         {
-          "name": "模型合并",
+          "name": "测试时适应",
+          "count": 1
+        },
+        {
+          "name": "迁移与元学习",
           "count": 1
         }
       ]
@@ -744,42 +944,58 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1725
+          "count": 1688
         },
         {
           "name": "机制可解释性",
-          "count": 21
-        },
-        {
-          "name": "归因与探针",
-          "count": 9
+          "count": 30
         },
         {
           "name": "表征分析",
-          "count": 8
+          "count": 20
+        },
+        {
+          "name": "归因与探针",
+          "count": 11
         },
         {
           "name": "评估方法",
+          "count": 6
+        },
+        {
+          "name": "模型合并",
+          "count": 4
+        },
+        {
+          "name": "知识编辑",
           "count": 3
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 2
         },
         {
           "name": "几何与拓扑学习",
           "count": 2
         },
         {
-          "name": "Agent 与工具使用",
-          "count": 1
-        },
-        {
           "name": "反事实分析",
           "count": 1
         },
         {
-          "name": "泛化理论",
+          "name": "可控生成",
           "count": 1
         },
         {
-          "name": "知识编辑",
+          "name": "多智能体学习",
+          "count": 1
+        },
+        {
+          "name": "模仿学习",
+          "count": 1
+        },
+        {
+          "name": "泛化理论",
           "count": 1
         },
         {
@@ -788,6 +1004,10 @@
         },
         {
           "name": "神经符号与形式化验证",
+          "count": 1
+        },
+        {
+          "name": "迁移与元学习",
           "count": 1
         },
         {
@@ -803,15 +1023,23 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1553
+          "count": 1546
         },
         {
           "name": "优化器与收敛",
-          "count": 20
+          "count": 22
         },
         {
           "name": "训练动态",
           "count": 6
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 3
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 2
         },
         {
           "name": "效率与压缩",
@@ -822,12 +1050,12 @@
           "count": 2
         },
         {
-          "name": "泛化理论",
+          "name": "模型合并",
           "count": 2
         },
         {
-          "name": "Agent 与工具使用",
-          "count": 1
+          "name": "泛化理论",
+          "count": 2
         },
         {
           "name": "代码智能",
@@ -838,15 +1066,11 @@
           "count": 1
         },
         {
+          "name": "导航与规划",
+          "count": 1
+        },
+        {
           "name": "持续学习",
-          "count": 1
-        },
-        {
-          "name": "模型合并",
-          "count": 1
-        },
-        {
-          "name": "联邦与分布式学习",
           "count": 1
         },
         {
@@ -862,11 +1086,11 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1333
+          "count": 1326
         },
         {
           "name": "泛化理论",
-          "count": 13
+          "count": 16
         },
         {
           "name": "表达能力",
@@ -881,11 +1105,15 @@
           "count": 4
         },
         {
-          "name": "机制可解释性",
+          "name": "模型合并",
+          "count": 3
+        },
+        {
+          "name": "效率与压缩",
           "count": 2
         },
         {
-          "name": "模型合并",
+          "name": "机制可解释性",
           "count": 2
         },
         {
@@ -901,11 +1129,15 @@
           "count": 1
         },
         {
+          "name": "后训练与对齐",
+          "count": 1
+        },
+        {
           "name": "探索与奖励设计",
           "count": 1
         },
         {
-          "name": "效率与压缩",
+          "name": "评估方法",
           "count": 1
         }
       ]
@@ -917,34 +1149,78 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1113
-        },
-        {
-          "name": "迁移与元学习",
-          "count": 16
+          "count": 1016
         },
         {
           "name": "模型合并",
-          "count": 15
+          "count": 48
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 41
         },
         {
           "name": "持续学习",
-          "count": 9
-        },
-        {
-          "name": "域适应与泛化",
-          "count": 2
-        },
-        {
-          "name": "评估方法",
-          "count": 2
+          "count": 18
         },
         {
           "name": "长上下文与记忆",
+          "count": 5
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 4
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 4
+        },
+        {
+          "name": "评估方法",
+          "count": 4
+        },
+        {
+          "name": "域适应与泛化",
+          "count": 3
+        },
+        {
+          "name": "效率与压缩",
+          "count": 3
+        },
+        {
+          "name": "模型架构",
           "count": 2
         },
         {
+          "name": "测试时适应",
+          "count": 2
+        },
+        {
+          "name": "表征分析",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
+        },
+        {
           "name": "世界模型",
+          "count": 1
+        },
+        {
+          "name": "优化器与收敛",
+          "count": 1
+        },
+        {
+          "name": "多智能体学习",
+          "count": 1
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 1
+        },
+        {
+          "name": "安全与越狱",
           "count": 1
         },
         {
@@ -952,19 +1228,27 @@
           "count": 1
         },
         {
+          "name": "推理系统",
+          "count": 1
+        },
+        {
           "name": "机制可解释性",
           "count": 1
         },
         {
-          "name": "测试时适应",
+          "name": "物理与科学计算",
           "count": 1
         },
         {
-          "name": "联邦与分布式学习",
+          "name": "自然语言处理",
           "count": 1
         },
         {
           "name": "视觉理解",
+          "count": 1
+        },
+        {
+          "name": "鲁棒性与对抗",
           "count": 1
         }
       ]
@@ -976,22 +1260,30 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1109
+          "count": 1091
+        },
+        {
+          "name": "模型合并",
+          "count": 7
+        },
+        {
+          "name": "长上下文与记忆",
+          "count": 5
+        },
+        {
+          "name": "效率与压缩",
+          "count": 4
         },
         {
           "name": "模型架构",
           "count": 4
         },
         {
-          "name": "长上下文与记忆",
+          "name": "联邦与分布式学习",
           "count": 4
         },
         {
-          "name": "效率与压缩",
-          "count": 3
-        },
-        {
-          "name": "模型合并",
+          "name": "后训练与对齐",
           "count": 3
         },
         {
@@ -1008,6 +1300,10 @@
         },
         {
           "name": "评估方法",
+          "count": 2
+        },
+        {
+          "name": "迁移与元学习",
           "count": 2
         },
         {
@@ -1027,6 +1323,10 @@
           "count": 1
         },
         {
+          "name": "多模态基础模型",
+          "count": 1
+        },
+        {
           "name": "归因与探针",
           "count": 1
         },
@@ -1036,6 +1336,14 @@
         },
         {
           "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "测试时适应",
+          "count": 1
+        },
+        {
+          "name": "生物与药物",
           "count": 1
         },
         {
@@ -1051,22 +1359,22 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 1111
+          "count": 1102
         },
         {
           "name": "时间序列",
-          "count": 11
+          "count": 15
         },
         {
           "name": "动力系统",
-          "count": 2
-        },
-        {
-          "name": "域适应与泛化",
-          "count": 2
+          "count": 3
         },
         {
           "name": "机制可解释性",
+          "count": 3
+        },
+        {
+          "name": "域适应与泛化",
           "count": 2
         },
         {
@@ -1082,11 +1390,19 @@
           "count": 1
         },
         {
+          "name": "后训练与对齐",
+          "count": 1
+        },
+        {
           "name": "异常检测",
           "count": 1
         },
         {
           "name": "效率与压缩",
+          "count": 1
+        },
+        {
+          "name": "模型架构",
           "count": 1
         },
         {
@@ -1100,6 +1416,10 @@
         {
           "name": "评估方法",
           "count": 1
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 1
         }
       ]
     },
@@ -1110,15 +1430,15 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 912
+          "count": 905
         },
         {
           "name": "图学习",
-          "count": 9
+          "count": 10
         },
         {
           "name": "几何与拓扑学习",
-          "count": 7
+          "count": 8
         },
         {
           "name": "知识图谱与推理",
@@ -1126,6 +1446,10 @@
         },
         {
           "name": "表征分析",
+          "count": 3
+        },
+        {
+          "name": "后训练与对齐",
           "count": 2
         },
         {
@@ -1133,7 +1457,7 @@
           "count": 1
         },
         {
-          "name": "后训练与对齐",
+          "name": "世界模型",
           "count": 1
         },
         {
@@ -1161,11 +1485,19 @@
           "count": 1
         },
         {
+          "name": "模型架构",
+          "count": 1
+        },
+        {
           "name": "神经与认知科学",
           "count": 1
         },
         {
           "name": "联邦与分布式学习",
+          "count": 1
+        },
+        {
+          "name": "评估方法",
           "count": 1
         },
         {
@@ -1181,7 +1513,7 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 846
+          "count": 842
         },
         {
           "name": "不确定性量化",
@@ -1190,6 +1522,10 @@
         {
           "name": "贝叶斯推断",
           "count": 9
+        },
+        {
+          "name": "模型合并",
+          "count": 3
         },
         {
           "name": "可控生成",
@@ -1201,6 +1537,10 @@
         },
         {
           "name": "数据质量与合成",
+          "count": 1
+        },
+        {
+          "name": "模型架构",
           "count": 1
         },
         {
@@ -1224,7 +1564,7 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 682
+          "count": 670
         },
         {
           "name": "神经与认知科学",
@@ -1232,6 +1572,34 @@
         },
         {
           "name": "表征分析",
+          "count": 4
+        },
+        {
+          "name": "迁移与元学习",
+          "count": 3
+        },
+        {
+          "name": "几何与拓扑学习",
+          "count": 1
+        },
+        {
+          "name": "后训练与对齐",
+          "count": 1
+        },
+        {
+          "name": "图像生成与编辑",
+          "count": 1
+        },
+        {
+          "name": "多模态基础模型",
+          "count": 1
+        },
+        {
+          "name": "效率与压缩",
+          "count": 1
+        },
+        {
+          "name": "模型架构",
           "count": 1
         },
         {
@@ -1251,11 +1619,11 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 665
+          "count": 656
         },
         {
           "name": "推理系统",
-          "count": 10
+          "count": 15
         },
         {
           "name": "硬件与数值计算",
@@ -1263,11 +1631,19 @@
         },
         {
           "name": "效率与压缩",
-          "count": 5
+          "count": 6
         },
         {
           "name": "其他",
           "count": 2
+        },
+        {
+          "name": "联邦与分布式学习",
+          "count": 2
+        },
+        {
+          "name": "Agent 与工具使用",
+          "count": 1
         },
         {
           "name": "代码智能",
@@ -1282,11 +1658,11 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 532
+          "count": 530
         },
         {
           "name": "神经符号与形式化验证",
-          "count": 13
+          "count": 14
         },
         {
           "name": "Agent 与工具使用",
@@ -1302,6 +1678,10 @@
         },
         {
           "name": "数据集与基准",
+          "count": 1
+        },
+        {
+          "name": "知识图谱与推理",
           "count": 1
         },
         {
@@ -1321,7 +1701,7 @@
       "subcategories": [
         {
           "name": "待分类",
-          "count": 319
+          "count": 317
         },
         {
           "name": "因果推断",
@@ -1348,6 +1728,14 @@
           "count": 1
         },
         {
+          "name": "后训练与对齐",
+          "count": 1
+        },
+        {
+          "name": "归因与探针",
+          "count": 1
+        },
+        {
           "name": "机制可解释性",
           "count": 1
         },
@@ -1369,163 +1757,173 @@
   "tags": [
     {
       "name": "LLM",
-      "count": 282
+      "count": 639
     },
     {
       "name": "效率",
-      "count": 192
+      "count": 343
     },
     {
       "name": "优化",
-      "count": 180
-    },
-    {
-      "name": "评估",
-      "count": 147
-    },
-    {
-      "name": "泛化",
-      "count": 141
-    },
-    {
-      "name": "可解释性",
-      "count": 116
-    },
-    {
-      "name": "Agent",
-      "count": 98
-    },
-    {
-      "name": "强化学习",
-      "count": 87
-    },
-    {
-      "name": "多模态",
-      "count": 83
-    },
-    {
-      "name": "推理",
-      "count": 75
-    },
-    {
-      "name": "安全",
-      "count": 74
-    },
-    {
-      "name": "时间序列",
-      "count": 61
-    },
-    {
-      "name": "图学习",
-      "count": 53
-    },
-    {
-      "name": "医学",
-      "count": 47
-    },
-    {
-      "name": "扩散",
-      "count": 43
-    },
-    {
-      "name": "机器人",
-      "count": 41
-    },
-    {
-      "name": "记忆",
-      "count": 41
-    },
-    {
-      "name": "基准",
-      "count": 39
-    },
-    {
-      "name": "自监督",
-      "count": 38
-    },
-    {
-      "name": "因果",
-      "count": 37
+      "count": 310
     },
     {
       "name": "蒸馏",
-      "count": 33
+      "count": 276
+    },
+    {
+      "name": "泛化",
+      "count": 252
+    },
+    {
+      "name": "评估",
+      "count": 224
+    },
+    {
+      "name": "多模态",
+      "count": 222
+    },
+    {
+      "name": "Agent",
+      "count": 187
+    },
+    {
+      "name": "可解释性",
+      "count": 182
+    },
+    {
+      "name": "推理",
+      "count": 177
     },
     {
       "name": "对齐",
-      "count": 30
+      "count": 176
     },
     {
-      "name": "世界模型",
-      "count": 29
+      "name": "强化学习",
+      "count": 175
     },
     {
-      "name": "代码",
-      "count": 27
+      "name": "安全",
+      "count": 127
+    },
+    {
+      "name": "扩散",
+      "count": 87
+    },
+    {
+      "name": "记忆",
+      "count": 79
+    },
+    {
+      "name": "时间序列",
+      "count": 74
+    },
+    {
+      "name": "图学习",
+      "count": 69
+    },
+    {
+      "name": "机器人",
+      "count": 69
+    },
+    {
+      "name": "医学",
+      "count": 60
     },
     {
       "name": "长上下文",
-      "count": 27
+      "count": 56
     },
     {
-      "name": "3D",
-      "count": 23
+      "name": "自监督",
+      "count": 49
     },
     {
-      "name": "数据集",
-      "count": 22
+      "name": "因果",
+      "count": 46
     },
     {
-      "name": "VLA",
-      "count": 19
+      "name": "基准",
+      "count": 45
     },
     {
-      "name": "流匹配",
-      "count": 19
+      "name": "世界模型",
+      "count": 41
     },
     {
       "name": "视频",
-      "count": 19
+      "count": 41
     },
     {
-      "name": "量化",
-      "count": 18
+      "name": "VLA",
+      "count": 40
     },
     {
-      "name": "生物",
-      "count": 16
+      "name": "3D",
+      "count": 39
     },
     {
-      "name": "隐私",
-      "count": 16
+      "name": "代码",
+      "count": 38
     },
     {
-      "name": "最优传输",
-      "count": 15
-    },
-    {
-      "name": "异常检测",
-      "count": 12
-    },
-    {
-      "name": "分布式训练",
-      "count": 9
-    },
-    {
-      "name": "音频",
-      "count": 8
+      "name": "流匹配",
+      "count": 34
     },
     {
       "name": "联邦学习",
-      "count": 5
+      "count": 34
+    },
+    {
+      "name": "隐私",
+      "count": 33
+    },
+    {
+      "name": "数据集",
+      "count": 29
+    },
+    {
+      "name": "量化",
+      "count": 26
+    },
+    {
+      "name": "分布式训练",
+      "count": 23
+    },
+    {
+      "name": "生物",
+      "count": 23
+    },
+    {
+      "name": "最优传输",
+      "count": 20
+    },
+    {
+      "name": "音频",
+      "count": 19
+    },
+    {
+      "name": "异常检测",
+      "count": 17
     },
     {
       "name": "知识编辑",
-      "count": 4
+      "count": 14
     },
     {
       "name": "通信压缩",
-      "count": 3
+      "count": 11
+    }
+  ],
+  "topics": [
+    {
+      "slug": "heterogeneous-model-transfer",
+      "name": "异构模型合并与迁移",
+      "description": "不同模型之间的能力、知识或内部状态合并与迁移；相关性层级不表示论文质量。",
+      "count": 781,
+      "core": 693,
+      "methodReference": 88
     }
   ],
   "searchShards": [

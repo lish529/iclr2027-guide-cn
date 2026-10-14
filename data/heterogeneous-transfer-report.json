@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-14T14:54:11.747374+00:00",
+  "screeningFile": "data/heterogeneous-transfer-screening.json",
+  "candidateCount": 3773,
+  "nearMissAuditCount": 300,
+  "tierCounts": {
+    "core": 693,
+    "method-reference": 88,
+    "exclude": 2992
+  },
+  "selectedCount": 781,
+  "reusedValidCount": 98,
+  "newlyClassifiedCount": 683,
+  "qaReviewedCount": 781,
+  "qaCorrections": 76,
+  "invalid": 0,
+  "scope": "专题已逐篇复核；不代表全量分类完成或论文质量排序。"
+}

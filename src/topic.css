@@ -1,0 +1,24 @@
+.special-topics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+  margin-bottom: 26px;
+}
+.special-topic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  text-align: left;
+  border: 1px solid #d8e3d1;
+  background: #fff;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+.special-topic:hover, .special-topic.active { border-color: #8faa80; background: #edf4e8; color: var(--green); }
+.special-topic span { display: flex; flex-direction: column; gap: 5px; }
+.special-topic b { font-size: 12px; font-weight: 600; }
+.special-topic small { font-size: 9px; line-height: 1.5; color: #899784; }
+.special-topic strong { font-size: 12px; white-space: nowrap; font-weight: 500; }
+.topic-heading { margin-top: 2px; }
+.topic-badge { background: #e8f0e2; color: #557a4d; border: 1px solid #cfddc5; }

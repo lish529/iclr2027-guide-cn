@@ -32,18 +32,19 @@ export function matchesQuery(text: string, query: string): boolean {
 export function filterPapers(papers: Paper[], f: Filters, matchingIds?: Set<string>): Paper[] {
   return papers.filter(p => p.status === 'active' && (!f.area || p.primaryArea === f.area)
     && (!f.sub || p.subcategory === f.sub) && f.tags.every(t => p.tags.includes(t))
-    && (!f.state || p.classification === f.state)
+    && (!f.topic || (p.topics ?? []).some(t=>t.slug===f.topic)) && (!f.state || p.classification === f.state)
     && (!f.q || (matchingIds ? matchingIds.has(p.id) : matchesQuery(searchText(p), f.q))));
 }
 export function readFilters(search: string): Filters {
   const p = new URLSearchParams(search);
   return { q:p.get('q') ?? '', area:p.get('area') ?? '', sub:p.get('sub') ?? '',
     tags:[...new Set(p.getAll('tag'))], state:p.get('state') ?? '',
+    topic:p.get('topic') ?? '',
     page:Math.max(1, Math.floor(Number(p.get('page')) || 1)), paper:p.get('paper') ?? '' };
 }
 export function writeFilters(f: Filters): string {
   const p = new URLSearchParams();
-  for (const key of ['q','area','sub','state','paper'] as const) if(f[key]) p.set(key,f[key]);
+  for (const key of ['q','area','sub','topic','state','paper'] as const) if(f[key]) p.set(key,f[key]);
   f.tags.forEach(t => p.append('tag',t));
   if(f.page>1) p.set('page',String(f.page));
   return p.size ? `?${p}` : '';

@@ -1,4 +1,5 @@
 import './style.css';
+import './topic.css';
 import { fetchJson } from './data';
 import type { Filters, Manifest, Paper, PaperDetail } from './types';
 import { csv, filterPapers, readFilters, writeFilters } from './search';
@@ -71,12 +72,13 @@ function runSearch() {
 }
 function card(p: Paper): string {
   const state = p.classification === 'complete' ? '' : `<span class="badge warn">${p.classification==='review'?'待复核':'待生成中文导读'}</span>`;
+  const topicBadges=(p.topics??[]).map(t=>`<span class="badge topic-badge">${t.tier==='core'?'异构模型 · 核心相关':'异构模型 · 方法参考'}</span>`).join('');
   return `<article class="paper" data-id="${escape(p.id)}">
     <div class="paper-top"><span class="eyebrow">${escape(p.areaZh)} <span class="sep">/</span> ${escape(p.subcategory)}</span><span class="paper-number">#${escape(p.number ?? p.id)}</span></div>
     <h3><a href="https://openreview.net/forum?id=${encodeURIComponent(p.id)}" target="_blank" rel="noopener noreferrer">${escape(p.titleZh || p.title)} <span class="external">↗</span></a></h3>
     ${p.titleZh ? `<p class="english-title" lang="en">${escape(p.title)}</p>` : ''}
     <p class="summary">${escape(p.summaryZh || '这篇论文尚未生成中文导读，可展开英文摘要查看。')}</p>
-    <div class="tags">${p.tags.map(t=>`<button class="tag ${filters.tags.includes(t)?'selected':''}" data-tag="${escape(t)}">${escape(t)}</button>`).join('')}${state}</div>
+    <div class="tags">${p.tags.map(t=>`<button class="tag ${filters.tags.includes(t)?'selected':''}" data-tag="${escape(t)}">${escape(t)}</button>`).join('')}${topicBadges}${state}</div>
     <div class="paper-bottom"><span class="source-note">${p.classification==='pending'?'中文内容待生成':'基于摘要生成'} · 暂无公开评分${p.status==='inactive'?' · 已不在有效投稿列表':''}</span><div><button class="text-button" data-share="${escape(p.id)}">分享</button><button class="text-button abstract-toggle" data-abstract="${escape(p.id)}" aria-expanded="false">英文摘要 <span>⌄</span></button></div></div>
     <div class="abstract" hidden></div>
   </article>`;
@@ -86,8 +88,9 @@ function renderNavigation() {
   $('#category-tree').innerHTML=`<button class="all-category ${!current?'active':''}" data-area=""><span>全部研究方向</span><span>${fmt(manifest.total)}</span></button>`+
     manifest.areas.map(a=>`<details class="area" ${current===a.name?'open':''}><summary><span class="area-chevron">›</span><button class="area-button ${current===a.name&&!filters.sub?'active':''}" data-area="${escape(a.name)}"><span>${escape(a.label)}</span><span class="count">${fmt(a.count)}</span></button></summary><div class="subcategories">${a.subcategories.map(s=>`<button class="sub-button ${current===a.name&&filters.sub===s.name?'active':''}" data-area="${escape(a.name)}" data-sub="${escape(s.name)}"><span>${escape(s.name)}</span><span>${fmt(s.count)}</span></button>`).join('')}</div></details>`).join('');
   $('#topic-tags').innerHTML=manifest.tags.map(t=>`<button class="topic ${filters.tags.includes(t.name)?'active':''}" data-tag="${escape(t.name)}">${escape(t.name)}<span>${t.count}</span></button>`).join('');
+  $('#special-topics').innerHTML=(manifest.topics??[]).map(t=>`<button class="special-topic ${filters.topic===t.slug?'active':''}" data-topic="${escape(t.slug)}"><span><b>${escape(t.name)}</b><small>${escape(t.description)}</small></span><strong>${fmt(t.count)} 篇</strong></button>`).join('');
   const chips = [filters.area && {label:manifest.areas.find(a=>a.name===filters.area)?.label??filters.area,type:'area'},
-    filters.sub && {label:filters.sub,type:'sub'},...filters.tags.map(t=>({label:t,type:'tag'}))].filter(Boolean) as {label:string;type:string}[];
+    filters.sub && {label:filters.sub,type:'sub'},filters.topic && {label:manifest.topics?.find(t=>t.slug===filters.topic)?.name??filters.topic,type:'topic'},...filters.tags.map(t=>({label:t,type:'tag'}))].filter(Boolean) as {label:string;type:string}[];
   $('#filter-chips').innerHTML=chips.map(c=>`<button class="filter-chip" data-remove="${c.type}" data-value="${escape(c.label)}">${escape(c.label)} <span>×</span></button>`).join('');
 }
 function renderResults() {
@@ -115,7 +118,7 @@ function renderResults() {
 }
 function toast(message: string) {$('#toast').textContent=message;$('#toast').classList.add('show');setTimeout(()=>$('#toast').classList.remove('show'),3000)}
 async function copyLink(paper?: string) {
-  const f=paper?{q:'',area:'',sub:'',tags:[],state:'',page:1,paper}:filters;
+  const f=paper?{q:'',area:'',sub:'',tags:[],topic:'',state:'',page:1,paper}:filters;
   const url=location.origin+location.pathname+writeFilters(f);
   try {await navigator.clipboard.writeText(url);toast('链接已复制')} catch {window.prompt('复制这个链接',url)}
 }
@@ -153,6 +156,8 @@ async function exportData(format: 'json'|'csv') {
       const rows=(await detailShard(path)).filter(p=>ids.has(p.id)).map(p=>({id:p.id,number:p.number,title:p.title,title_zh:p.titleZh,summary_zh:p.summaryZh,
         primary_area:p.primaryArea,subcategory:p.subcategory,tags:p.tags,keywords:p.keywords,
         abstract:p.abstract,classification:p.classification,status:p.status,rating:p.rating,
+        topics:(p.topics??[]).map(t=>t.slug),topic_tiers:(p.topics??[]).map(t=>t.tier),
+        heterogeneity_dimensions:(p.topics??[]).flatMap(t=>t.dimensions),transfer_forms:(p.topics??[]).flatMap(t=>t.forms),
         openreview:`https://openreview.net/forum?id=${p.id}`,snapshot_kind:manifest.snapshotKind,snapshot_at:manifest.finishedAt}));
       if(format==='json') chunks.push((count?',':'')+rows.map(r=>JSON.stringify(r)).join(','));
       else {
@@ -180,10 +185,12 @@ function initEvents() {
     const d=target.dataset;
     if('area' in d){event.preventDefault();update({area:d.area!,sub:d.sub??''});$('#sidebar').classList.remove('mobile-open')}
     if(d.tag) update({tags:filters.tags.includes(d.tag)?filters.tags.filter(t=>t!==d.tag):[...filters.tags,d.tag]});
+    if(d.topic) update({topic:filters.topic===d.topic?'':d.topic});
     if(d.remove==='area') update({area:'',sub:''});
     if(d.remove==='sub') update({sub:''});
     if(d.remove==='tag') update({tags:filters.tags.filter(t=>t!==d.value)});
-    if('reset' in d){update({q:'',area:'',sub:'',tags:[],state:''});$<HTMLInputElement>('#query').value=''}
+    if(d.remove==='topic') update({topic:''});
+    if('reset' in d){update({q:'',area:'',sub:'',tags:[],topic:'',state:''});$<HTMLInputElement>('#query').value=''}
     if(d.page){update({page:Number(d.page)});$('#results-heading').scrollIntoView({behavior:'smooth',block:'start'})}
     if(d.abstract) void toggleAbstract(target);
     if(d.share) void copyLink(d.share);
@@ -210,8 +217,8 @@ function shell() {
     <main><section class="hero"><div class="hero-copy"><div class="hero-kicker"><span class="live-dot"></span> THE FIFTEENTH ICLR <span>/</span> 2027</div><h1>让研究，更容易被发现<span>。</span></h1><p>探索 ICLR 2027 投稿，用中文快速理解每一篇论文。<br>从研究方向到交叉主题，找到你的下一条研究线索。</p><div class="hero-meta">有效投稿 · 基于摘要分类 · ${complete?'已核验快照':'样本预览'}</div></div><div class="hero-graphic" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orbit orbit-three"></div><div class="graphic-center">ICLR<span>2027</span></div><i class="node n1"></i><i class="node n2"></i><i class="node n3"></i><i class="node n4"></i><span class="graphic-label l1">REASONING</span><span class="graphic-label l2">REPRESENTATION</span><span class="graphic-label l3">DISCOVERY</span></div></section>
     <section class="notice ${complete?'verified':''}" aria-label="数据覆盖说明"><span class="notice-symbol">${complete?'✓':'i'}</span><div><strong>${complete?'元数据全量核验通过':'这是可用的样本预览，尚未完成全量采集'}</strong><p>${escape(manifest.note || (complete?'已收录全部有效投稿的英文元数据；中文标题、导读与细分类别仍在处理中。主题标签只覆盖已处理论文，不能代表全量分布。':'批量接口需要 OpenReview 验证；以下数量仅对应已读取样本，不代表整届投稿。'))}</p></div></section>
     <section class="stats" aria-label="数据统计"><div class="stat"><span>当前有效投稿总数</span><strong>${fmt(manifest.officialCount)}</strong><small>${complete?'OpenReview 核验结果':'接口恢复后核验'}</small></div><div class="stat"><span>${complete?'已收录论文':'已读取样本'}</span><strong>${fmt(manifest.total)}<em>篇</em></strong><small>缺摘要 ${manifest.missingAbstract} · 抓取失败 ${manifest.failures}</small></div><div class="stat"><span>中文分类已完成</span><strong>${fmt(manifest.classified)}<em>篇</em></strong><small>待处理 ${manifest.pending} · 待复核 ${manifest.review}</small></div><div class="stat"><span>已覆盖研究方向</span><strong>${manifest.areas.length}<em>类</em></strong><small>中文分类完成度 ${progress}%</small></div></section>
-    <section class="explore"><div class="section-heading"><span class="section-number">01 /</span><h2>按主题探索</h2><span class="hint">仅覆盖已分类 ${fmt(manifest.classified+manifest.review)} 篇 · 多选取交集</span></div><div id="topic-tags" class="topics"></div></section>
-    <section class="library"><div class="section-heading library-heading"><span class="section-number">02 /</span><h2>论文库</h2><span class="snapshot-time">采集于 ${date(manifest.finishedAt)}（北京时间）</span></div>
+    <section class="explore"><div class="section-heading"><span class="section-number">01 /</span><h2>专题策展</h2><span class="hint">专题层级表示研究相关性，不表示论文质量</span></div><div id="special-topics" class="special-topics"></div><div class="section-heading topic-heading"><span class="section-number">02 /</span><h2>按主题探索</h2><span class="hint">仅覆盖已分类 ${fmt(manifest.classified+manifest.review)} 篇 · 多选取交集</span></div><div id="topic-tags" class="topics"></div></section>
+    <section class="library"><div class="section-heading library-heading"><span class="section-number">03 /</span><h2>论文库</h2><span class="snapshot-time">采集于 ${date(manifest.finishedAt)}（北京时间）</span></div>
     <div class="search-bar"><span class="search-icon">⌕</span><input id="query" type="search" placeholder="搜索中文 / 英文标题、摘要、关键词…" aria-label="搜索论文" value="${escape(filters.q)}" autocomplete="off"/><kbd>/</kbd></div>
     <div class="toolbar"><div><button class="mobile-menu secondary" data-action="menu">研究方向 ☰</button><label class="sr-only" for="classification">分类状态</label><select id="classification"><option value="">全部分类状态</option><option value="complete">已完成</option><option value="review">待复核</option><option value="pending">待处理</option></select><button class="text-button clear" data-reset>清除筛选</button></div><div class="export"><span>导出当前结果</span><button id="export-json" class="secondary">JSON ↓</button><button id="export-csv" class="secondary">CSV ↓</button></div></div>
     <div id="filter-chips" class="filter-chips"></div><p id="search-status" class="search-error" role="status"></p>

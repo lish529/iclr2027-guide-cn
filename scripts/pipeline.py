@@ -261,6 +261,27 @@ def build(args):
     taxonomy = load(ROOT / 'data/taxonomy.json')
     classified = annotations()
     raw = papers_from(snapshot)
+    topic_specs = [{
+        'slug': 'heterogeneous-model-transfer',
+        'name': '异构模型合并与迁移',
+        'description': '不同模型之间的能力、知识或内部状态合并与迁移；相关性层级不表示论文质量。',
+        'file': ROOT / 'data/heterogeneous-transfer-screening.json',
+    }]
+    topic_members = {}
+    topic_manifest = []
+    for spec in topic_specs:
+        data = load(spec['file'])
+        if not data:
+            continue
+        members = {row['id']: {
+            'slug': spec['slug'], 'tier': row['tier'],
+            'dimensions': row.get('heterogeneityDimensions', []),
+            'forms': row.get('transferForms', []),
+        } for row in data.get('records', []) if row.get('tier') in ['core', 'method-reference']}
+        topic_members.update({(spec['slug'], ident): value for ident, value in members.items()})
+        topic_manifest.append({'slug': spec['slug'], 'name': spec['name'], 'description': spec['description'],
+            'count': len(members), 'core': sum(v['tier'] == 'core' for v in members.values()),
+            'methodReference': sum(v['tier'] == 'method-reference' for v in members.values())})
     index, details, search = [], {}, []
     for p in sorted(raw.values(), key=lambda p: ((p['number'] or 0), p['id']), reverse=True):
         a = classified.get(p['id'])
@@ -270,11 +291,12 @@ def build(args):
             except ValueError:
                 a = None
         item = {k: v for k, v in p.items() if k not in ['abstract', 'venueId']}
+        paper_topics = [value for (slug, ident), value in topic_members.items() if ident == p['id']]
         item.update({'areaZh': taxonomy['areaLabels'].get(p['primaryArea'], p['primaryArea']),
             'titleZh': a['titleZh'] if a else '', 'summaryZh': a.get('summaryZh', '') if a else '',
             'subcategory': a['subcategory'] if a else '待分类', 'tags': a['tags'] if a else [],
             'classification': a['classification'] if a else 'pending',
-            'rating': None, 'detail': f"data/details-{len(index) // 500:04}.json.gz"})
+            'rating': None, 'topics': paper_topics, 'detail': f"data/details-{len(index) // 500:04}.json.gz"})
         index.append(item)
         details[p['id']] = {**item, 'abstract': p['abstract'], 'classificationReason': a['reason'] if a else ''}
         search.append({'id': p['id'], 'text': ' '.join([p['title'], item['titleZh'], item['summaryZh'],
@@ -320,6 +342,7 @@ def build(args):
         'failures': snapshot.get('failures', 0), 'note': snapshot.get('note', ''),
         'taxonomyVersion': taxonomy['version'], 'taxonomyStage': taxonomy['stage'],
         'areas': areas, 'tags': [{'name': k, 'count': v} for k, v in sorted(tags.items(), key=lambda i: (-i[1], i[0]))],
+        'topics': topic_manifest,
         'searchShards': shards, 'activeIdSetSha256': hashlib.sha256('\n'.join(sorted(p['id'] for p in active)).encode()).hexdigest()}
     save_compressed(staging / 'index.json.gz', index)
     save(staging / 'manifest.json', manifest)
@@ -340,6 +363,11 @@ def check(args):
     assert m['classified'] + m['pending'] + m['review'] == m['total'], '分类进度不一致'
     for state, key in [('complete','classified'), ('pending','pending'), ('review','review')]:
         assert sum(p['classification'] == state for p in active) == m[key], '分类实际状态不一致'
+    for topic in m.get('topics', []):
+        members = [p for p in active if any(t.get('slug') == topic['slug'] for t in p.get('topics', []))]
+        assert len(members) == topic['count'], '专题数量不一致'
+        assert sum(any(t.get('slug') == topic['slug'] and t.get('tier') == 'core' for t in p.get('topics', [])) for p in active) == topic['core'], '专题核心数量不一致'
+        assert sum(any(t.get('slug') == topic['slug'] and t.get('tier') == 'method-reference' for t in p.get('topics', [])) for p in active) == topic['methodReference'], '专题方法参考数量不一致'
     for area in m['areas']:
         group = [p for p in active if p['primaryArea'] == area['name']]
         assert len(group) == area['count'], '官方方向数量不一致'
